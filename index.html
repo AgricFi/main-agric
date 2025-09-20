@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <title>AgricFi — Home</title>
+
+  <!-- Font Awesome for social icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #333;
+    }
+
+    .site-header {
+      background: #2c3e50;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-header .logo h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .main-nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .wallet-btn button {
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: #067121;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 10px;
+    }
+
+    .btn.primary {
+      background: #27ae60;
+      color: white;
+    }
+
+    .btn.outline {
+      border: 2px solid #27ae60;
+      color: #27ae60;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .feature {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      text-align: center;
+    }
+
+    .ecosystem {
+      margin: 60px auto;
+      padding: 40px 20px;
+      background: #f9fafb;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .ecosystem h3 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: #2c3e50;
+    }
+
+    .ecosystem-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .ecosystem-flow .step {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      width: 80%;
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .ecosystem-flow .step::after {
+      content: "↓";
+      font-size: 1.5rem;
+      color: #27ae60;
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .ecosystem-flow .step:last-child::after {
+      content: "";
+    }
+
+    .site-footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .buy-aft {
+      margin: 20px 0;
+    }
+
+    .social_media a {
+      margin: 0 8px;
+      color: white;
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <div class="brand">
+        <img src="/AgricFi-site/assets/AgricFi-logo.png" alt="agricfilogo">
+      </div>
+      <div class="header_tag">
+        <h1>AgricFi</h1>
+        <p class="tag">Bridging Agriculture and Blockchain</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="tokenomics.html">Tokenomics</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="wallet-btn">
+      <button id="connectButton">Connect Wallet</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Tokenized farmland, transparent funding, real yields.</h2>
+      <p>AgricFi transforms real farms into tokenized investments, transparent, traceable, and profitable.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="whitepaper.html">Read Whitepaper</a>
+        <a class="btn outline" href="contact.html">Join Early Access</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Tokenized Farms</h3>
+        <p>Physical farms minted as NFTs enabling fractional ownership and liquidity.</p>
+      </div>
+      <div class="feature">
+        <h3>Transparent Funding</h3>
+        <p>Smart contracts automate fund release and revenue distribution on verified milestones.</p>
+      </div>
+      <div class="feature">
+        <h3>Stake & Earn</h3>
+        <p>Stake AFT tokens for rewards and participate in governance and yield sharing.</p>
+      </div>
+    </section>
+
+    <section class="ecosystem">
+      <h3>Ecosystem Flow</h3>
+      <div class="ecosystem-flow">
+        <div class="step">1️⃣ Farmers → Register farms</div>
+        <div class="step">2️⃣ Tokenization → Farms minted as NFTs</div>
+        <div class="step">3️⃣ Investors → Buy fractional tokens</div>
+        <div class="step">4️⃣ Funding → Raised capital supports farms</div>
+        <div class="step">5️⃣ Tracking → IoT & blockchain reporting</div>
+        <div class="step">6️⃣ Revenue → Shared via smart contracts</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 AgricFi - Built for farmers. Trusted by investors.</p>
+    <div class="buy-aft">
+      <a class="btn primary" href="https://l1xapp.com/" target="_blank">
+        Buy $AFT on Quantum Dex
+      </a>
+    </div>
+    <div class="social_media">
+      <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+      <a href="https://x.com/agric_fi" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
+      <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
+      <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </footer>
+
+  <!-- Wallet Connection Script -->
+  <script>
+    const connectButton = document.getElementById("connectButton");
+
+    connectButton.addEventListener("click", async () => {
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          connectButton.textContent = "Connected: " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4);
+        } catch (error) {
+          console.error(error);
+          alert("Wallet connection failed!");
+        }
+      } else {
+        alert("No Web3 wallet found. Please install MetaMask or a supported wallet.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tokenomics - AgricFi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>AgricFi</h1>
+        <p class="tag">Tokenomics & Revenue</p>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="tokenomics.html">Tokenomics</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container token-page">
+    <section class="token-summary">
+      <h2>AgricFi Token (AFT)</h2>
+      <p>AFT is the native token used for staking, governance, marketplace fees, and rewards. Supply is fixed and emissions are controlled.</p>
+
+      <div class="two-col">
+        <div>
+          <h4>Distribution</h4>
+          <ul>
+            <li>Public Sale: 25%</li>
+            <li>Team & Advisors: 15% (vest 12–24 months)</li>
+            <li>Staking Rewards: 20%</li>
+            <li>Liquidity Pool: 10%</li>
+            <li>Ecosystem Growth: 20%</li>
+            <li>Strategic Partnerships: 10% (locked)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Mechanics</h4>
+          <p>Transaction fees partially burned. Staking tiers encourage longer lockups. NFTs and carbon credits provide additional token sinks and utility.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-card">
+        <h3>Token Distribution</h3>
+        <canvas id="tokenChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Revenue Model ROI (Illustrative)</h3>
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 AgricFi - Built for farmers. Trusted by investors.</p>
+    </div>
+    <div class="social_media">
+      <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+      <a href="https://x.com/YourTwitterLink" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
+      <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
+      <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const tokenCtx = document.getElementById('tokenChart').getContext('2d');
+    new Chart(tokenCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Public Sale 25%', 'Team 15%', 'Staking 20%', 'Liquidity 10%', 'Ecosystem 20%', 'Partnerships 10%'],
+        datasets: [{
+          data: [25,15,20,10,20,10],
+          backgroundColor: ['#4caf50','#ff9800','#2196f3','#9c27b0','#f44336','#00bcd4']
+        }]
+      },
+      options: { responsive:true, plugins:{legend:{position:'bottom'}} }
+    });
+
+    const revCtx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(revCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Revenue Sharing','Staking','NFT Appreciation','Carbon Credits'],
+        datasets: [{ label:'Max ROI % (illustrative)', data:[50,40,100,20], backgroundColor:['#4caf50','#2196f3','#ff9800','#9c27b0'] }]
+      },
+      options:{ responsive:true, scales:{ y:{ beginAtZero:true, title:{display:true,text:'ROI %'} } }, plugins:{legend:{display:false}} }
+    });
+  </script>
+</body>
+</html>

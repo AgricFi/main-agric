@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - AgricFi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>AgricFi</h1>
+        <p class="tag">Get in touch</p>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="whitepaper.html">Whitepaper</a>
+        <a href="tokenomics.html">Tokenomics</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container contact-page">
+    <section>
+      <h2>Contact & Partnerships</h2>
+      <p>For partnerships, incubator queries, and investor conversations, email us at <a href="mailto:helloagricfi@gmail.com">helloagricfi@gmail.com</a></p>
+
+      <form id="contactForm">
+        <label>Name</label>
+        <input type="text" id="name" required />
+        <label>Email</label>
+        <input type="email" id="email" required />
+        <label>Message</label>
+        <textarea id="message" rows="5" required></textarea>
+        <button class="btn primary" type="submit">Send Message</button>
+      </form>
+      <p id="formMsg" class="muted"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 AgricFi - Built for farmers. Trusted by investors.</p>
+    </div>
+    <div class="social_media">
+      <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+      <a href="https://x.com/YourTwitterLink" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
+      <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
+      <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      document.getElementById('formMsg').textContent = 'Thanks '+(name||'')+'. Message received. Please use helloagricfi@gmail.com for formal contact.';
+      document.getElementById('contactForm').reset();
+    });
+  </script>
+</body>
+</html>
