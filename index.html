@@ -1,263 +1,365 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="style.css">
-  <title>AgricFi — Home</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AgricFi — Bridging Agriculture & Blockchain</title>
+<meta name="description" content="AgricFi: Tokenized farms, transparent funding, real yields. Powered by LayerOneX.">
+<style>
+  :root{
+    --bg1:#06121a;
+    --glass: rgba(255,255,255,0.04);
+    --panel: rgba(255,255,255,0.02);
+    --accent:#00e6a8;
+    --muted:#98aeb0;
+    --maxw:1100px;
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(circle at 10% 10%, rgba(0,120,90,0.03), transparent 12%),
+      linear-gradient(180deg, #06121a 0%, #0b2430 100%);
+    color:#e6f8f1;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    overflow-y:scroll;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:22px;}
 
-  <!-- Font Awesome for social icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  /* Topbar */
+  header.topbar{
+    position:sticky;top:0;z-index:9999;
+    background:linear-gradient(180deg, rgba(3,10,14,0.7), rgba(3,10,14,0.35));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+  }
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .logo{
+    width:48px;height:48px;border-radius:8px;
+    background:linear-gradient(180deg,#002f28,#003b35);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .brand h1{font-size:1.05rem;margin:0}
+  nav.topnav{display:flex;gap:14px;align-items:center}
+  nav.topnav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
+  nav.topnav a:hover{color:var(--accent)}
+  .actions{display:flex;gap:10px;align-items:center}
+  button.cta{background:var(--accent);border:none;padding:8px 12px;border-radius:10px;color:#01281b;font-weight:800;cursor:pointer}
+  button.connect{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+  .mobile-menu-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:1.25rem}
 
-  <!-- CSS -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #333;
-    }
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:center;margin:28px auto 40px;max-width:var(--maxw)}
+  .hero-left h2{font-size:2.05rem;color:#eafff3;margin-bottom:12px}
+  .hero-left p{color:var(--muted);margin-bottom:16px;font-size:1.03rem}
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700}
+  .btn.primary{background:var(--accent);color:#01281b}
+  .btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+  .hero-right{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+  .project-card img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+  .muted{color:var(--muted);font-size:0.95rem}
 
-    .site-header {
-      background: #2c3e50;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  /* Sections */
+  section{padding:24px 0}
+  .panel{background:var(--panel);padding:18px;border-radius:12px;margin-bottom:18px;box-shadow:0 10px 40px rgba(2,8,10,0.6)}
+  .glass{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+  h3{color:#eafff3;margin-bottom:8px}
 
-    .site-header .logo h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
+  /* Whitepaper box */
+  .whitepaper-box{
+    max-height:420px;overflow:auto;padding:18px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.03);border-radius:10px;
+  }
+  .whitepaper-box pre{white-space:pre-wrap;font-family:inherit;color:#dff7ee;font-size:0.95rem;line-height:1.45}
+  .whitepaper-instructions{color:var(--muted);font-size:0.95rem;margin-bottom:10px}
 
-    .main-nav a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
+  /* Tokenized Farms */
+  .token-section .sub{color:var(--muted);margin-bottom:12px}
+  .flow{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+  .flow .step{background:var(--glass);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+  .calc{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px;margin-top:14px}
 
-    .wallet-btn button {
-      background: #27ae60;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+  /* Ecosystem illustration placeholder */
+  .ecosium{display:flex;justify-content:center;margin-top:14px}
+  .ecos-svg{width:100%;max-width:920px;height:auto;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.55);display:block}
 
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: #067121;
-    }
+  /* Tokenomics & cards */
+  .grid{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:10px;min-width:220px;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
 
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
+  /* Contact & footer */
+  .contact-row{display:flex;gap:12px;flex-wrap:wrap}
+  .footer{padding:22px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:22px}
 
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin: 10px;
-    }
-
-    .btn.primary {
-      background: #27ae60;
-      color: white;
-    }
-
-    .btn.outline {
-      border: 2px solid #27ae60;
-      color: #27ae60;
-    }
-
-    .features {
-      display: flex;
-      justify-content: space-around;
-      padding: 40px 20px;
-      gap: 20px;
-    }
-
-    .feature {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      flex: 1;
-      text-align: center;
-    }
-
-    .ecosystem {
-      margin: 60px auto;
-      padding: 40px 20px;
-      background: #f9fafb;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
-
-    .ecosystem h3 {
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-      color: #2c3e50;
-    }
-
-    .ecosystem-flow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      position: relative;
-    }
-
-    .ecosystem-flow .step {
-      background: white;
-      padding: 15px 20px;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      width: 80%;
-      font-size: 1.1rem;
-      color: #333;
-      font-weight: 500;
-      position: relative;
-    }
-
-    .ecosystem-flow .step::after {
-      content: "↓";
-      font-size: 1.5rem;
-      color: #27ae60;
-      position: absolute;
-      bottom: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .ecosystem-flow .step:last-child::after {
-      content: "";
-    }
-
-    .site-footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .buy-aft {
-      margin: 20px 0;
-    }
-
-    .social_media a {
-      margin: 0 8px;
-      color: white;
-      font-size: 1.3rem;
-      text-decoration: none;
-    }
-  </style>
+  /* Responsive */
+  @media(max-width:980px){
+    .hero{grid-template-columns:1fr}
+    nav.topnav{display:none}
+    .mobile-menu-toggle{display:block}
+  }
+  @media(max-width:520px){
+    .hero-left h2{font-size:1.4rem}
+    .whitepaper-box{max-height:320px}
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">
-      <div class="brand">
-        <img src="assets/AgricFi-logo.png" alt="agricfilogo">
+  <header class="topbar" role="banner">
+    <div class="topbar-inner wrap">
+      <div class="brand" role="heading" aria-level="1">
+        <div class="logo" aria-hidden>AGF</div>
+        <div>
+          <h1 style="font-size:1rem;margin:0">AgricFi</h1>
+          <div style="font-size:0.78rem;color:var(--muted)">Bridging Agriculture & Blockchain</div>
+        </div>
       </div>
-      <div class="header_tag">
-        <h1>AgricFi</h1>
-        <p class="tag">Bridging Agriculture and Blockchain</p>
+
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="#whitepaper">Whitepaper</a>
+        <a href="#tokenized">Tokenized Farms</a>
+        <a href="#carbon">Carbon Credits</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button class="connect" id="connectBtn" title="Connect Wallet">Connect Wallet</button>
+        <button class="cta" onclick="document.getElementById('whitepaper').scrollIntoView({behavior:'smooth'})">Whitepaper</button>
+        <button class="mobile-menu-toggle" id="mobileToggle" aria-label="menu">☰</button>
       </div>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="ecosystem.html">Ecosystem</a>
-      <a href="whitepaper.html">Whitepaper</a>
-      <a href="tokenomics.html">Tokenomics</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="wallet-btn">
-      <button id="connectButton">Connect Wallet</button>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h2>Tokenized farmland, transparent funding, real yields.</h2>
-      <p>AgricFi transforms real farms into tokenized investments, transparent, traceable, and profitable.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="whitepaper.html">Read Whitepaper</a>
-        <a class="btn outline" href="contact.html">Join Early Access</a>
+  <main class="wrap" id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-left">
+        <h2 id="heroTitle">Tokenized Farmland • Transparent Funding • Real Yields</h2>
+        <p>AgricFi converts verified farms into digital assets — enabling direct funding for farmers and traceable returns for investors. Powered by LayerOneX.</p>
+        <div class="btn-row" role="toolbar" aria-label="Main actions">
+          <a class="btn primary" href="#whitepaper">Read Whitepaper</a>
+          <a class="btn outline" href="#tokenized">How Tokenization Works</a>
+        </div>
+        <div style="margin-top:12px;color:var(--muted)">Live pilots • IoT monitoring • Carbon credit integration</div>
+      </div>
+
+      <aside class="hero-right panel" aria-labelledby="featuredTitle">
+        <div class="project-card">
+          <h4 id="featuredTitle" style="margin-bottom:6px">Featured Pilot — Maize Farm (Ogun)</h4>
+          <!-- Inline SVG placeholder hero image -->
+          <svg class="ecos-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pilot placeholder">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#00383a"/>
+                <stop offset="1" stop-color="#002627"/>
+              </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#g1)"/>
+            <g fill="#00e6a8" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">
+              <text x="50%" y="50%" dy="10">Pilot Image Placeholder</text>
+            </g>
+          </svg>
+
+          <div class="muted" style="margin-top:8px">50 hectares • IoT-enabled • Tokenized</div>
+          <div style="display:flex;gap:12px;margin-top:12px">
+            <div style="flex:1">
+              <div class="muted">Raise</div><strong>$40,000</strong>
+            </div>
+            <div style="flex:1">
+              <div class="muted">Est. ROI</div><strong>18-25% / yr</strong>
+            </div>
+          </div>
+          <div style="margin-top:12px">
+            <a class="btn primary" href="#contact">Invest / Contact</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- WHITEPAPER (embed area) -->
+    <section id="whitepaper" class="panel" aria-labelledby="wpTitle">
+      <h3 id="wpTitle">Embedded Whitepaper</h3>
+      <div class="whitepaper-instructions">
+        Click inside the box below and paste your full whitepaper text. The box is scrollable and editable. Use headings to keep structure.
+      </div>
+
+      <div class="whitepaper-box" id="wpBox" contenteditable="true" spellcheck="false" aria-label="Whitepaper content">
+<pre>
+PASTE YOUR WHITEPAPER HERE
+
+-- Example:
+Introduction
+AgricFi is a blockchain-powered platform...
+
+(Click this placeholder, delete it, and paste your whitepaper.)
+</pre>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn primary" onclick="downloadWP()">Download Visible Whitepaper (.txt)</button>
+        <button class="btn outline" onclick="expandWP()">Expand/Collapse Whitepaper</button>
+        <button class="btn outline" onclick="copyWP()">Copy to clipboard</button>
       </div>
     </section>
 
-    <section class="features">
-      <div class="feature">
-        <h3>Tokenized Farms</h3>
-        <p>Physical farms minted as NFTs enabling fractional ownership and liquidity.</p>
+    <!-- Tokenized Farms formal section -->
+    <section id="tokenized" class="panel token-section" aria-labelledby="tokenTitle">
+      <h3 id="tokenTitle">Tokenized Farms — Turning Farmland into NFTs</h3>
+
+      <p class="sub">Executive summary</p>
+      <p class="muted">AgricFi converts verified real-world farmland into blockchain-backed digital assets. By minting farmland as NFTs (and optionally fractionalizing them into tradable tokens), AgricFi enables farmers to access funding quickly and transparently, while offering investors verifiable, asset-backed exposure to agricultural yields. This model combines on-the-ground verification, IoT-enabled monitoring, smart contracts for automated payouts, and robust governance to create a fair, traceable agricultural finance system.</p>
+
+      <h4 style="margin-top:14px">1. What we mean by “tokenized farms”</h4>
+      <p>Tokenizing a farm means creating a persistent digital representation of a real farm on a blockchain. That representation — normally an NFT — carries verifiable metadata: ownership documents, GPS coordinates, parcel size, expected crops, insurance details and validator signatures. Large files (deeds, certificates, soil reports) are stored off-chain with content hashes anchored on-chain. Once on chain the asset becomes programmable: it can be fractionalized, used as collateral, included in revenue-sharing contracts, and tracked automatically.</p>
+
+      <div class="flow" role="list">
+        <div class="step" role="listitem"><strong>On-boarding & verification:</strong> Farmer applies → local agent verifies identity, deed, GPS and soil tests.</div>
+        <div class="step" role="listitem"><strong>Valuation & structuring:</strong> Agronomists estimate working capital and decide token structure: full-farm NFT or cycle-based NFT.</div>
+        <div class="step" role="listitem"><strong>Minting & fractionalization:</strong> NFT minted with IPFS/Arweave metadata; optional ERC-20 units created for fractional ownership.</div>
+        <div class="step" role="listitem"><strong>Funding & escrow:</strong> Investors deposit funds into escrow smart contracts; funds released on verified milestones.</div>
+        <div class="step" role="listitem"><strong>Monitoring & revenue share:</strong> IoT + satellite verification confirm milestones; smart contracts distribute proceeds automatically.</div>
       </div>
-      <div class="feature">
-        <h3>Transparent Funding</h3>
-        <p>Smart contracts automate fund release and revenue distribution on verified milestones.</p>
+
+      <h4 style="margin-top:12px">2. Why NFTs for farmland — the core benefits</h4>
+      <ul style="margin-left:18px;color:var(--muted);">
+        <li><strong>Proof of ownership:</strong> NFTs + off-chain document hashes provide tamper-resistant provenance.</li>
+        <li><strong>Fractional ownership & liquidity:</strong> Lower ticket sizes invite retail investors; secondary markets enable trading.</li>
+        <li><strong>Programmable revenue sharing:</strong> Smart contracts automate profit distribution and fees.</li>
+        <li><strong>Traceability:</strong> Buyers and consumers can verify origin when IoT data is attached.</li>
+      </ul>
+
+      <h4 style="margin-top:12px">3. Example — simple arithmetic</h4>
+      <div class="calc">
+        <div><strong>Scenario</strong></div>
+        <div>Farm capital required = <strong>$100,000</strong></div>
+        <div>Tokens issued = <strong>100,000 tokens</strong> (reference price $1/token)</div>
+        <div>Net expected annual revenue = <strong>$20,000</strong></div>
+        <div>Investor buys <strong>1,000 tokens</strong></div>
+        <hr style="margin:8px 0;border-color:rgba(255,255,255,0.04)">
+        <div>Ownership fraction = 1,000 ÷ 100,000 = <strong>0.01 (1%)</strong></div>
+        <div>Investor's revenue = 20,000 × 0.01 = <strong>$200</strong></div>
+        <div>Investment amount = 1,000 × $1 = <strong>$1,000</strong></div>
+        <div>Annual ROI = 200 ÷ 1,000 = <strong>20%</strong></div>
       </div>
-      <div class="feature">
-        <h3>Stake & Earn</h3>
-        <p>Stake AFT tokens for rewards and participate in governance and yield sharing.</p>
+
+      <h4 style="margin-top:12px">4. IoT & technical assurances</h4>
+      <p class="muted">IoT sensors (soil moisture, weather, GPS), satellite imagery and signed oracle feeds provide the empirical evidence used to trigger milestone payments on-chain. Documents and audit reports are anchored to IPFS/Arweave and referenced by the NFT metadata.</p>
+
+      <h4 style="margin-top:12px">5. Revenue model (summary)</h4>
+      <p class="muted">Primary revenue streams include supervised crop sales, transaction fees, staking revenue, carbon credit monetization, service/data fees and secondary market activity. The AgricFi Treasury collects and allocates funds according to governance proposals.</p>
+
+      <h4 style="margin-top:12px">6. Risks & mitigations</h4>
+      <ul style="margin-left:18px;color:var(--muted);">
+        <li><strong>Weather / yield risk:</strong> Mitigated with crop insurance and diversified portfolios.</li>
+        <li><strong>Title disputes:</strong> Handled through strong local verification and legal structuring.</li>
+        <li><strong>Regulatory uncertainty:</strong> Jurisdiction-specific legal models and KYC/AML compliance.</li>
+        <li><strong>Fraud:</strong> Multi-source verification (IoT + agents + auditors) and multi-sig treasury controls.</li>
+      </ul>
+
+      <p style="margin-top:12px;color:var(--muted)">This section can be exported into investor decks, pitch docs or printed as a PDF if needed.</p>
+    </section>
+
+    <!-- Carbon Credits -->
+    <section id="carbon" class="panel" aria-labelledby="carbonTitle">
+      <h3 id="carbonTitle">Carbon Credits — Nature-based capture</h3>
+      <p class="muted">AgricFi’s carbon approach focuses on soil sequestration and agroforestry. We verify capture via IoT and third-party certification (Verra/Gold Standard). Credits generated are tradable to global corporate buyers; they remain associated with Nigerian farms while the certificate (credit) is transferred digitally.</p>
+
+      <ol style="margin-left:18px;color:var(--muted)">
+        <li>Implement regenerative practices (no-till, cover crops, tree planting).</li>
+        <li>Measure using soil tests, IoT sensors, and satellite imagery.</li>
+        <li>Get third-party verification and register with recognized standards.</li>
+        <li>Sell credits on voluntary markets or tokenized Web3 carbon marketplaces.</li>
+      </ol>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="glass" aria-labelledby="contactTitle">
+      <h3 id="contactTitle">Get in touch</h3>
+      <p class="muted">Interested in pilots, partnerships or investment? Contact our core team.</p>
+      <div class="contact-row" style="margin-top:12px">
+        <div style="min-width:220px">
+          <strong>Email</strong><div class="muted">info@agricfi.xyz</div>
+        </div>
+        <div style="min-width:220px">
+          <strong>Twitter/X</strong><div class="muted"><a href="https://x.com/agric_fi" target="_blank">@agric_fi</a></div>
+        </div>
+        <div style="min-width:220px">
+          <strong>Discord</strong><div class="muted">discord.gg/your-server</div>
+        </div>
       </div>
     </section>
 
-    <section class="ecosystem">
-      <h3>Ecosystem Flow</h3>
-      <div class="ecosystem-flow">
-        <div class="step">1️⃣ Farmers → Register farms</div>
-        <div class="step">2️⃣ Tokenization → Farms minted as NFTs</div>
-        <div class="step">3️⃣ Investors → Buy fractional tokens</div>
-        <div class="step">4️⃣ Funding → Raised capital supports farms</div>
-        <div class="step">5️⃣ Tracking → IoT & blockchain reporting</div>
-        <div class="step">6️⃣ Revenue → Shared via smart contracts</div>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2025 AgricFi - Built for farmers. Trusted by investors.</p>
-    <div class="buy-aft">
-      <a class="btn primary" href="https://l1xapp.com/" target="_blank">
-        Buy $AFT on Quantum Dex
-      </a>
-    </div>
-    <div class="social_media">
-      <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-      <a href="https://x.com/agric_fi" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
-      <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
-      <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+  <footer class="footer" role="contentinfo">
+    <div class="wrap">
+      <div style="text-align:center;color:var(--muted)">© 2025 AgricFi • Built for farmers. Trusted by investors.</div>
     </div>
   </footer>
 
-  <!-- Wallet Connection Script -->
-  <script>
-    const connectButton = document.getElementById("connectButton");
+<script>
+/* Minimal JS: mobile menu, wallet stub, whitepaper helpers */
 
-    connectButton.addEventListener("click", async () => {
-      if (window.ethereum) {
-        try {
-          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-          connectButton.textContent = "Connected: " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4);
-        } catch (error) {
-          console.error(error);
-          alert("Wallet connection failed!");
-        }
-      } else {
-        alert("No Web3 wallet found. Please install MetaMask or a supported wallet.");
-      }
-    });
-  </script>
+// Mobile nav toggle
+const mobileToggle = document.getElementById('mobileToggle');
+mobileToggle.addEventListener('click', () => {
+  const nav = document.querySelector('nav.topnav');
+  if(nav.style.display === 'flex') nav.style.display = '';
+  else nav.style.display = 'flex';
+});
+
+// Wallet connect (MetaMask stub)
+document.getElementById('connectBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('connectBtn');
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      btn.textContent = accounts[0].slice(0,6) + '...' + accounts[0].slice(-4);
+      btn.style.border = '1px solid rgba(0,230,168,0.12)';
+      btn.style.color = '#dfffe8';
+    } catch (e) {
+      console.error('Wallet connection error', e);
+      alert('Connection failed or cancelled.');
+    }
+  } else {
+    alert('No Web3 wallet found. Please install MetaMask or a supported wallet.');
+  }
+});
+
+// Whitepaper functions
+function downloadWP(){
+  const content = document.getElementById('wpBox').innerText;
+  const blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'agricfi_whitepaper.txt'; document.body.appendChild(a); a.click();
+  a.remove(); URL.revokeObjectURL(url);
+}
+
+function copyWP(){
+  const content = document.getElementById('wpBox').innerText;
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(content).then(()=>{ alert('Whitepaper copied to clipboard')});
+  } else { prompt('Copy the whitepaper text from this box:', content); }
+}
+
+function expandWP(){
+  const box = document.getElementById('wpBox');
+  box.style.maxHeight = (box.style.maxHeight === 'none' ? '420px' : 'none');
+}
+
+// Ctrl/Cmd+S convenience: download visible whitepaper
+document.addEventListener('keydown', function(e){
+  if((e.ctrlKey || e.metaKey) && e.key === 's'){
+    e.preventDefault();
+    downloadWP();
+  }
+});
+</script>
 </body>
 </html>
