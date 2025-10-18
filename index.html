@@ -1354,6 +1354,32 @@ section {
       },
       options:{ responsive:true, scales:{ y:{ beginAtZero:true, title:{display:true,text:'ROI %'} } }, plugins:{legend:{display:false}} }
     });
+
+        let menu = document.querySelector('#menu')
+var menuLinks = document.querySelector('.nav_menu')
+
+menu.addEventListener('click', function() {
+    menu.classList.toggle('is-active');
+    menuLinks.classList.toggle('active');
+})
+
+
+const connectButton = document.getElementById("connectButton");
+
+connectButton.addEventListener("click", async () => {
+    if (window.ethereum) {
+    try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        connectButton.textContent = "Connected: " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4);
+    } catch (error) {
+        console.error(error);
+        alert("Wallet connection failed!");
+        }
+    } else {
+        alert("No Web3 wallet found. Please install MetaMask or a supported wallet.");
+      }
+});
+        
   </script>
   
 </body>
