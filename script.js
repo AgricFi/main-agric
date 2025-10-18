@@ -1,3 +1,28 @@
+let menu = document.querySelector('#menu')
+var menuLinks = document.querySelector('.nav_menu')
+
+menu.addEventListener('click', function() {
+    menu.classList.toggle('is-active');
+    menuLinks.classList.toggle('active');
+})
+
+
+const connectButton = document.getElementById("connectButton");
+
+connectButton.addEventListener("click", async () => {
+    if (window.ethereum) {
+    try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        connectButton.textContent = "Connected: " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4);
+    } catch (error) {
+        console.error(error);
+        alert("Wallet connection failed!");
+        }
+    } else {
+        alert("No Web3 wallet found. Please install MetaMask or a supported wallet.");
+      }
+});
+
 const tokenData = [25,15,20,10,20,10];
 const tokenLabels = ['Public Sale 25%','Team 15%','Staking 20%','Liquidity 10%','Ecosystem 20%','Partnerships 10%'];
 
@@ -21,53 +46,3 @@ function initCharts(){
 }
 
 document.addEventListener('DOMContentLoaded', initCharts);
-
-
-const tokenCtx = document.getElementById('tokenChart').getContext('2d');
-    new Chart(tokenCtx, {
-        type: 'doughnut',
-        data: { 
-            labels: ['Public Sale 25%', 'Team 15%', 'Staking 20%', 'Liquidity 10%', 'Ecosystem 20%', 'Partnerships 10%'],
-            datasets: [{
-                data: [25,15,20,10,20,10],
-                backgroundColor: ['#4caf50','#ff9800','#2196f3','#9c27b0','#f44336','#00bcd4']
-            }]
-        },
-        options: { responsive:true, plugins:{legend:{position:'bottom'}} }
-    });
-
-    const revCtx = document.getElementById('revenueChart').getContext('2d');
-    new Chart(revCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Revenue Sharing','Staking','NFT Appreciation','Carbon Credits'],
-        datasets: [{ label:'Max ROI % (illustrative)', data:[50,40,100,20], backgroundColor:['#4caf50','#2196f3','#ff9800','#9c27b0'] }]
-      },
-      options:{ responsive:true, scales:{ y:{ beginAtZero:true, title:{display:true,text:'ROI %'} } }, plugins:{legend:{display:false}} }
-    });
-   
-  let menu = document.querySelector('#menu')
-  var menuLinks = document.querySelector('.nav_menu')
-  menu.addEventListener('click', function() {
-  menu.classList.toggle('is-active');
-  menuLinks.classList.toggle('active');
-  })
-
-
-
-const connectButton = document.getElementById("connectButton");
-
-connectButton.addEventListener("click", async () => {
-    if (window.ethereum) {
-    try {
-        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-        connectButton.textContent = "Connected: " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4);
-    } catch (error) {
-        console.error(error);
-        alert("Wallet connection failed!");
-        }
-    } else {
-        alert("No Web3 wallet found. Please install MetaMask or a supported wallet.");
-      }
-});
-        
