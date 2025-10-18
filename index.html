@@ -9,8 +9,9 @@
 
     <!-- Font Awesome for social icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<style>
-    @import url();
+
+    <style>
+        @import url();
 
 * {
     padding: 0;
@@ -219,7 +220,10 @@ section {
         backdrop-filter: blur(30px);
         transition: all 0.5s ease-in;
         margin: auto;
-        width: 100%;
+        width: 50%;
+        height: 70vh;
+        justify-content: center;
+        text-align: center;
     }
 
     .navigation_btn {
@@ -257,8 +261,7 @@ section {
 .Background {
     position: relative;
     width: 100%;
-    height: 70vh;
-    overflow: hidden;
+    height: 80vh;
     z-index: -100;
 }
 
@@ -379,14 +382,6 @@ section {
     .cta-btn a {
         font-size: 1rem;
         padding: .9rem 1rem;
-    }
-
-    .Background {
-        position: relative;
-        width: 100%;
-        min-height: 30vh;
-        overflow: hidden;
-        z-index: -100;
     }
     
 }
@@ -577,6 +572,14 @@ section {
     place-items: center;
     margin-top: 1.5rem;
     gap: 10px;
+}
+
+.ecosystem_content-header h4 {
+    font-size: 2rem;
+    padding: 10px;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px #fff;
+    border-radius: 5px;
 }
 
 .ecosystem_info-box {
@@ -788,7 +791,7 @@ section {
 .instructors__list {
     margin-top: 4rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     gap: 5rem;
 }
 
@@ -806,7 +809,7 @@ section {
 }
 
 .instructor__image {
-    height: 17rem;
+    height: 25rem;
     overflow: hidden;
     border-radius: 3rem;
 }
@@ -819,11 +822,63 @@ section {
     padding-bottom: 2rem;
 }
 
+
+/* ---------------------------------- SPONSOR BRANDS ---------------------------------- */
+
+.brands {
+    padding: 4rem 2rem;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #06121a;
+}
+
+.brand_header {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 8px #fff;
+    border: 1.5px solid #fff;
+}
+
+.brands__container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    border-top: 2px solid #fff;
+    padding: 2rem;
+}
+
+.brand__item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    justify-content: center;
+    align-items: center;
+    min-width: 4rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.brand__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+
+
+
 /* -------------------------------- Footer Section --------------------------- */
 
 .footer {
     background-color: #06121a;
     padding: 2rem 4rem;
+    border-top: 2px solid #06c64c;
 }
 
 .footer_container {
@@ -876,7 +931,7 @@ section {
 }
 
 
-</style>
+    </style>
 </head>
 <body>
     
@@ -919,7 +974,7 @@ section {
         <div class="hero hero_container">
             <div class="hero_content">
                 <div class="hero_text-content">
-                    <h1>Empowering Farmer, Connecting Investors.</h1>
+                    <h1>Empowering FarmerS, Connecting Investors.</h1>
                     <h3>The Future of Agricultre is Decentralized</h3>
                 </div>
                 <div class="hero_image-container">
@@ -964,8 +1019,8 @@ section {
         <div class="about about_container">
             <div class="about_content-container">
                 <div class="about_heading-container">
-                    <h6>About US</h6>
-                    <h3>Read More About US</h3>
+                    
+                    <h3>ABOUT US</h3>
                     <article>
                         <p>AgricFi is an innovative blockchain-powered platform designed to bridge the gap between traditional agriculture and decentralized finance (DeFi)</p>
                     </article>
@@ -973,7 +1028,7 @@ section {
 
                 <div class="about_content">
                     <div class="about_left-container">
-                        <h5>About us</h5>
+                        <h5>READ MORE ABOUT US</h5>
                         <p>AgricFi is an innovative blockchain-powered platform designed to bridge the gap between traditional agriculture and decentralized finance (DeFi). By integrating smart contracts, tokenized assets, and transparent supply chain management, AgricFi empowers farmers, investors, and stakeholders to create a more efficient, transparent, and profitable agricultural ecosystem.</p>
                         <p>The global agricultural industry generates over $10 trillion annually and supports billions of people. Yet, many farmers face challenges accessing capital, fair market pricing, and modern financial tools. AgricFi seeks to solve these issues by leveraging blockchain technology to create a trustless, secure, and inclusive ecosystem that transforms how agricultural investments and operations are managed.</p>
                     </div>
@@ -1253,56 +1308,56 @@ section {
             <ul class="instructors__list">
                 <li class="instructor">
                     <div class="instructor__image">
-                        <img src="assets/IMG_20251015_173058.jpg" alt="">
+                        <img src="assets/Richard.png" alt="">
                     </div>
-                    <h4>Richard Austine</h4>
+                    <h4>Richard Green</h4>
                     <p>C.E.O</p>
                 </li>
                 <li class="instructor">
                     <div class="instructor__image">
-                        <img src="assets/L1.PNG" alt="">
+                        <img src="assets/1000157935-Picsart-AiImageEnhancer.jpg" alt="">
                     </div>
                     <h4>Layer1X</h4>
                     <p>Partner</p>
                 </li>
                 <li class="instructor">
                     <div class="instructor__image">
-                        <img src="../assets/candidate3.jpg" alt="">
+                        <img src="assets/candidate3.jpg" alt="">
                     </div>
                     <h4>Verygood Habiba</h4>
                     <p>instructor</p>
                 </li>
-                <li class="instructor">
-                    <div class="instructor__image">
-                        <img src="../assets/candidate4.jpg" alt="">
-                    </div>
-                    <h4>Enoch James</h4>
-                    <p>Instructor</p>
-                </li>
-                <li class="instructor">
-                    <div class="instructor__image">
-                        <img src="../assets/candidate5.jpg" alt="">
-                    </div>
-                    <h4>Daniel Vinyo</h4>
-                    <p>Instructor</p>
-                </li>
-                <li class="instructor">
-                    <div class="instructor__image">
-                        <img src="../assets/candidate6.jpg" alt="">
-                    </div>
-                    <h4>Joel Graham</h4>
-                    <p>Instructor</p>
-                    <li class="instructor">
-                        <div class="instructor__image">
-                            <img src="../assets/candidate7.jpg" alt="">
-                        </div>
-                        <h4>Diana Anyi</h4>
-                        <p>Instuctor</p>
-                    </li>
-                </li>
             </ul>
         </div>
-     </section>
+    </section>
+
+
+
+
+    <!--  ------------------------------------------------- SPONSOR BRANDS ---------------------------------------- -->
+
+    <section class="brands">
+        <div class="brand_header">
+            <h3>Our Brand Supporters</h3>
+        </div>
+        <div class="container brands__container">
+            <div class="brand__item">
+                <img src="assets/L1.PNG" alt="Brand Logo">
+            </div>
+            <div class="brand__item">
+                <img src="assets/AgricFi-logo.png" alt="Brand Logo">
+            </div>
+            <div class="brand__item">
+                <img src="assets/quantum-dex-logo.png" alt="Brand Logo">
+            </div>
+            <div class="brand__item">
+                <img src="assets/coinmarketcap-logo.png" alt="Brand Logo">
+            </div>
+            <div class="brand__item">
+                <img src="assets/coingecko-logo.png" alt="Brand Logo">
+            </div>
+        </div>
+    </section>
 
 
     <!-- --------------------------- FOOTER SECTION ------------------------ -->
@@ -1311,10 +1366,10 @@ section {
             <h4>Reach AgricFi @</h4>
             <div class="footer_content-container">
                 <div class="footer_quicklinks">
-                    <a href="">Home</a>
-                    <a href="">Ecosystem</a>
+                    <a href="Index.html">Home</a>
+                    <a href="#ecosystem">Ecosystem</a>
                     <a href="">Whitepaper</a>
-                    <a href="">Contacts</a>
+                    <a href="#contanct">Contacts</a>
                 </div>
                 <div class="footer_icons">
                     <div class="social_icons">
@@ -1329,7 +1384,7 @@ section {
 
             <div class="quantum_button">
                 <a href="https://l1xapp.com/" target="_blank" class=" btn btn_primary">
-                    Buy AGFI  with Quantum Dex</a>
+                    Buy AFT on QUANTUM DEX</a>
             </div>
 
             <p>&COPY; 2024 AgricFi. All rights reserved.</p>
@@ -1362,34 +1417,6 @@ section {
       },
       options:{ responsive:true, scales:{ y:{ beginAtZero:true, title:{display:true,text:'ROI %'} } }, plugins:{legend:{display:false}} }
     });
-    </script>
-
-        <script>
-            let menu = document.querySelector('#menu')
-            var menuLinks = document.querySelector('.nav_menu')
-                menu.addEventListener('click', function() {
-                    menu.classList.toggle('is-active');
-                    menuLinks.classList.toggle('active');
-                })
-        </script>
-
-<script>
-const connectButton = document.getElementById("connectButton");
-
-connectButton.addEventListener("click", async () => {
-    if (window.ethereum) {
-    try {
-        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-        connectButton.textContent = "Connected: " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4);
-    } catch (error) {
-        console.error(error);
-        alert("Wallet connection failed!");
-        }
-    } else {
-        alert("No Web3 wallet found. Please install MetaMask or a supported wallet.");
-      }
-});
-        
   </script>
   
 </body>
