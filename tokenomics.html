@@ -1,91 +1,489 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tokenomics - AgricFi</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgricFi - Bridging Agriculture & Blockchain</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome for social icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>AgricFi</h1>
-        <p class="tag">Tokenomics & Revenue</p>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="ecosystem.html">Ecosystem</a>
-        <a href="whitepaper.html">Whitepaper</a>
-        <a href="tokenomics.html">Tokenomics</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+    
+    <!-- ------------ NAVIGATION SECTION ----------------- -->
 
-  <main class="container token-page">
-    <section class="token-summary">
-      <h2>AgricFi Token (AFT)</h2>
-      <p>AFT is the native token used for staking, governance, marketplace fees, and rewards. Supply is fixed and emissions are controlled.</p>
-
-      <div class="two-col">
-        <div>
-          <h4>Distribution</h4>
-          <ul>
-            <li>Public Sale: 25%</li>
-            <li>Team & Advisors: 15% (vest 12–24 months)</li>
-            <li>Staking Rewards: 20%</li>
-            <li>Liquidity Pool: 10%</li>
-            <li>Ecosystem Growth: 20%</li>
-            <li>Strategic Partnerships: 10% (locked)</li>
-          </ul>
+    <section class="navigation">
+        <div class="nav">
+            <div class="navbar">
+                <div class="nav_logo">
+                    <a href="Index.html">
+                        <img src="/Images/AgricFi-logo.png" alt="navlogo">
+                        <p>AgricFi</p></a>
+                </div>
+                <div class="menu_tab">
+                    <ul class="nav_menu">
+                        <li class="navlink"><a href="Index.html">Home</a></li>
+                        <li class="navlink"><a href="#about.html">About</a></li>
+                        <li class="navlink"><a href="#ecosystem">Ecosystem</a></li>
+                        <li class="navlink"><a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Whitepaper</a></li>
+                        <li class="navlink"><a href="#tokenomics">Tokenomics</a></li>
+                        <li class="navlink"><a href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="connect_hamburger">
+                        <button type="button" id="connectButton">Connect Wallet</button>
+                        <div class="navigation_btn" id="menu">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-          <h4>Mechanics</h4>
-          <p>Transaction fees partially burned. Staking tiers encourage longer lockups. NFTs and carbon credits provide additional token sinks and utility.</p>
-        </div>
-      </div>
     </section>
 
-    <section class="charts">
-      <div class="chart-card">
-        <h3>Token Distribution</h3>
-        <canvas id="tokenChart"></canvas>
-      </div>
-      <div class="chart-card">
-        <h3>Revenue Model ROI (Illustrative)</h3>
-        <canvas id="revenueChart"></canvas>
-      </div>
+
+    <!-- -----------------HERO SECTION------------------- -->
+
+    <section class="Background">
+        <div class="hero hero_container">
+            <div class="hero_content">
+                <div class="hero_text-content">
+                    <h1>Empowering Farmer, Connecting Investors.</h1>
+                    <h3>The Future of Agricultre is Decentralized</h3>
+                </div>
+                <div class="hero_image-container">
+                    <div class="image_content right">
+                        <div class="image">
+                            <img src="/Images/15917.jpg" alt="">
+                        </div>
+                        <div class="image_text-content">
+                            <h4>A Farmer</h4>
+                        </div>
+                    </div>
+                    <div class="image_content left">
+                        <div class="image">
+                            <img src="/Images/IMG_20251011_122235.jpg" alt="">
+                        </div>
+                        <div class="image_text-content">
+                            <h4>Digital Dashboard</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero_sub-content">
+                        <p>AgricFi bridges the gap between traditional farming and blockchain innovation; creating transparent, profitable, and sustainable agricultural finance.</p>
+                </div>
+                <div class="cta-btn">
+                    <div class="btn btn_primary">
+                        <a href="#ecosystem">Explore Ecosystem</a>
+                    </div>
+                    <div class="btn btn_secondary">
+                        <a href="">Join Waitlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <video autoplay muted loop id="myVideo">
+            <source src="/Images/7031084_Above_Aerial_1280x720.mp4" type="video/mp4">
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 AgricFi - Built for farmers. Trusted by investors.</p>
-    </div>
-    <div class="social_media">
-      <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-      <a href="https://x.com/YourTwitterLink" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
-      <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
-      <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    </div>
-  </footer>
 
-  <script>
+    <!-- ------------------------ About Section ------------------------ -->
+
+    <section id="about.html">
+        <div class="about about_container">
+            <div class="about_content-container">
+                <div class="about_heading-container">
+                    <h6>About US</h6>
+                    <h3>Read More About US</h3>
+                    <article>
+                        <p>AgricFi is an innovative blockchain-powered platform designed to bridge the gap between traditional agriculture and decentralized finance (DeFi)</p>
+                    </article>
+                </div>
+
+                <div class="about_content">
+                    <div class="about_left-container">
+                        <h5>About us</h5>
+                        <p>AgricFi is an innovative blockchain-powered platform designed to bridge the gap between traditional agriculture and decentralized finance (DeFi). By integrating smart contracts, tokenized assets, and transparent supply chain management, AgricFi empowers farmers, investors, and stakeholders to create a more efficient, transparent, and profitable agricultural ecosystem.</p>
+                        <p>The global agricultural industry generates over $10 trillion annually and supports billions of people. Yet, many farmers face challenges accessing capital, fair market pricing, and modern financial tools. AgricFi seeks to solve these issues by leveraging blockchain technology to create a trustless, secure, and inclusive ecosystem that transforms how agricultural investments and operations are managed.</p>
+                    </div>
+
+                    <div class="about_right-container">
+                        <div class="about_right-image">
+                           <h5>Feature Pilot - Maize Farm (Ogun)</h5>
+                           <div class="pilot_image">
+                            <img src="/Images/Background.jpg" alt="">
+                           </div>
+                           <div class="pilot_text">
+                            <h6>50 hectares</h6>
+                            <span></span>
+                            <h6>IOT-enabled</h6>
+                            <span></span>
+                            <h6>Tokenized</h6>
+                           </div>
+                           <div class="pilot_data">
+                            <div class="pilot_data-left">
+                                <h6>Raise</h6>
+                                <h4>$40,000</h4>
+                            </div>
+                            <div class="pilot_data-left">
+                                <h6>Est. ROI</h6>
+                                <h4>18-25% / yr</h4>
+                            </div>
+                           </div>
+                           <div class="feature_pilot-btn">
+                            <a href="#ecosystem">Explore Ecosystem</a>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about_btn-container">
+                    <div class="btn btn_primary">
+                        <a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- ------------------- ECOSYSTEM SECTION ------------------------- -->
+
+    <section id="ecosystem">
+        <div class="ecosystem ecosystem_container">
+            <div class="ecosystem_content">
+                <div class="ecosystem_content-header">
+                    <h4>Ecosystem</h4>
+                </div>
+                <div class="ecosystem_header">
+                    <h2>An Ecosystem Designed for Growth</h2>
+                </div>
+                <div class="ecosystem_text-content">
+                    <p>AgricFi brings together technology, finance, and farming expertise to create a transparent, sustainable, and high-impact agricultural finance network. </p>
+                    <p>Each module is built to scale trust, increase yeilds, and amplify returns for farmers and investors alike</p>
+                </div>
+            </div>
+            <article class="ecosystem_content-container">
+                <div class="ecosystem_info-container">
+                    <div class="ecosystem_info-box">
+                        <div class="box-icon">
+                            <fa class="fa-fa"></fa>
+                            <div class="box_content">
+                                <h3>Defi Funding Hub</h3>
+                                <p>The DeFi Funding Hub is the financial backbone of the AgricFi ecosystem. It bridges the funding gap between smallholder farmers and global investors by providing an open, decentralized gateway for agricultural financing.</p>
+                            </div>
+                        </div>
+                        <div class="ecosystem_keypoints">
+                            <H5>Features</H5>
+                            <ul>
+                                <li>On-chain Verification & Escrow</li>
+                                <li>Tokenized farm assests</li>
+                                <li>Dynamic APYs based on performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ecosystem_info-container">
+                    <div class="ecosystem_info-box">
+                        <div class="box-icon">
+                            <fa class="fa-fa"></fa>
+                            <div class="box_content">
+                                <h3>Sustainability Ledger</h3>
+                                <p>The Sustainability Ledger is AgricFi’s proof-of-impact layer. It captures and records all farm activities that contribute to environmental sustainability; ensuring transparency for investors, partners, and regulators.</p>
+                            </div>
+                        </div>
+                        <div class="ecosystem_keypoints">
+                            <H5>Features</H5>
+                            <ul>
+                                <li>On-chain Verification & Escrow</li>
+                                <li>Tokenized farm assests</li>
+                                <li>Dynamic APYs based on performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ecosystem_info-container">
+                    <div class="ecosystem_info-box">
+                        <div class="box-icon">
+                            <fa class="fa-fa"></fa>
+                            <div class="box_content">
+                                <h3>AgricFI Token Utility</h3>
+                                <p>The $AGFI token powers all activities within the AgricFi ecosystem. It’s the transactional, governance, and incentive engine — designed to maintain liquidity, reward contributions, and ensure decentralized control.</p>
+                            </div>
+                        </div>
+                        <div class="ecosystem_keypoints">
+                            <H5>Features</H5>
+                            <ul>
+                                <li>On-chain Verification & Escrow</li>
+                                <li>Tokenized farm assests</li>
+                                <li>Dynamic APYs based on performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ecosystem_info-container">
+                    <div class="ecosystem_info-box">
+                        <div class="box-icon">
+                            <fa class="fa-fa"></fa>
+                            <div class="box_content">
+                                <h3>Yield Dashboard</h3>
+                                <p>The Yield Dashboard serves as the investor’s control center — a real-time performance monitor for all active agricultural investments. It aggregates on-chain data, IoT metrics, and market analytics into a single intuitive interface, offering investors full visibility over their farm-backed assets.</p>
+                            </div>
+                        </div>
+                        <div class="ecosystem_keypoints">
+                            <H5>Features</H5>
+                            <ul>
+                                <li>On-chain Verification & Escrow</li>
+                                <li>Tokenized farm assests</li>
+                                <li>Dynamic APYs based on performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ecosystem_info-container">
+                    <div class="ecosystem_info-box">
+                        <div class="box-icon">
+                            <fa class="fa-fa"></fa>
+                            <div class="box_content">
+                                <h3>Farm NFTs</h3>
+                                <p>Farm NFTs transform real farmland and crop batches into verified digital assets. Each NFT represents a fraction of a real-world farm, making agricultural ownership accessible to anyone.</p>
+                            </div>
+                        </div>
+                        <div class="ecosystem_keypoints">
+                            <H5>Features</H5>
+                            <ul>
+                                <li>Verified Asset Minting: Each NFT contains geolocation, crop details, and ownership metadata.</li>
+                                <li>Fractional Ownership: Allows multiple investors to co-own a farm through NFT divisions.</li>
+                                <li>Dynamic Data Integration: IoT and satellite feeds update NFT metadata automatically.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ecosystem_info-container">
+                    <div class="ecosystem_info-box">
+                        <div class="box-icon">
+                            <fa class="fa-fa"></fa>
+                            <div class="box_content">
+                                <h3>Marketplace</h3>
+                                <p>The Marketplace is AgricFi’s digital trading hub, where real-world farm assets meet decentralized exchange. Users can buy, sell, and auction farm NFTs, produce tokens, and sustainability credits — all within a secure on-chain marketplace.</p>
+                            </div>
+                        </div>
+                        <div class="ecosystem_keypoints">
+                            <H5>Features</H5>
+                            <ul>
+                                <li>NFT & Produce Trading: Enables seamless buying and selling of digital farm assets.</li>
+                                <li>Wallet Integration: Compatible with MetaMask, Trust Wallet, and other DeFi wallets.</li>
+                                <li>Market Analytics: Real-time charts showing floor prices, trade volume, and asset performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <div class="ecosystem_btn">
+                <div class="btn btn_primary">
+                    <a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Read Whitepaper</a>
+                </div>
+                <div class="btn btn_secondary">
+                    <a href="">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- --------------------- Tokenomic --------------------- -->
+
+    <Section id="tokenomics">
+        <div class="tokenomic tokenomics_container">
+            <div class="tokenomics_content">
+                <div class="tokenomics_header">
+                    <h4>AgricFi Token (AFT)</h4>
+                        <p>AFT is the native token used for staking, governance, marketplace fees, and rewards. Supply is fixed and emissions are controlled.</p>
+                </div>
+                <div class="tokenomics_details">
+                    <div class="tokenomics_details-left">
+                        <div class="tokenomics_details-left-header">
+                            <h4>Distribution</h4>
+                        </div>
+                        <ul class="tokenomics_list">
+                          <li>Public Sale: 25%</li>
+                          <li>Team & Advisors: 15% (vest 12-24 months)</li>
+                          <li>Staking Rewards: 20%</li>
+                          <li>Liquidity Pool: 10%</li>
+                          <li>Ecosystem Growth: 20%</li>
+                          <li>Strategic Partnerships: 10% (locked)</li>
+                        </ul>
+                    </div>
+                    <div class="tokenomics_details-right">
+                        <div class="tokenomics_details-right-header">
+                            <h4>Mechanics</h4>
+                        </div>
+                        <p>Transaction fees partially burned. Staking tiers encourage longer lockups. NFTs and carbon credits provide additional token sinks and utility.</p>
+                    </div>
+                </div>
+            </div>
+            <section class="charts">
+                <div class="chart-card">
+                  <h3>Token Distribution</h3>
+                  <img src="/Images/Token Distribtution.png" alt="">
+                  <canvas id="tokenChart"></canvas>
+                </div>
+                <div class="chart-card">
+                  <h3>Revenue Model ROI (Illustrative)</h3>
+                  <img src="/Images/upscalemedia-transformed.jpeg" alt="">
+                  <canvas id="revenueChart"></canvas>
+                </div>
+            </section>
+        </div>
+    </Section>
+
+
+    <!-- --------------------------- Contact Section ---------------------- -->
+
+    <section id="contact">
+        <div class="contact contact_container">
+            <div class="contact-content_container">
+                <div class="contact_header">
+                    <h4>Contact Us</h4>
+                    <h2>Get in Touch</h2>
+                </div>
+                <div class="contact_text-content">
+                    <p>Have questions or want to learn more about AgricFi? Reach out to our team for more information.</p>
+                </div>
+                <div class="contact_form-container">
+                    <form action="" class="form_action">
+                        <div class="form_group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form_group">
+                            <input type="text" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form_group">
+                            <textarea id="message" name="message" placeholder="Your Message" required>Enter your message</textarea>
+                        </div>
+                    </form>
+                    <div class="btn btn_primary">
+                        <a href="mailto:helloagricfi@gmail.com">Submit Your Message</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- --------------------------- OUR TEAM -------------------------------- -->
+
+    <section class="instructors">
+        <div class="container instructors__container">
+            <h2>Meet Our Supporters and Team </h2>
+            <p>This is our Most Valued suppoters and Team</p>
+            <ul class="instructors__list">
+                <li class="instructor">
+                    <div class="instructor__image">
+                        <img src="/Images/IMG_20251015_173058.jpg" alt="">
+                    </div>
+                    <h4>Richard Austine</h4>
+                    <p>C.E.O</p>
+                </li>
+                <li class="instructor">
+                    <div class="instructor__image">
+                        <img src="/Images/L1.PNG" alt="">
+                    </div>
+                    <h4>Layer1X</h4>
+                    <p>Partner</p>
+                </li>
+                <li class="instructor">
+                    <div class="instructor__image">
+                        <img src="../assets/candidate3.jpg" alt="">
+                    </div>
+                    <h4>Verygood Habiba</h4>
+                    <p>instructor</p>
+                </li>
+                <li class="instructor">
+                    <div class="instructor__image">
+                        <img src="../assets/candidate4.jpg" alt="">
+                    </div>
+                    <h4>Enoch James</h4>
+                    <p>Instructor</p>
+                </li>
+                <li class="instructor">
+                    <div class="instructor__image">
+                        <img src="../assets/candidate5.jpg" alt="">
+                    </div>
+                    <h4>Daniel Vinyo</h4>
+                    <p>Instructor</p>
+                </li>
+                <li class="instructor">
+                    <div class="instructor__image">
+                        <img src="../assets/candidate6.jpg" alt="">
+                    </div>
+                    <h4>Joel Graham</h4>
+                    <p>Instructor</p>
+                    <li class="instructor">
+                        <div class="instructor__image">
+                            <img src="../assets/candidate7.jpg" alt="">
+                        </div>
+                        <h4>Diana Anyi</h4>
+                        <p>Instuctor</p>
+                    </li>
+                </li>
+            </ul>
+        </div>
+     </section>
+
+
+    <!-- --------------------------- FOOTER SECTION ------------------------ -->
+    <section>
+        <div class="footer footer_container">
+            <h4>Reach AgricFi @</h4>
+            <div class="footer_content-container">
+                <div class="footer_quicklinks">
+                    <a href="">Home</a>
+                    <a href="">Ecosystem</a>
+                    <a href="">Whitepaper</a>
+                    <a href="">Contacts</a>
+                </div>
+                <div class="footer_icons">
+                    <div class="social_icons">
+                        <span class="icon"><a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i>Telegram</a></span>
+                        <span class="icon"><a href="https://x.com/agric_fi" target="_blank"><i class="fa-brands fa-x-twitter"></i>Twitter (X)</a></span>
+                        <span class="icon"><a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i>Medium</a></span>
+                        <span class="icon"><a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i>Discord</a></span>
+                        <span class="icon"><a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quantum_button">
+                <a href="https://l1xapp.com/" target="_blank" class=" btn btn_primary">
+                    Buy AGFI  with Quantum Dex</a>
+            </div>
+
+            <p>&COPY; 2024 AgricFi. All rights reserved.</p>
+        </div>
+    </section>
+
+
+    <script src="index.js"></script>
+
+    <script>
     const tokenCtx = document.getElementById('tokenChart').getContext('2d');
     new Chart(tokenCtx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Public Sale 25%', 'Team 15%', 'Staking 20%', 'Liquidity 10%', 'Ecosystem 20%', 'Partnerships 10%'],
-        datasets: [{
-          data: [25,15,20,10,20,10],
-          backgroundColor: ['#4caf50','#ff9800','#2196f3','#9c27b0','#f44336','#00bcd4']
-        }]
-      },
-      options: { responsive:true, plugins:{legend:{position:'bottom'}} }
+        type: 'doughnut',
+        data: { 
+            labels: ['Public Sale 25%', 'Team 15%', 'Staking 20%', 'Liquidity 10%', 'Ecosystem 20%', 'Partnerships 10%'],
+            datasets: [{
+                data: [25,15,20,10,20,10],
+                backgroundColor: ['#4caf50','#ff9800','#2196f3','#9c27b0','#f44336','#00bcd4']
+            }]
+        },
+        options: { responsive:true, plugins:{legend:{position:'bottom'}} }
     });
 
     const revCtx = document.getElementById('revenueChart').getContext('2d');
@@ -98,5 +496,6 @@
       options:{ responsive:true, scales:{ y:{ beginAtZero:true, title:{display:true,text:'ROI %'} } }, plugins:{legend:{display:false}} }
     });
   </script>
+  
 </body>
 </html>
