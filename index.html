@@ -1354,16 +1354,18 @@ section {
       },
       options:{ responsive:true, scales:{ y:{ beginAtZero:true, title:{display:true,text:'ROI %'} } }, plugins:{legend:{display:false}} }
     });
+    </script>
 
-        let menu = document.querySelector('#menu')
-var menuLinks = document.querySelector('.nav_menu')
+        <script>
+            let menu = document.querySelector('#menu')
+            var menuLinks = document.querySelector('.nav_menu')
+                menu.addEventListener('click', function() {
+                    menu.classList.toggle('is-active');
+                    menuLinks.classList.toggle('active');
+                })
+        </script>
 
-menu.addEventListener('click', function() {
-    menu.classList.toggle('is-active');
-    menuLinks.classList.toggle('active');
-})
-
-
+<script>
 const connectButton = document.getElementById("connectButton");
 
 connectButton.addEventListener("click", async () => {
