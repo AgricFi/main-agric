@@ -1271,7 +1271,161 @@ section {
         </div>
     </Section>
 
+<!-- ═══ AGRICFI INCENTIVES SECTION ═══ -->
+<section id="incentives" style="background:linear-gradient(180deg,#0b2430 0%,#032c48 60%,#06121a 100%);padding:4rem 1.5rem;position:relative;overflow:hidden;font-family:Arial,Helvetica,sans-serif">
 
+  <div style="text-align:center;margin-bottom:2.5rem">
+    <span style="display:inline-block;background:rgba(10,184,68,0.1);border:1px solid rgba(10,184,68,0.3);color:#0ab844;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:12px">🏆 Incentives</span>
+    <h2 style="font-size:clamp(1.6rem,5vw,2.6rem);font-weight:700;color:#fff;font-family:'Courier New',monospace;line-height:1.15;margin-bottom:10px;text-transform:uppercase">Complete Tasks.<br><span style="color:#0ab844">Earn $AFT Rewards.</span></h2>
+    <p style="font-size:0.95rem;font-weight:300;color:#a8cbbf;max-width:480px;margin:0 auto;line-height:1.65">Support the AgricFi ecosystem, complete community tasks, and earn $AFT token rewards for your contributions.</p>
+  </div>
+
+  <div id="inc-app" style="max-width:800px;margin:0 auto;background:rgba(6,18,26,0.92);border:1px solid rgba(10,184,68,0.2);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative">
+
+    <!-- Spinner -->
+    <div id="inc-spin" style="display:none;position:absolute;inset:0;background:rgba(6,18,26,0.9);align-items:center;justify-content:center;z-index:100;border-radius:20px;flex-direction:column;gap:14px">
+      <div style="width:42px;height:42px;border:3px solid rgba(10,184,68,0.15);border-top-color:#0ab844;border-radius:50%;animation:incSpin 0.85s linear infinite"></div>
+      <div id="inc-spin-txt" style="font-size:13px;color:#7ca99a">Connecting...</div>
+    </div>
+
+    <!-- Topbar -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(3,44,72,0.95);border-bottom:1px solid rgba(10,184,68,0.12);gap:10px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:8px;font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#fff">
+        <img src="assets/AgricFi-logo.png" alt="AgricFi" style="width:24px;height:24px;border-radius:5px;object-fit:contain">
+        Agric<span style="color:#0ab844">Fi</span>
+      </div>
+      <div id="inc-chip" style="display:none;align-items:center;gap:8px;background:rgba(10,184,68,0.08);border:1px solid rgba(10,184,68,0.22);border-radius:99px;padding:5px 13px 5px 5px">
+        <div id="inc-av" style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0ab844,#032c48);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0"><span id="inc-ini">?</span></div>
+        <div>
+          <div id="inc-un" style="font-size:12px;font-weight:700;color:#fff">—</div>
+          <div id="inc-id" style="font-size:9px;color:#0ab844;font-family:'Courier New',monospace;font-weight:700">ID: FI-—</div>
+        </div>
+      </div>
+      <div style="position:relative">
+        <button onclick="incDD()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 13px;color:#fff;cursor:pointer;font-size:13px;min-height:38px">☰</button>
+        <div id="inc-dd" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:#0b2430;border:1px solid rgba(10,184,68,0.22);border-radius:12px;min-width:160px;z-index:200;box-shadow:0 12px 36px rgba(0,0,0,0.55);overflow:hidden">
+          <div onclick="incPanel('tasks');incDD()" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#a8cbbf;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04)">📋 Tasks</div>
+          <div onclick="incPanel('tiers');incDD()" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#a8cbbf;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04)">🏆 Incentive Tiers</div>
+          <div onclick="window.location.href='#ecosystem'" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#a8cbbf;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04)">🌱 Invest</div>
+          <div id="inc-lo" onclick="incLogout()" style="display:none;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#e05555;cursor:pointer">🚪 Sign Out</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH GATE -->
+    <div id="inc-gate" style="padding:44px 22px 40px;text-align:center">
+      <div style="font-size:2.8rem;margin-bottom:14px">🌾</div>
+      <div style="font-family:'Courier New',monospace;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:9px;text-transform:uppercase">Join AgricFi Community</div>
+      <div style="font-size:0.9rem;color:#7ca99a;max-width:340px;margin:0 auto 28px;line-height:1.65">Sign in to complete tasks, earn $AFT rewards, and support the future of agricultural finance.</div>
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:290px;margin:0 auto">
+        <button onclick="incTW()" style="display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 20px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,0.14);background:#000;color:#fff;font-family:Arial,sans-serif;min-height:50px;width:100%">
+          𝕏 &nbsp;Continue with X (Twitter)
+        </button>
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#3a5a4e">
+          <span style="flex:1;height:1px;background:rgba(255,255,255,0.07)"></span>or<span style="flex:1;height:1px;background:rgba(255,255,255,0.07)"></span>
+        </div>
+        <!-- Google Sign-In rendered here -->
+        <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="incGCB" data-auto_prompt="false"></div>
+        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="filled_black" data-text="continue_with" data-shape="rectangular" data-width="290"></div>
+        <button id="inc-gfb" onclick="incGFB()" style="display:none;align-items:center;justify-content:center;gap:12px;padding:14px 20px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:1.5px solid rgba(0,0,0,0.1);background:#fff;color:#1a1a1a;font-family:Arial,sans-serif;min-height:50px;width:100%">
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.702 14.233 17.64 11.925 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+          Continue with Google
+        </button>
+      </div>
+      <div style="font-size:10.5px;color:#3a5a4e;margin-top:16px;line-height:1.65">🔐 Read-only access only. We never post on your behalf.</div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="inc-dash" style="display:none">
+
+      <!-- Points Banner -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:15px 18px;background:linear-gradient(135deg,rgba(10,184,68,0.1),rgba(3,44,72,0.5));border-bottom:1px solid rgba(10,184,68,0.12)">
+        <div style="display:flex;align-items:center;gap:13px">
+          <div id="inc-ring" style="width:52px;height:52px;border-radius:50%;background:conic-gradient(#0ab844 0%, rgba(10,184,68,0.1) 0%);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0">
+            <div style="position:absolute;width:40px;height:40px;border-radius:50%;background:#06121a"></div>
+            <div id="inc-rpct" style="position:relative;z-index:1;font-size:11px;font-weight:800;color:#0ab844;font-family:'Courier New',monospace">0%</div>
+          </div>
+          <div>
+            <div style="font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#7ca99a;margin-bottom:2px">Reward Points</div>
+            <div id="inc-pts" style="font-family:'Courier New',monospace;font-size:1.5rem;font-weight:700;color:#fff;line-height:1">0 <span style="font-size:.85rem;color:#0ab844;font-weight:400">pts</span></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px">
+            <div id="inc-dc" style="font-size:1rem;font-weight:700;color:#fff;font-family:'Courier New',monospace">0</div>
+            <div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#7ca99a;margin-top:2px">Done</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px">
+            <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Courier New',monospace">5</div>
+            <div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#7ca99a;margin-top:2px">Tasks</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px">
+            <div id="inc-rk" style="font-size:1rem;font-weight:700;color:#fff;font-family:'Courier New',monospace">#—</div>
+            <div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#7ca99a;margin-top:2px">Rank</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reward Banner (shows when all done) -->
+      <div id="inc-rb" style="display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:rgba(10,184,68,0.08);border-bottom:1px solid rgba(10,184,68,0.18);flex-wrap:wrap">
+        <div style="font-size:13px;color:#a8cbbf">🎉 <strong style="color:#0ab844">All tasks complete!</strong> You qualify for $AFT rewards. Contact the team to claim.</div>
+        <button onclick="incClaim()" style="background:#0ab844;color:#000;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:Arial,sans-serif">Claim Reward →</button>
+      </div>
+
+      <!-- Tasks Panel -->
+      <div id="inc-tp" style="padding:18px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+          <div>
+            <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px">Community Tasks</div>
+            <div style="font-size:11px;color:#7ca99a">Complete tasks to earn $AFT reward points</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="inc-chip-btn" onclick="incFilt(this,'all')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid #0ab844;background:#0ab844;color:#000;cursor:pointer;font-family:Arial,sans-serif">All</button>
+            <button class="inc-chip-btn" onclick="incFilt(this,'social')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#7ca99a;cursor:pointer;font-family:Arial,sans-serif">Social</button>
+            <button class="inc-chip-btn" onclick="incFilt(this,'content')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#7ca99a;cursor:pointer;font-family:Arial,sans-serif">Content</button>
+          </div>
+        </div>
+        <div id="inc-tb"></div>
+      </div>
+
+      <!-- Tiers Panel -->
+      <div id="inc-trs" style="display:none;padding:22px 18px;border-top:1px solid rgba(255,255,255,0.06)">
+        <div style="font-family:'Courier New',monospace;font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:6px">🏆 $AFT Incentive Tiers</div>
+        <div style="font-size:11.5px;color:#7ca99a;text-align:center;margin-bottom:18px">Accumulate points to unlock higher $AFT reward allocations</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
+          <div id="inc-t1" style="background:rgba(3,44,72,0.6);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:15px 10px;text-align:center">
+            <div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#0ab844">50 pts</div>
+            <div style="font-size:9.5px;color:#7ca99a;margin-top:3px">Bronze</div>
+            <div style="font-size:11px;color:#fff;font-weight:700;margin-top:6px">50 $AFT</div>
+          </div>
+          <div id="inc-t2" style="background:rgba(3,44,72,0.6);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:15px 10px;text-align:center">
+            <div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#0ab844">120 pts</div>
+            <div style="font-size:9.5px;color:#7ca99a;margin-top:3px">Silver</div>
+            <div style="font-size:11px;color:#fff;font-weight:700;margin-top:6px">150 $AFT</div>
+          </div>
+          <div id="inc-t3" style="background:rgba(3,44,72,0.6);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:15px 10px;text-align:center">
+            <div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#0ab844">250 pts</div>
+            <div style="font-size:9.5px;color:#7ca99a;margin-top:3px">Gold</div>
+            <div style="font-size:11px;color:#fff;font-weight:700;margin-top:6px">400 $AFT</div>
+          </div>
+        </div>
+        <button onclick="incPanel('tasks')" style="background:#0ab844;color:#000;border:none;border-radius:8px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;display:block;margin:0 auto;font-family:Arial,sans-serif">← Back to Tasks</button>
+      </div>
+
+    </div>
+
+    <!-- Social Footer -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 18px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap">
+      <a href="https://x.com/agric_fi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">𝕏 Twitter</a>
+      <a href="https://medium.com/@agricfi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">✍ Medium</a>
+      <a href="https://t.me/AgricFi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">✈ Telegram</a>
+      <a href="https://youtube.com" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">▶ YouTube</a>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ END INCENTIVES SECTION ═══ -->
+    
     <!-- --------------------------- Contact Section ---------------------- -->
 
     <section id="contact">
@@ -1425,6 +1579,211 @@ connectButton.addEventListener("click", async () => {
       }
 });
   </script>
-  
+    
+<!-- Google Sign-In SDK -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<style>@keyframes incSpin{to{transform:rotate(360deg)}}</style>
+
+<!-- AgricFi Incentives Script -->
+<div id="inc-toasts" style="position:fixed;bottom:20px;right:16px;display:flex;flex-direction:column;gap:8px;z-index:9999;pointer-events:none;max-width:300px"></div>
+
+<script>
+(function(){
+var TASKS=[
+  {id:'retweet',name:'Retweet AgricFi\'s Latest Post',icon:'🔁',pts:30,type:'social',url:'https://x.com/agric_fi',label:'Go to X →'},
+  {id:'follow',name:'Follow @agric_fi on X (Twitter)',icon:'👤',pts:25,type:'social',url:'https://x.com/intent/follow?screen_name=agric_fi',label:'Follow Now →'},
+  {id:'tweet',name:'Write a Tweet About AgricFi',icon:'✍️',pts:40,type:'content',url:'https://x.com/intent/tweet?text=I%20just%20discovered%20%40agric_fi%20%E2%80%94%20tokenizing%20agriculture%20with%20DeFi!%20%23AgricFi%20%23AFT',label:'Tweet Now →'},
+  {id:'farmphoto',name:'Visit a Farm, Take a Photo & Post',icon:'📷',pts:60,type:'content',url:'https://x.com/intent/tweet?text=%F0%9F%8C%BE%20Visiting%20a%20real%20farm%20with%20%40agric_fi!%20%23AgricFi%20%23AFT',label:'Post on X →'},
+  {id:'video',name:'Create an Animation/Video About AgricFi',icon:'🎬',pts:95,type:'content',url:'https://x.com/agric_fi',label:'See Guidelines →'}
+];
+var INC={user:null,tasks:{},pts:0,filt:'all'};
+
+function boot(){
+  handleOAuth();
+  var s=localStorage.getItem('af_u');
+  if(s){try{INC.user=JSON.parse(s);INC.tasks=JSON.parse(localStorage.getItem('af_t')||'{}');calcPts();showDash();}catch(e){localStorage.clear();}}
+  setTimeout(function(){if(!window.google){var b=document.getElementById('inc-gfb');if(b)b.style.display='flex';}},3000);
+  document.addEventListener('click',function(e){if(!e.target.closest('#inc-app .inc-dd-wrap')&&!e.target.closest('[onclick="incDD()"]')){var d=document.getElementById('inc-dd');if(d)d.style.display='none';}});
+}
+
+function incTW(){
+  if(!'YOUR_TWITTER_CLIENT_ID'.includes('YOUR')){doTwitterOAuth();return;}
+  demoLogin('twitter');
+}
+function incGFB(){
+  if(!'YOUR_GOOGLE_CLIENT_ID'.includes('YOUR')&&window.google){window.google.accounts.id.prompt();return;}
+  demoLogin('google');
+}
+window.incGCB=function(r){
+  try{
+    var p=JSON.parse(atob(r.credential.split('.')[1]));
+    setUser({id:'FI-'+p.sub.slice(-5).toUpperCase(),name:p.email.split('@')[0],display:p.name,provider:'google',av:p.picture||null,ini:(p.name||'?').split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase()});
+  }catch(e){toast('err','❌ Google error','Could not complete sign-in. Try again.');}
+};
+
+function demoLogin(prov){
+  showSpin(prov==='twitter'?'Connecting to X...':'Connecting to Google...');
+  setTimeout(function(){
+    if(prov==='twitter'){
+      var h=['@FarmerKola','@InvestorNgozi','@CryptoFarmNG','@AgriDave'];
+      var n=h[Math.floor(Math.random()*h.length)];
+      setUser({id:'FI-'+Math.random().toString(36).slice(2,7).toUpperCase(),name:n,display:n,provider:'twitter',av:null,ini:n.slice(1,3).toUpperCase()});
+    }else{
+      var names=['Alex Okonkwo','Chioma Adeyemi','Ibrahim Musa','Funke Bello'];
+      var nm=names[Math.floor(Math.random()*names.length)];
+      setUser({id:'FI-'+Math.random().toString(36).slice(2,7).toUpperCase(),name:nm,display:nm,provider:'google',av:null,ini:nm.split(' ').map(function(w){return w[0];}).join('').toUpperCase()});
+    }
+  },1600);
+}
+
+function doTwitterOAuth(){
+  var v=genV(),s=genS();
+  genC(v).then(function(c){
+    sessionStorage.setItem('tw_v',v);sessionStorage.setItem('tw_s',s);
+    var p=new URLSearchParams({response_type:'code',client_id:'YOUR_TWITTER_CLIENT_ID',redirect_uri:window.location.origin+window.location.pathname,scope:'tweet.read users.read follows.read offline.access',state:s,code_challenge:c,code_challenge_method:'S256'});
+    window.location.href='https://twitter.com/i/oauth2/authorize?'+p.toString();
+  });
+}
+function handleOAuth(){
+  var url=new URL(window.location.href);
+  var code=url.searchParams.get('code'),state=url.searchParams.get('state'),err=url.searchParams.get('error');
+  if(err){toast('err','❌ Cancelled','Twitter sign-in was cancelled.');cleanURL();return;}
+  if(!code||!state)return;
+  var sv=sessionStorage.getItem('tw_s'),cv=sessionStorage.getItem('tw_v');
+  if(state!==sv){toast('err','❌ Error','Please try again.');cleanURL();return;}
+  sessionStorage.removeItem('tw_s');sessionStorage.removeItem('tw_v');
+  showSpin('Completing sign-in...');
+  fetch('/api/twitter/token',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,code_verifier:cv,redirect_uri:window.location.origin+window.location.pathname})})
+  .then(function(r){return r.json();})
+  .then(function(d){setUser({id:'FI-'+d.user.id.slice(-5).toUpperCase(),name:'@'+d.user.username,display:d.user.name,provider:'twitter',av:d.user.profile_image_url||null,ini:(d.user.name||'?').slice(0,2).toUpperCase(),token:d.token});cleanURL();})
+  .catch(function(){hideSpin();demoLogin('twitter');cleanURL();});
+}
+
+function setUser(u){INC.user=u;localStorage.setItem('af_u',JSON.stringify(u));hideSpin();showDash();toast('ok','✅ Signed in!','Welcome '+u.display+' · '+u.id);}
+
+function showDash(){
+  document.getElementById('inc-gate').style.display='none';
+  document.getElementById('inc-dash').style.display='block';
+  var c=document.getElementById('inc-chip');if(c)c.style.display='flex';
+  var lo=document.getElementById('inc-lo');if(lo)lo.style.display='flex';
+  document.getElementById('inc-un').textContent=INC.user.display||INC.user.name;
+  document.getElementById('inc-id').textContent='ID: '+INC.user.id;
+  document.getElementById('inc-ini').textContent=INC.user.ini||'?';
+  if(INC.user.av){document.getElementById('inc-av').innerHTML='<img src="'+INC.user.av+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';}
+  renderTasks();updatePts();
+}
+
+function renderTasks(){
+  var body=document.getElementById('inc-tb');if(!body)return;
+  var list=INC.filt==='all'?TASKS:TASKS.filter(function(t){return t.type===INC.filt;});
+  body.innerHTML=list.map(function(t){
+    var st=INC.tasks[t.id]||'idle',done=st==='completed',did=st==='performed'||done;
+    return '<div style="display:flex;align-items:center;gap:12px;padding:13px 15px;background:rgba(3,44,72,'+(done?'0.55':'0.45')+');border:1px solid rgba('+(done?'10,184,68,0.26':'255,255,255,0.06')+');border-radius:13px;margin-bottom:10px;flex-wrap:wrap;transition:all .2s" id="itask-'+t.id+'">'
+      +'<div style="width:40px;height:40px;border-radius:10px;background:rgba(10,184,68,'+(done?'0.2':'0.1')+');border:1px solid rgba(10,184,68,0.18);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">'+t.icon+'</div>'
+      +'<div style="flex:1;min-width:0">'
+        +'<div style="font-size:13px;font-weight:700;color:'+(done?'#7ca99a':'#e6f8f1')+';margin-bottom:4px">'+(done?'✓ ':'')+t.name+'</div>'
+        +'<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">'
+          +'<span style="font-size:10.5px;font-weight:700;color:#0ab844;background:rgba(10,184,68,0.1);padding:2px 9px;border-radius:99px;font-family:\'Courier New\',monospace">+'+t.pts+' pts</span>'
+          +'<span style="font-size:9.5px;color:#7ca99a;background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;border:1px solid rgba(255,255,255,0.07)">'+t.type+'</span>'
+          +(done?'<span style="font-size:9.5px;color:#0ab844;background:rgba(10,184,68,0.08);padding:2px 8px;border-radius:99px;border:1px solid rgba(10,184,68,0.18)">✓ Verified</span>':'')
+        +'</div>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:6px;flex-shrink:0">'
+        +(done
+          ?'<div style="width:28px;height:28px;border-radius:50%;background:rgba(10,184,68,0.14);border:1.5px solid #0ab844;display:flex;align-items:center;justify-content:center;color:#0ab844;font-size:13px">✓</div>'
+          :'<button onclick="incDo(\''+t.id+'\')" style="padding:8px 14px;border-radius:8px;background:#0ab844;color:#000;border:none;font-size:11.5px;font-weight:700;cursor:pointer;font-family:Arial,sans-serif;white-space:nowrap;min-height:36px">'+(did?'✓ Done':t.label)+'</button>'
+           +'<button id="ivb-'+t.id+'" onclick="incVer(\''+t.id+'\')" style="padding:8px 12px;border-radius:8px;background:transparent;color:#0ab844;border:1.5px solid rgba(10,184,68,'+(did?'0.5':'0.2')+');font-size:11.5px;font-weight:700;cursor:pointer;font-family:Arial,sans-serif;white-space:nowrap;min-height:36px;opacity:'+(did?'1':'0.4')+'">✓ Verify</button>')
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function incDo(id){
+  if(!INC.user){toast('err','⚠️ Sign in first','Connect with X or Google');return;}
+  var t=TASKS.find(function(x){return x.id===id;});if(!t)return;
+  window.open(t.url,'_blank','noopener');
+  INC.tasks[id]='performed';
+  localStorage.setItem('af_t',JSON.stringify(INC.tasks));
+  renderTasks();
+  toast('ok','👆 Opened!','Complete the action then click Verify');
+}
+function incVer(id){
+  if(!INC.user){toast('err','⚠️ Sign in first','Connect first');return;}
+  if(INC.tasks[id]!=='performed'){toast('err','⚠️ Not done yet','Click the action button first, then Verify');return;}
+  var btn=document.getElementById('ivb-'+id);
+  if(btn){btn.disabled=true;btn.textContent='⏳ Checking...';}
+  var t=TASKS.find(function(x){return x.id===id;});
+  setTimeout(function(){
+    INC.tasks[id]='completed';
+    localStorage.setItem('af_t',JSON.stringify(INC.tasks));
+    calcPts();renderTasks();updatePts();
+    toast('ok','🎉 +'+t.pts+' pts!','"'+t.name+'" verified!');
+    if(TASKS.every(function(x){return INC.tasks[x.id]==='completed';})){
+      setTimeout(function(){var b=document.getElementById('inc-rb');if(b)b.style.display='flex';},600);
+    }
+  },2000);
+}
+
+function calcPts(){INC.pts=TASKS.reduce(function(s,t){return s+(INC.tasks[t.id]==='completed'?t.pts:0);},0);}
+function updatePts(){
+  var max=250,pct=Math.round((INC.pts/max)*100),done=TASKS.filter(function(t){return INC.tasks[t.id]==='completed';}).length;
+  document.getElementById('inc-pts').innerHTML=INC.pts+' <span style="font-size:.85rem;color:#0ab844;font-weight:400">pts</span>';
+  document.getElementById('inc-rpct').textContent=pct+'%';
+  document.getElementById('inc-dc').textContent=done;
+  document.getElementById('inc-rk').textContent='#'+(Math.max(1,300-done*40));
+  var ring=document.getElementById('inc-ring');
+  if(ring)ring.style.background='conic-gradient(#0ab844 '+pct+'%, rgba(10,184,68,0.1) 0%)';
+  ['inc-t1','inc-t2','inc-t3'].forEach(function(id){var el=document.getElementById(id);if(el){el.style.border='1px solid rgba(255,255,255,0.07)';el.style.background='rgba(3,44,72,0.6)';}});
+  var active=INC.pts>=250?'inc-t3':INC.pts>=120?'inc-t2':INC.pts>=50?'inc-t1':null;
+  if(active){var el=document.getElementById(active);if(el){el.style.border='1px solid #0ab844';el.style.background='rgba(10,184,68,0.08)';}}
+}
+
+function incClaim(){toast('ok','📬 Received!','The AgricFi team will contact you with your $AFT reward details.');var b=document.querySelector('#inc-rb button');if(b){b.textContent='Submitted ✓';b.disabled=true;}}
+window.incPanel=function(p){
+  var tp=document.getElementById('inc-tp'),tr=document.getElementById('inc-trs');
+  if(tp)tp.style.display=p==='tasks'?'block':'none';
+  if(tr)tr.style.display=p==='tiers'?'block':'none';
+};
+window.incDD=function(){var d=document.getElementById('inc-dd');if(d)d.style.display=d.style.display==='block'?'none':'block';};
+window.incFilt=function(el,f){
+  INC.filt=f;
+  document.querySelectorAll('.inc-chip-btn').forEach(function(b){b.style.background='transparent';b.style.color='#7ca99a';b.style.borderColor='rgba(255,255,255,0.1)';});
+  el.style.background='#0ab844';el.style.color='#000';el.style.borderColor='#0ab844';
+  renderTasks();
+};
+window.incLogout=function(){
+  INC={user:null,tasks:{},pts:0,filt:'all'};
+  localStorage.removeItem('af_u');localStorage.removeItem('af_t');
+  document.getElementById('inc-dash').style.display='none';
+  document.getElementById('inc-gate').style.display='block';
+  var c=document.getElementById('inc-chip');if(c)c.style.display='none';
+  var rb=document.getElementById('inc-rb');if(rb)rb.style.display='none';
+  var lo=document.getElementById('inc-lo');if(lo)lo.style.display='none';
+  document.getElementById('inc-dd').style.display='none';
+  toast('ok','👋 Signed out','Come back and earn more $AFT!');
+};
+window.incTW=incTW;window.incGFB=incGFB;
+
+function showSpin(m){var o=document.getElementById('inc-spin'),t=document.getElementById('inc-spin-txt');if(t)t.textContent=m||'Loading...';if(o)o.style.display='flex';}
+function hideSpin(){var o=document.getElementById('inc-spin');if(o)o.style.display='none';}
+function toast(type,title,msg){
+  var w=document.getElementById('inc-toasts');if(!w)return;
+  var el=document.createElement('div');
+  el.style.cssText='display:flex;align-items:flex-start;gap:10px;background:#0b2430;border:1px solid rgba('+(type==='err'?'224,85,85':'10,184,68')+',0.35);border-radius:11px;padding:12px 15px;font-size:12.5px;color:#e6f8f1;box-shadow:0 8px 30px rgba(0,0,0,0.55);pointer-events:auto;transition:all .3s;transform:translateX(110%);opacity:0';
+  el.innerHTML='<div style="font-size:17px;flex-shrink:0;margin-top:1px">'+(type==='err'?'❌':'✅')+'</div><div><strong style="display:block;font-weight:700;color:#fff;margin-bottom:2px">'+title+'</strong>'+msg+'</div>';
+  w.appendChild(el);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){el.style.transform='translateX(0)';el.style.opacity='1';});});
+  setTimeout(function(){el.style.transform='translateX(110%)';el.style.opacity='0';setTimeout(function(){el.remove();},350);},4000);
+}
+function genV(){var a=new Uint8Array(96);crypto.getRandomValues(a);return btoa(String.fromCharCode.apply(null,a)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'').slice(0,128);}
+async function genC(v){var e=new TextEncoder().encode(v),d=await crypto.subtle.digest('SHA-256',e);return btoa(String.fromCharCode.apply(null,new Uint8Array(d))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');}
+function genS(){var a=new Uint8Array(16);crypto.getRandomValues(a);return Array.from(a,function(b){return b.toString(16).padStart(2,'0');}).join('');}
+function cleanURL(){window.history.replaceState({},document.title,window.location.origin+window.location.pathname);}
+
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot);}else{boot();}
+})();
+</script> 
+    
 </body>
 </html>
