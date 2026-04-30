@@ -24,7 +24,7 @@
       <li><a href="ecosystem.html">Ecosystem</a></li>
       <li><a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Whitepaper</a></li>
       <li><a href="tokenomics.html">Tokenomics</a></li>
-      <li><a href="index.html#incentives">Incentives</a></li>
+      <li><a href="incentives.html">Incentives</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:.75rem;flex-shrink:0;">
@@ -173,88 +173,29 @@
   </div>
 </section>
 
-<!-- INCENTIVES (fully preserved original logic) -->
-<section id="incentives" style="background:linear-gradient(180deg,#0d2214 0%,#060f09 100%);padding:5rem 2rem;position:relative;overflow:hidden;z-index:1">
-  <div style="text-align:center;margin-bottom:2.5rem">
-    <span style="display:inline-block;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#4ade80;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:12px">🏆 Incentives</span>
-    <h2 style="font-size:clamp(1.6rem,5vw,2.6rem);font-weight:800;color:#f0fdf4;font-family:'Syne',sans-serif;line-height:1.15;margin-bottom:10px">Complete Tasks.<br><span style="color:#22c55e">Earn $AFT Rewards.</span></h2>
-    <p style="font-size:.95rem;font-weight:300;color:#86efac;max-width:480px;margin:0 auto;line-height:1.65">Support the AgricFi ecosystem, complete community tasks, and earn $AFT token rewards for your contributions.</p>
-  </div>
-  <div id="inc-app" style="max-width:800px;margin:0 auto;background:rgba(6,15,9,.95);border:1px solid rgba(34,197,94,.2);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative">
-    <div id="inc-spin" style="display:none;position:absolute;inset:0;background:rgba(6,15,9,.9);align-items:center;justify-content:center;z-index:100;border-radius:20px;flex-direction:column;gap:14px">
-      <div style="width:42px;height:42px;border:3px solid rgba(34,197,94,.15);border-top-color:#22c55e;border-radius:50%;animation:incSpin .85s linear infinite"></div>
-      <div id="inc-spin-txt" style="font-size:13px;color:#86efac">Connecting...</div>
+<!-- INCENTIVES CTA -->
+<section style="background:linear-gradient(180deg,#0d2214 0%,#060f09 100%);padding:5rem 2rem;position:relative;z-index:1;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <span style="display:inline-block;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#4ade80;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:14px">🏆 Incentives</span>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:#f0fdf4;line-height:1.15;margin-bottom:12px">Complete Tasks.<br><span style="color:#22c55e">Earn $AFT Rewards.</span></h2>
+    <p style="font-size:.95rem;font-weight:300;color:#86efac;line-height:1.7;margin-bottom:2rem;">Support the AgricFi ecosystem, complete community tasks, and earn $AFT token rewards for your contributions. Join hundreds of community members already earning.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;">
+      <a href="incentives.html" style="display:inline-flex;align-items:center;gap:8px;background:#22c55e;color:#000;padding:.85rem 1.75rem;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s;">Start Earning $AFT →</a>
+      <a href="tokenomics.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#f0fdf4;padding:.85rem 1.75rem;border-radius:12px;border:1px solid rgba(74,222,128,0.2);font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;text-decoration:none;">View Tokenomics</a>
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(13,34,20,.95);border-bottom:1px solid rgba(34,197,94,.12);gap:10px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#f0fdf4">
-        <img src="assets/AgricFi-logo.png" alt="AgricFi" style="width:24px;height:24px;border-radius:5px;object-fit:contain">Agric<span style="color:#22c55e">Fi</span>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:420px;margin:0 auto;">
+      <div style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1rem;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#22c55e">50</div>
+        <div style="font-size:.72rem;color:#4b7a5c;margin-top:3px">Bronze $AFT</div>
       </div>
-      <div id="inc-chip" style="display:none;align-items:center;gap:8px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.22);border-radius:99px;padding:5px 13px 5px 5px">
-        <div id="inc-av" style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#0d2214);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0"><span id="inc-ini">?</span></div>
-        <div><div id="inc-un" style="font-size:12px;font-weight:700;color:#f0fdf4">—</div><div id="inc-id" style="font-size:9px;color:#22c55e;font-family:'Courier New',monospace;font-weight:700">ID: FI-—</div></div>
+      <div style="background:rgba(13,34,20,.6);border:1px solid rgba(245,158,11,.3);border-radius:12px;padding:1rem;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#f59e0b">150</div>
+        <div style="font-size:.72rem;color:#4b7a5c;margin-top:3px">Silver $AFT</div>
       </div>
-      <div style="position:relative">
-        <div id="inc-lo" style="display:none;align-items:center;gap:6px">
-          <button onclick="incDD()" style="background:transparent;border:1px solid rgba(34,197,94,.2);color:#86efac;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;font-family:'Syne',sans-serif;font-weight:600">Account ▾</button>
-        </div>
-        <div id="inc-dd" style="display:none;position:absolute;right:0;top:calc(100% + 8px);background:#0d2214;border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:8px;min-width:140px;z-index:50" class="inc-dd-wrap">
-          <button onclick="incLogout()" style="width:100%;background:transparent;border:none;color:#86efac;padding:8px 12px;border-radius:8px;font-size:12px;cursor:pointer;text-align:left;font-family:'Syne',sans-serif">Sign Out</button>
-        </div>
-        <div id="inc-gate" style="display:flex;gap:8px;flex-wrap:wrap">
-          <button id="inc-twb" onclick="incTW()" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.15);font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">𝕏 Connect with X</button>
-          <button id="inc-gfb" onclick="incGFB()" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;background:#fff;color:#222;border:none;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">G Connect Google</button>
-        </div>
+      <div style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1rem;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#22c55e">400</div>
+        <div style="font-size:.72rem;color:#4b7a5c;margin-top:3px">Gold $AFT</div>
       </div>
-    </div>
-    <div id="inc-dash" style="display:none">
-      <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid rgba(34,197,94,.1);flex-wrap:wrap">
-        <div id="inc-ring" style="width:52px;height:52px;border-radius:50%;background:conic-gradient(#22c55e 0%,rgba(34,197,94,.1) 0%);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-          <div id="inc-rpct" style="position:relative;z-index:1;font-size:11px;font-weight:800;color:#22c55e;font-family:'Courier New',monospace">0%</div>
-        </div>
-        <div>
-          <div style="font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#4b7a5c;margin-bottom:2px">Reward Points</div>
-          <div id="inc-pts" style="font-family:'Courier New',monospace;font-size:1.5rem;font-weight:700;color:#f0fdf4;line-height:1">0 <span style="font-size:.85rem;color:#22c55e;font-weight:400">pts</span></div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px"><div id="inc-dc" style="font-size:1rem;font-weight:700;color:#f0fdf4;font-family:'Courier New',monospace">0</div><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#4b7a5c;margin-top:2px">Done</div></div>
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px"><div style="font-size:1rem;font-weight:700;color:#f0fdf4;font-family:'Courier New',monospace">5</div><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#4b7a5c;margin-top:2px">Tasks</div></div>
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px"><div id="inc-rk" style="font-size:1rem;font-weight:700;color:#f0fdf4;font-family:'Courier New',monospace">#—</div><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#4b7a5c;margin-top:2px">Rank</div></div>
-        </div>
-        <div style="margin-left:auto;display:flex;gap:6px">
-          <button onclick="incPanel('tasks')" style="padding:6px 12px;border-radius:8px;background:#22c55e;color:#000;border:none;font-size:11px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">Tasks</button>
-          <button onclick="incPanel('tiers')" style="padding:6px 12px;border-radius:8px;background:transparent;color:#86efac;border:1px solid rgba(34,197,94,.2);font-size:11px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">Tiers</button>
-        </div>
-      </div>
-      <div id="inc-rb" style="display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:rgba(34,197,94,.08);border-bottom:1px solid rgba(34,197,94,.18);flex-wrap:wrap">
-        <div style="font-size:13px;color:#86efac">🎉 <strong style="color:#22c55e">All tasks complete!</strong> You qualify for $AFT rewards. Contact the team to claim.</div>
-        <button onclick="incClaim()" style="background:#22c55e;color:#000;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Syne',sans-serif">Claim Reward →</button>
-      </div>
-      <div id="inc-tp" style="padding:18px">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-          <div><div style="font-size:14px;font-weight:700;color:#f0fdf4;margin-bottom:2px">Community Tasks</div><div style="font-size:11px;color:#4b7a5c">Complete tasks to earn $AFT reward points</div></div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="inc-chip-btn" onclick="incFilt(this,'all')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid #22c55e;background:#22c55e;color:#000;cursor:pointer;font-family:'Syne',sans-serif">All</button>
-            <button class="inc-chip-btn" onclick="incFilt(this,'social')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:transparent;color:#4b7a5c;cursor:pointer;font-family:'Syne',sans-serif">Social</button>
-            <button class="inc-chip-btn" onclick="incFilt(this,'content')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:transparent;color:#4b7a5c;cursor:pointer;font-family:'Syne',sans-serif">Content</button>
-          </div>
-        </div>
-        <div id="inc-tb"></div>
-      </div>
-      <div id="inc-trs" style="display:none;padding:22px 18px;border-top:1px solid rgba(255,255,255,.06)">
-        <div style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:#f0fdf4;text-align:center;margin-bottom:6px">🏆 $AFT Incentive Tiers</div>
-        <div style="font-size:11.5px;color:#4b7a5c;text-align:center;margin-bottom:18px">Accumulate points to unlock higher $AFT reward allocations</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
-          <div id="inc-t1" style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:15px 10px;text-align:center"><div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#22c55e">50 pts</div><div style="font-size:9.5px;color:#4b7a5c;margin-top:3px">Bronze</div><div style="font-size:11px;color:#f0fdf4;font-weight:700;margin-top:6px">50 $AFT</div></div>
-          <div id="inc-t2" style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:15px 10px;text-align:center"><div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#22c55e">120 pts</div><div style="font-size:9.5px;color:#4b7a5c;margin-top:3px">Silver</div><div style="font-size:11px;color:#f0fdf4;font-weight:700;margin-top:6px">150 $AFT</div></div>
-          <div id="inc-t3" style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:15px 10px;text-align:center"><div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#22c55e">250 pts</div><div style="font-size:9.5px;color:#4b7a5c;margin-top:3px">Gold</div><div style="font-size:11px;color:#f0fdf4;font-weight:700;margin-top:6px">400 $AFT</div></div>
-        </div>
-        <button onclick="incPanel('tasks')" style="background:#22c55e;color:#000;border:none;border-radius:8px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;display:block;margin:0 auto;font-family:'Syne',sans-serif">← Back to Tasks</button>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 18px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap">
-      <a href="https://x.com/agric_fi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:11px;font-weight:700;text-decoration:none">𝕏 Twitter</a>
-      <a href="https://medium.com/@agricfi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:11px;font-weight:700;text-decoration:none">✍ Medium</a>
-      <a href="https://t.me/AgricFi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:11px;font-weight:700;text-decoration:none">✈ Telegram</a>
     </div>
   </div>
 </section>
@@ -315,7 +256,7 @@
       <h4>Resources</h4>
       <ul>
         <li><a href="whitepaper.html">Whitepaper</a></li>
-        <li><a href="index.html#incentives">Incentives</a></li>
+        <li><a href="incentives.html">Incentives</a></li>
         <li><a href="https://l1xapp.com/pool/details/0x8f4932931AE141B3d8eB9630B35824053ca44945" target="_blank">Buy AFT</a></li>
       </ul>
     </div>
