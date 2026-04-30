@@ -1,1789 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="assets/AgricFi-logo.png" type="image/x-icon>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgricFi - Bridging Agriculture & Blockchain</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Font Awesome for social icons -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgricFi — Bridging Agriculture & Blockchain</title>
+  <link rel="icon" href="assets/AgricFi-logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <style>
-        @import url();
-
-* {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    background:
-      radial-gradient(circle at 10% 10%, rgba(0,120,90,0.03), transparent 12%),
-      linear-gradient(180deg, #06121a 0%, #0b2430 100%);
-    color:#e6f8f1;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.5;
-    overflow-y:scroll;
-    height: 100%;
-    width: 100%;
-}
-
-a {
-    font-size: 1.2rem;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-}
-
-.btn {
-    padding: .8rem;
-    background-color: #fff;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn_primary {
-    background: #0ab844;
-}
-
-.btn_primary a {
-    color: #fff;
-}
-
-.btn_secondary a {
-    color:#000;
-}
-
-.btn_secondary {
-    background-color: #e5ebef;
-    color: #000;
-}
-
-@media (max-width: 768px) {
-    * {
-        font-size: 12px;
-    }
-    
-    body {
-        font-size: 14px;
-    }  
-}
-
-/* ----------NAVIGATION SECTION -------------- */
-
-section {
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-}
-
-.navigation {
-    padding: 1rem 4rem;
-    position: sticky;
-    top: 0;
-    z-index: 9;
-    background-color: rgba(1, 20, 16, 0.5);
-    backdrop-filter: blur(30px);
-}
-
-.navbar {
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav_logo a {
-    font-size: 2rem;
-    font-weight: bolder;
-    color: #fff;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 10px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.nav_logo img {
-    width: 50px;
-    height: 50px;
-}
-
-.menu_tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav_menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1.5rem;
-}
-
-.navlink {
-    margin: 1rem;
-}
-
-.navlink a {
-    font-weight: bold;
-    color: #fff;
-    padding: 5px;
-}
-
-.navlink a:hover {
-    border-radius: 5px;
-    background-color: #0ab844;
-    transition: all 0.5s ease;
-}
-
-.connect_hamburger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 1.5rem;
-}
-
-.connect_hamburger button {
-    padding: 1rem;
-    margin-right: 20px;
-    border-radius: 1rem;
-    outline: none;
-    border: none;
-    background: #0ab844;
-    font-weight: bold;
-    font-size: .8rem;
-}
-
-.connect_hamburger button:hover {
-    color: #000;
-    background: #fff;
-}
-
-.navigation_btn {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    padding: .4rem;
-}
-
-.navigation_btn:hover {
-    background-color: #fff;
-    border-radius: .4rem;
-}
-
-.navigation_btn:hover .bar {
-    background-color: #000;
-}
-
-.navigation_btn .bar {
-    width: 30px;
-    height: 3px;
-    margin: 2.5px;
-    background-color: #fff;
-}
-
-
-
-@media (max-width: 1280px) {
-
-    .navbar {
-        margin-left: -1.5rem;
-    }
-
-    .nav_menu {
-        display: none;
-    }
-
-    .nav_menu.active {
-        display: grid;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 99;
-        background-color: rgba(13, 65, 207, 0.6);
-        backdrop-filter: blur(30px);
-        transition: all 0.5s ease-in;
-        margin: auto;
-        width: 50%;
-        height: 70vh;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .navigation_btn {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        padding: .4rem;
-    }
-
-    .navigation_btn:hover {
-        background-color: #fff;
-        border-radius: .4rem;
-    }
-
-    .navigation_btn:hover .bar {
-        background-color: #000;
-    }
-
-    .navigation_btn .bar {
-        width: 30px;
-        height: 3px;
-        margin: 2.5px;
-        background-color: #fff;
-    }
-
-    .connect_hamburger {
-        margin-right: -2rem;
-    }
-}
-
-/* ------------------- HERO SECTION ------------------------ */
-
-.Background {
-    position: relative;
-    width: 100%;
-    height: 80vh;
-    z-index: -100;
-}
-
-.Background video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -99;
-}
-
-.Background::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.548);
-    z-index: -1;
-    top: 0;
-    left: 0;
-}
-
-.hero_container {
-    padding: 2rem;
-    margin: auto;
-}
-
-.hero_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero_text-content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.hero_text-content h1 {
-    font-size: 2rem;
-    text-transform: uppercase;
-    color: #fff;
-}
-
-.hero_image-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
-.image_content {
-    margin: 15px;
-    justify-content: center;
-    align-items: center;
-    height: 250px;
-    width: auto;
-    background: #0b2430;
-    border-radius: 20px;
-}
-
-.image_content .image {
-    height: 200px;
-    width: 350px;
-    overflow: hidden;
-    object-fit: fill;
-    object-position: center;
-    border-radius: 20px;
-}
-
-.image img {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    object-fit: cover;
-    object-position: center;
-}
-
-.image_text-content {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-}
-
-.hero_sub-content {
-    font-size: 1.1rem;
-    font-weight: 200;
-    text-align: center;
-}
-
-.cta-btn {
-    display: flex;
-    padding: 1rem;
-}
-
-.cta-btn .btn {
-    background: #0ab844;
-    margin: 1rem;
-    border-radius: 1rem;
-}
-
-.cta-btn .btn a {
-    padding: .2rem;
-    font-weight: 500;
-    color: #fff;
-}
-
-@media (max-width: 1280px) {
-    .hero_image-container .right {
-        display: none;
-    }
-
-    .cta-btn a {
-        font-size: 1rem;
-        padding: .9rem 1rem;
-    }
-    
-}
-
-/* ---------------------- ABOUT SECTION ---------------------- */
-
-.about {
-    margin-inline: auto;
-}
-
-.about_content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem;
-    padding: 3rem;
-}
-
-.about_heading-container {
-    display: block;
-    text-align: center;
-    justify-content: center;
-}
-
-.about_heading-container h3 {
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-}
-
-.about_heading-container article p {
-    font-size: 20px;
-    font-weight: 200;
-}
-
-.about_content {
-    display: flex;
-    height: 100%;
-    margin-top: 3rem;
-    justify-content: center;
-    align-self: center;
-    padding: 20px;
-}
-
-.about_left-container {
-    text-align: center;
-    margin-right: 2rem;
-    padding: 20px;
-    height: 300px;
-    width: 500px;
-}
-
-.about_right-container {
-    text-align: center;
-    margin-left: 2rem;
-    padding: 20px;
-    box-shadow: 0 5px 8px rgba(240, 244, 243, 0.5);
-    border-radius: 10px;
-}
-
-.pilot_image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin: auto; */
-    height: 300px;
-    width: 400px;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.pilot_text {
-    display: flex;
-    padding: .5rem 2rem;
-}
-
-.pilot_text span {
-    background: #fff;
-    width: 5px;
-    display: flex;
-    height: 5px;
-    border-radius: 50%;
-    justify-content: space-around;
-    place-items: center;
-    align-items: center;
-    margin:auto;
-}
-
-.pilot_data {
-    display: flex;
-    justify-content: space-around;
-}
-
-.feature_pilot-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.feature_pilot-btn a {
-    font-weight: 200;
-    font-size: .7rem;
-    color: #000;
-    padding: .5rem 1rem;
-    background: #fff;
-    border-radius: 10px;
-}
-
-.about_btn-container {
-    margin-top: 1.5rem;
-}
-
-.about_btn-container .btn a {
-    padding: 0 1.4rem;
-    font-weight: 400;
-    font-size: 1.3rem;
-}
-
-@media (max-width: 1280px) {
-    .about_left-container {
-        display: none;
-    }
-
-    .pilot_image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        width: 300px;
-        height: 200px;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-}
-
-@media (max-width: 400px) {
-    .about_right-container {
-        text-align: center;
-        margin-left: 2rem;
-        padding: 20px;
-        box-shadow: 0 5px 8px rgba(240, 244, 243, 0.5);
-        border-radius: 10px;
-        width: 300px;   
-    }
-
-    .pilot_image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        width: 250px;
-        height: 200px;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-}
-
-
-/* -------------------- ECOSYSTEM SECTION -----------------------  */
-
-.ecosystem {
-    width: auto;
-    height: auto;
-    background-color: #032c48;
-}
-
-.ecosystem_container {
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-    gap: 20px;
-    padding: 5rem;
-}
-
-.ecosystem_content {
-    align-items: center;
-    justify-content: center;
-    place-items: center;
-    text-align: center;
-}
-
-.ecosystem_content-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    place-items: center;
-    margin-top: 1.5rem;
-    gap: 10px;
-}
-
-.ecosystem_content-header {
-    margin-bottom: 20px;
-}
-
-.ecosystem_content-header h4 {
-    font-size: 2rem;
-    padding: 10px;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 5px #fff;
-    border-radius: 5px;
-}
-
-.ecosystem_info-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    min-width: 25rem;
-    aspect-ratio:1/1;
-    margin: 10px;
-    padding: 1.4rem;
-    box-shadow: 0 5px 8px rgba(1, 20, 16, 0.5);
-    border-radius: 20px;
-}
-
-.ecosystem_info-box:hover {
-    box-shadow: 0 5px 8px rgba(228, 233, 232, 0.5);
-    transition: all 0.5s ease;
-}
-
-.box-icon {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.ecosystem_btn {
-    display: flex;
-    gap: 20px;
-}
-
-@media (max-width: 700px) {
-    .ecosystem_content-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-        place-items: center;
-        margin-top: 1.5rem;
-        gap: 10px;
-    }
-
-    .ecosystem_info-box {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-        min-width: 15rem;
-        aspect-ratio:1/1.5;
-        margin: 10px;
-        padding: 1.4rem;
-        box-shadow: 0 5px 8px rgba(1, 20, 16, 0.5);
-        border-radius: 20px;
-    }
-}
-
-
-/* -------------------- tokenomics ---------------- */
-
-.tokenomic {
-    justify-content: center;
-    align-items: center;
-    margin-inline: auto;
-    padding: 2rem;
-    text-align: center;
-}
-
-.tokenomics_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.7rem;
-}
-
-.tokenomics_details {
-    display: flex;
-    justify-content: space-around;
-    gap: 2rem;
-    margin-top: 2rem;
-    padding: 0 2rem;
-}
-
-.tokenomics_details-left {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    aspect-ratio: 1/.5;
-    border: 2px solid #0ab844;
-    padding: 1.5rem;
-    border-radius: 20px;
-    box-shadow: 0 5px 8px rgba(240, 244, 243, 0.5);
-}
-
-.tokenomics_details-left-header {
-    margin-bottom: 1.3rem;
-}
-
-.tokenomics_details-right {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    aspect-ratio: 1/.5;
-    border: 2px solid #0ab844;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 5px 8px rgba(240, 244, 243, 0.5);
-}
-
-.tokenomics_details-right-header {
-    margin-bottom: 1.3rem;
-}
-
-.charts {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    gap: 2rem;
-    margin-top: 3rem;
-    /* flex-wrap: wrap; */
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-}
-
-.chart-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 10rem;
-    aspect-ratio: 1/1;
-    box-shadow: 0 5px 8px rgba(240, 244, 243, 0.5);
-    border-radius: 20px;
-    padding: 1.5rem;
-}
-
-.chart-card img {
-    width: 100%;
-    height: 70%;
-}
-
-
-
-/* ------------------------- Contact Section ---------------------------------- */
-
-.contact {
-    background-color: #032c48;
-    padding: 4rem;
-    margin-inline: auto;
-}
-
-.contact_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    gap: 2rem;
-}
-
-.contact_header {
-    text-align: center;
-    justify-content: center;
-}
-
-.contact_form-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1.3rem auto;
-    gap: 1.5rem;
-}
-
-.form_action {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    gap: 1.5rem;
-}
-
-.form_group label{
-    position: absolute;
-    z-index: 99;
-}
-
-.form_group input, .form_group textarea {
-    width: 300px;
-    padding: 1rem;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    resize: none;
-}
-
-
-/*  ------------------------------- OUR TEAM ------------------------------- */
-
-.instructors {
-    background: var(--color-gray-0);
-    padding: 8rem 8rem;
-}
-
-.instructors h2, .instructors p {
-    text-align: center;
-}
-
-.instructors__list {
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: 5rem;
-}
-
-.instructor {
-    background: #06c64c;
-    border-radius: 4rem;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 1rem 0 #4f4d4d;
-    transition: var(--transition);
-}
-
-.instructor:hover {
-    box-shadow: 0 -1rem 0 var(--color-gray-100);
-}
-
-.instructor__image {
-    height: 25rem;
-    overflow: hidden;
-    border-radius: 3rem;
-}
-
-.instructor h4 {
-    margin: 1.5rem 0 0.6rem;
-}
-
-.instructor p {
-    padding-bottom: 2rem;
-}
-
-
-/* ---------------------------------- SPONSOR BRANDS ---------------------------------- */
-
-.brands {
-    padding: 4rem 2rem;
-    width: auto;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    background-color: #06121a;
-}
-
-.brand_header {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 8px #fff;
-    border: 1.5px solid #fff;
-}
-
-.brands__container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
-    border-top: 2px solid #fff;
-    padding: 2rem;
-}
-
-.brand__item {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
-    justify-content: center;
-    align-items: center;
-    min-width: 4rem;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-}
-
-.brand__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-}
-
-
-
-
-/* -------------------------------- Footer Section --------------------------- */
-
-.footer {
-    background-color: #06121a;
-    padding: 2rem 4rem;
-    border-top: 2px solid #06c64c;
-}
-
-.footer_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    gap: 2rem;
-}
-
-.footer_content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer_quicklinks {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.footer_quicklinks a {
-    color: #fff;
-
-}
-
-.footer_icons {
-    display: flex;
-    flex-direction: column;
-    margin: 2rem;
-    border-left: 5px solid #0ab844;
-    padding-left: 2rem;
-}
-
-.social_icons {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.icon a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.2rem;
-    color: #fff;
-}
-
-
-    </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    
-    <!-- ------------ NAVIGATION SECTION ----------------- -->
 
-    <section class="navigation">
-        <div class="nav">
-            <div class="navbar">
-                <div class="nav_logo">
-                    <a href="index.html">
-                        <img src="assets/AgricFi-logo.png" alt="navlogo">
-                        <p>AgricFi</p></a>
-                </div>
-                <div class="menu_tab">
-                    <ul class="nav_menu">
-                        <li class="navlink"><a href="index.html">Home</a></li>
-                        <li class="navlink"><a href="#about.html">About</a></li>
-                        <li class="navlink"><a href="#ecosystem">Ecosystem</a></li>
-                        <li class="navlink"><a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Whitepaper</a></li>
-                        <li class="navlink"><a href="#tokenomics">Tokenomics</a></li>
-                        <li class="navlink"><a href="#incentives">Incentives</a></li>
-                        <li class="navlink"><a href="#contact">Contact</a></li>
-                    </ul>
-                    <div class="connect_hamburger">
-                        <button type="button" id="connectButton">Connect Wallet</button>
-                        <div class="navigation_btn" id="menu">
-                            <span class="bar"></span>
-                            <span class="bar"></span>
-                            <span class="bar"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- -----------------HERO SECTION------------------- -->
-
-    <section class="Background">
-        <div class="hero hero_container">
-            <div class="hero_content">
-                <div class="hero_text-content">
-                    <h1>Empowering FarmerS, Connecting Investors.</h1>
-                    <h3>The Future of Agricultre is Decentralized</h3>
-                </div>
-                <div class="hero_image-container">
-                    <div class="image_content right">
-                        <div class="image">
-                            <img src="assets/15917.jpg" alt="">
-                        </div>
-                        <div class="image_text-content">
-                            <h4>A Farmer</h4>
-                        </div>
-                    </div>
-                    <div class="image_content left">
-                        <div class="image">
-                            <img src="assets/IMG_20251011_122235.jpg" alt="">
-                        </div>
-                        <div class="image_text-content">
-                            <h4>Digital Dashboard</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero_sub-content">
-                        <p>AgricFi bridges the gap between traditional farming and blockchain innovation; creating transparent, profitable, and sustainable agricultural finance.</p>
-                </div>
-                <div class="cta-btn">
-                    <div class="btn btn_primary">
-                        <a href="#ecosystem">Explore Ecosystem</a>
-                    </div>
-                    <div class="btn btn_secondary">
-                        <a href="">Join Waitlist</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <video autoplay muted loop id="myVideo">
-            <source src="assets/7031084_Above_Aerial_1280x720.mp4" type="video/mp4">
-    </section>
-
-
-    <!-- ------------------------ About Section ------------------------ -->
-
-    <section id="about.html">
-        <div class="about about_container">
-            <div class="about_content-container">
-                <div class="about_heading-container">
-                    
-                    <h3>ABOUT US</h3>
-                    <article>
-                        <p>AgricFi is an innovative blockchain-powered platform designed to bridge the gap between traditional agriculture and decentralized finance (DeFi)</p>
-                    </article>
-                </div>
-
-                <div class="about_content">
-                    <div class="about_left-container">
-                        <h5>READ MORE ABOUT US</h5>
-                        <p>AgricFi is an innovative blockchain-powered platform designed to bridge the gap between traditional agriculture and decentralized finance (DeFi). By integrating smart contracts, tokenized assets, and transparent supply chain management, AgricFi empowers farmers, investors, and stakeholders to create a more efficient, transparent, and profitable agricultural ecosystem.</p>
-                        <p>The global agricultural industry generates over $10 trillion annually and supports billions of people. Yet, many farmers face challenges accessing capital, fair market pricing, and modern financial tools. AgricFi seeks to solve these issues by leveraging blockchain technology to create a trustless, secure, and inclusive ecosystem that transforms how agricultural investments and operations are managed.</p>
-                    </div>
-
-                    <div class="about_right-container">
-                        <div class="about_right-image">
-                           <h5>Feature Pilot - Maize Farm (Ogun)</h5>
-                           <div class="pilot_image">
-                            <img src="assets/Background.jpg" alt="">
-                           </div>
-                           <div class="pilot_text">
-                            <h6>50 hectares</h6>
-                            <span></span>
-                            <h6>IOT-enabled</h6>
-                            <span></span>
-                            <h6>Tokenized</h6>
-                           </div>
-                           <div class="pilot_data">
-                            <div class="pilot_data-left">
-                                <h6>Raise</h6>
-                                <h4>$40,000</h4>
-                            </div>
-                            <div class="pilot_data-left">
-                                <h6>Est. ROI</h6>
-                                <h4>18-25% / yr</h4>
-                            </div>
-                           </div>
-                           <div class="feature_pilot-btn">
-                            <a href="#ecosystem">Explore Ecosystem</a>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about_btn-container">
-                    <div class="btn btn_primary">
-                        <a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-    <!-- ------------------- ECOSYSTEM SECTION ------------------------- -->
-
-    <section id="ecosystem">
-        <div class="ecosystem ecosystem_container">
-            <div class="ecosystem_content">
-                <div class="ecosystem_content-header">
-                    <h4>Ecosystem</h4>
-                </div>
-                <div class="ecosystem_header">
-                    <h2>An Ecosystem Designed for Growth</h2>
-                </div>
-                <div class="ecosystem_text-content">
-                    <p>AgricFi brings together technology, finance, and farming expertise to create a transparent, sustainable, and high-impact agricultural finance network. </p>
-                    <p>Each module is built to scale trust, increase yeilds, and amplify returns for farmers and investors alike</p>
-                </div>
-            </div>
-            <article class="ecosystem_content-container">
-                <div class="ecosystem_info-container">
-                    <div class="ecosystem_info-box">
-                        <div class="box-icon">
-                            <fa class="fa-fa"></fa>
-                            <div class="box_content">
-                                <h3>Defi Funding Hub</h3>
-                                <p>The DeFi Funding Hub is the financial backbone of the AgricFi ecosystem. It bridges the funding gap between smallholder farmers and global investors by providing an open, decentralized gateway for agricultural financing.</p>
-                            </div>
-                        </div>
-                        <div class="ecosystem_keypoints">
-                            <H5>Features</H5>
-                            <ul>
-                                <li>On-chain Verification & Escrow</li>
-                                <li>Tokenized farm assests</li>
-                                <li>Dynamic APYs based on performance</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="ecosystem_info-container">
-                    <div class="ecosystem_info-box">
-                        <div class="box-icon">
-                            <fa class="fa-fa"></fa>
-                            <div class="box_content">
-                                <h3>Sustainability Ledger</h3>
-                                <p>The Sustainability Ledger is AgricFi’s proof-of-impact layer. It captures and records all farm activities that contribute to environmental sustainability; ensuring transparency for investors, partners, and regulators.</p>
-                            </div>
-                        </div>
-                        <div class="ecosystem_keypoints">
-                            <H5>Features</H5>
-                            <ul>
-                                <li>On-chain Verification & Escrow</li>
-                                <li>Tokenized farm assests</li>
-                                <li>Dynamic APYs based on performance</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="ecosystem_info-container">
-                    <div class="ecosystem_info-box">
-                        <div class="box-icon">
-                            <fa class="fa-fa"></fa>
-                            <div class="box_content">
-                                <h3>AgricFI Token Utility</h3>
-                                <p>The $AGFI token powers all activities within the AgricFi ecosystem. It’s the transactional, governance, and incentive engine, designed to maintain liquidity, reward contributions, and ensure decentralized control stake $AFT to Earn yield and participate in decision making.</p>
-                            </div>
-                        </div>
-                        <div class="ecosystem_keypoints">
-                            <H5>Features</H5>
-                            <ul>
-                                <li>On-chain Verification & Escrow</li>
-                                <li>Tokenized farm assests</li>
-                                <li>Dynamic APYs based on performance</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="ecosystem_info-container">
-                    <div class="ecosystem_info-box">
-                        <div class="box-icon">
-                            <fa class="fa-fa"></fa>
-                            <div class="box_content">
-                                <h3>Yield Dashboard</h3>
-                                <p>The Yield Dashboard serves as the investor’s control center — a real-time performance monitor for all active agricultural investments. It aggregates on-chain data, IoT metrics, and market analytics into a single intuitive interface, offering investors full visibility over their farm-backed assets.</p>
-                            </div>
-                        </div>
-                        <div class="ecosystem_keypoints">
-                            <H5>Features</H5>
-                            <ul>
-                                <li>On-chain Verification & Escrow</li>
-                                <li>Tokenized farm assests</li>
-                                <li>Dynamic APYs based on performance</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="ecosystem_info-container">
-                    <div class="ecosystem_info-box">
-                        <div class="box-icon">
-                            <fa class="fa-fa"></fa>
-                            <div class="box_content">
-                                <h3>Farm NFTs</h3>
-                                <p>Farm NFTs transform real farmland and crop batches into verified digital assets. Each NFT represents a fraction of a real-world farm, making agricultural ownership accessible to anyone.</p>
-                            </div>
-                        </div>
-                        <div class="ecosystem_keypoints">
-                            <H5>Features</H5>
-                            <ul>
-                                <li>Verified Asset Minting: Each NFT contains geolocation, crop details, and ownership metadata.</li>
-                                <li>Fractional Ownership: Allows multiple investors to co-own a farm through NFT divisions.</li>
-                                <li>Dynamic Data Integration: IoT and satellite feeds update NFT metadata automatically.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="ecosystem_info-container">
-                    <div class="ecosystem_info-box">
-                        <div class="box-icon">
-                            <fa class="fa-fa"></fa>
-                            <div class="box_content">
-                                <h3>Marketplace</h3>
-                                <p>The Marketplace is AgricFi’s digital trading hub, where real-world farm assets meet decentralized exchange. Users can buy, sell, and auction farm NFTs, produce tokens, and sustainability credits — all within a secure on-chain marketplace.</p>
-                            </div>
-                        </div>
-                        <div class="ecosystem_keypoints">
-                            <H5>Features</H5>
-                            <ul>
-                                <li>NFT & Produce Trading: Enables seamless buying and selling of digital farm assets.</li>
-                                <li>Wallet Integration: Compatible with MetaMask, Trust Wallet, and other DeFi wallets.</li>
-                                <li>Market Analytics: Real-time charts showing floor prices, trade volume, and asset performance.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <div class="ecosystem_btn">
-                <div class="btn btn_primary">
-                    <a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Read Whitepaper</a>
-                </div>
-                <div class="btn btn_secondary">
-                    <a href="">Join Waitlist</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    <!-- --------------------- Tokenomic --------------------- -->
-
-    <Section id="tokenomics">
-        <div class="tokenomic tokenomics_container">
-            <div class="tokenomics_content">
-                <div class="tokenomics_header">
-                    <h4>AgricFi Token (AFT)</h4>
-                        <p>AFT is the native token used for staking, governance, marketplace fees, and rewards. Supply is fixed and emissions are controlled.</p>
-                </div>
-                <div class="tokenomics_details">
-                    <div class="tokenomics_details-left">
-                        <div class="tokenomics_details-left-header">
-                            <h4>Distribution</h4>
-                        </div>
-                        <ul class="tokenomics_list">
-                          <li>Public Sale: 25%</li>
-                          <li>Team & Advisors: 15% (vest 12-24 months)</li>
-                          <li>Staking Rewards: 20%</li>
-                          <li>Liquidity Pool: 10%</li>
-                          <li>Ecosystem Growth: 20%</li>
-                          <li>Strategic Partnerships: 10% (locked)</li>
-                        </ul>
-                    </div>
-                    <div class="tokenomics_details-right">
-                        <div class="tokenomics_details-right-header">
-                            <h4>Mechanics</h4>
-                        </div>
-                        <p>Transaction fees partially burned. Staking tiers encourage longer lockups. NFTs and carbon credits provide additional token sinks and utility.</p>
-                    </div>
-                </div>
-            </div>
-            <section class="charts">
-                <div class="chart-card">
-                  <h3>Token Distribution</h3>
-                  <img src="assets/Token Distribtution.png" alt="">
-                  <canvas id="tokenChart"></canvas>
-                </div>
-                <div class="chart-card">
-                  <h3>Revenue Model ROI (Illustrative)</h3>
-                  <img src="assets/upscalemedia-transformed.jpeg" alt="">
-                  <canvas id="revenueChart"></canvas>
-                </div>
-            </section>
-        </div>
-    </Section>
-
-<!-- ═══ AGRICFI INCENTIVES SECTION ═══ -->
-<section id="incentives" style="background:linear-gradient(180deg,#0b2430 0%,#032c48 60%,#06121a 100%);padding:4rem 1.5rem;position:relative;overflow:hidden;font-family:Arial,Helvetica,sans-serif">
-
-  <div style="text-align:center;margin-bottom:2.5rem">
-    <span style="display:inline-block;background:rgba(10,184,68,0.1);border:1px solid rgba(10,184,68,0.3);color:#0ab844;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:12px">🏆 Incentives</span>
-    <h2 style="font-size:clamp(1.6rem,5vw,2.6rem);font-weight:700;color:#fff;font-family:'Courier New',monospace;line-height:1.15;margin-bottom:10px;text-transform:uppercase">Complete Tasks.<br><span style="color:#0ab844">Earn $AFT Rewards.</span></h2>
-    <p style="font-size:0.95rem;font-weight:300;color:#a8cbbf;max-width:480px;margin:0 auto;line-height:1.65">Support the AgricFi ecosystem, complete community tasks, and earn $AFT token rewards for your contributions.</p>
-  </div>
-
-  <div id="inc-app" style="max-width:800px;margin:0 auto;background:rgba(6,18,26,0.92);border:1px solid rgba(10,184,68,0.2);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative">
-
-    <!-- Spinner -->
-    <div id="inc-spin" style="display:none;position:absolute;inset:0;background:rgba(6,18,26,0.9);align-items:center;justify-content:center;z-index:100;border-radius:20px;flex-direction:column;gap:14px">
-      <div style="width:42px;height:42px;border:3px solid rgba(10,184,68,0.15);border-top-color:#0ab844;border-radius:50%;animation:incSpin 0.85s linear infinite"></div>
-      <div id="inc-spin-txt" style="font-size:13px;color:#7ca99a">Connecting...</div>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/AgricFi-logo.png" alt="AgricFi Logo">
+      AgricFi
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="ecosystem.html">Ecosystem</a></li>
+      <li><a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Whitepaper</a></li>
+      <li><a href="tokenomics.html">Tokenomics</a></li>
+      <li><a href="index.html#incentives">Incentives</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.75rem;flex-shrink:0;">
+      <button class="btn-connect" id="connectButton">Connect Wallet</button>
+      <div class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
     </div>
+  </div>
+</nav>
 
-    <!-- Topbar -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(3,44,72,0.95);border-bottom:1px solid rgba(10,184,68,0.12);gap:10px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:8px;font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#fff">
-        <img src="assets/AgricFi-logo.png" alt="AgricFi" style="width:24px;height:24px;border-radius:5px;object-fit:contain">
-        Agric<span style="color:#0ab844">Fi</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="assets/7031084_Above_Aerial_1280x720.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="pulse-dot"></span> Real World Agriculture on Blockchain</div>
+      <h1>Empowering Farmers.<br><span class="grad">Connecting Investors.</span></h1>
+      <p class="hero-sub">AgricFi bridges traditional farming and decentralized finance — creating transparent, profitable, and sustainable agricultural finance through smart contracts and tokenized assets.</p>
+      <div class="hero-ctas">
+        <a href="#ecosystem" class="btn-primary">Explore Ecosystem →</a>
+        <a href="about.html" class="btn-secondary">Learn More</a>
       </div>
-      <div id="inc-chip" style="display:none;align-items:center;gap:8px;background:rgba(10,184,68,0.08);border:1px solid rgba(10,184,68,0.22);border-radius:99px;padding:5px 13px 5px 5px">
-        <div id="inc-av" style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0ab844,#032c48);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0"><span id="inc-ini">?</span></div>
-        <div>
-          <div id="inc-un" style="font-size:12px;font-weight:700;color:#fff">—</div>
-          <div id="inc-id" style="font-size:9px;color:#0ab844;font-family:'Courier New',monospace;font-weight:700">ID: FI-—</div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">$10T+</div><div class="hero-stat-desc">Global Agric Market</div></div>
+        <div><div class="hero-stat-num">18–25%</div><div class="hero-stat-desc">Estimated ROI / yr</div></div>
+        <div><div class="hero-stat-num">$40K</div><div class="hero-stat-desc">Pilot Farm Raise</div></div>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <div class="card-live-label">Live Farm Snapshot</div>
+      <div class="card-row"><span class="card-row-label">Farm</span><span class="card-row-val">Maize — Ogun</span></div>
+      <div class="card-row"><span class="card-row-label">Size</span><span class="card-row-val">50 Hectares</span></div>
+      <div class="card-row"><span class="card-row-label">Type</span><span class="card-row-val">IoT-Enabled</span></div>
+      <div class="card-row"><span class="card-row-label">Funding Progress</span><span class="card-row-val green">72%</span></div>
+      <div class="progress-track"><div class="progress-fill"></div></div>
+      <div class="card-row" style="margin-top:.5rem"><span class="card-row-label">Target Raise</span><span class="card-row-val">$40,000</span></div>
+      <div class="card-row"><span class="card-row-label">Expected ROI</span><span class="card-row-val green">18–25% / yr</span></div>
+      <button class="invest-btn">Invest Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-wrap">
+  <div class="container">
+    <span class="section-tag">Process</span>
+    <h2 class="section-title">How AgricFi Works</h2>
+    <p class="section-sub">A transparent system connecting verified farmers with global investors through blockchain.</p>
+    <div class="steps-grid reveal">
+      <div class="step"><div class="step-num">1</div><h3>Farms Get Listed</h3><p>Verified farms are onboarded with real data, geolocation, IoT integration, and expected yield projections.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Investors Fund</h3><p>Users invest in tokenized fractions of real farms using digital assets — accessible from anywhere in the world.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Profits Distributed</h3><p>Harvest revenue is shared automatically through smart contracts — transparent, instant, and trustless.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-wrap alt">
+  <div class="container">
+    <span class="section-tag">About Us</span>
+    <h2 class="section-title">The Future of Agriculture<br>is Decentralized</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>AgricFi is an innovative blockchain-powered platform designed to bridge the gap between traditional agriculture and decentralized finance (DeFi). By integrating smart contracts, tokenized assets, and transparent supply chain management, AgricFi empowers farmers, investors, and stakeholders to create a more efficient, transparent, and profitable agricultural ecosystem.</p>
+        <p>The global agricultural industry generates over $10 trillion annually and supports billions of people. Yet, many farmers face challenges accessing capital, fair market pricing, and modern financial tools. AgricFi seeks to solve these issues by leveraging blockchain technology to create a trustless, secure, and inclusive ecosystem.</p>
+        <div class="about-ctas">
+          <a href="#ecosystem" class="btn-primary">Explore Ecosystem →</a>
+          <a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank" class="btn-secondary">Read Whitepaper</a>
         </div>
+      </div>
+      <div class="pilot-card reveal">
+        <img src="assets/Background.jpg" alt="Maize Farm Ogun" class="pilot-img">
+        <div class="pilot-card-top">
+          <div class="pilot-badge">✦ Feature Pilot</div>
+          <h3>Maize Farm — Ogun State</h3>
+          <p>Nigeria's premier AgricFi pilot, IoT-enabled & blockchain-verified.</p>
+          <div class="pilot-tags">
+            <span class="pilot-tag">50 Hectares</span>
+            <span class="pilot-tag">IoT-Enabled</span>
+            <span class="pilot-tag">Tokenized</span>
+          </div>
+        </div>
+        <div class="pilot-card-body">
+          <div class="pilot-metrics">
+            <div class="pilot-metric"><div class="pilot-metric-val amber">$40K</div><div class="pilot-metric-label">Total Raise</div></div>
+            <div class="pilot-metric"><div class="pilot-metric-val green">18–25%</div><div class="pilot-metric-label">Est. ROI / yr</div></div>
+          </div>
+          <button class="invest-btn">Invest in This Farm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section id="ecosystem" class="section-wrap">
+  <div class="container">
+    <span class="section-tag">Ecosystem</span>
+    <h2 class="section-title">An Ecosystem Designed for Growth</h2>
+    <p class="section-sub">AgricFi brings together technology, finance, and farming expertise to create a transparent, sustainable, and high-impact agricultural finance network.</p>
+    <div class="eco-grid">
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(34,197,94,.1)">💰</div><h3>DeFi Funding Hub</h3><p>The financial backbone of AgricFi. Bridges the funding gap between smallholder farmers and global investors through an open, decentralized gateway.</p><ul class="eco-features"><li>On-chain Verification & Escrow</li><li>Tokenized Farm Assets</li><li>Dynamic APYs based on performance</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(74,222,128,.1)">🌿</div><h3>Sustainability Ledger</h3><p>AgricFi's proof-of-impact layer. Captures all farm activities that contribute to environmental sustainability with full on-chain transparency.</p><ul class="eco-features"><li>On-chain Impact Verification</li><li>Carbon Credit Recording</li><li>Investor & Regulator Transparency</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(245,158,11,.1)">🪙</div><h3>$AGFI Token Utility</h3><p>The $AGFI token powers all activities within the ecosystem — the transactional, governance, and incentive engine of AgricFi.</p><ul class="eco-features"><li>Staking for Yield & Governance</li><li>Marketplace Fee Settlement</li><li>Fixed Supply with Controlled Emissions</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(34,197,94,.1)">📊</div><h3>Yield Dashboard</h3><p>The investor's control center — a real-time performance monitor aggregating on-chain data, IoT metrics, and market analytics in one interface.</p><ul class="eco-features"><li>Real-time IoT & On-chain Data</li><li>Portfolio Performance Tracking</li><li>Market Analytics & Projections</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(139,92,246,.1)">🖼️</div><h3>Farm NFTs</h3><p>Transform real farmland and crop batches into verified digital assets. Each NFT represents a fraction of a real-world farm.</p><ul class="eco-features"><li>Verified Asset Minting with Geolocation</li><li>Fractional Co-ownership Model</li><li>Dynamic IoT & Satellite Data Integration</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(245,158,11,.1)">🏪</div><h3>Marketplace</h3><p>AgricFi's digital trading hub — buy, sell, and auction farm NFTs, produce tokens, and sustainability credits within a secure on-chain marketplace.</p><ul class="eco-features"><li>NFT & Produce Token Trading</li><li>MetaMask & Trust Wallet Support</li><li>Real-time Market Analytics</li></ul></div>
+    </div>
+    <div class="eco-btns">
+      <a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank" class="btn-primary">Read Whitepaper →</a>
+      <a href="contact.html" class="btn-secondary">Join Waitlist</a>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics" class="section-wrap alt">
+  <div class="container">
+    <span class="section-tag">Tokenomics</span>
+    <h2 class="section-title">AgricFi Token (AFT)</h2>
+    <p class="section-sub">AFT is the native token used for staking, governance, marketplace fees, and rewards. Supply is fixed and emissions are controlled.</p>
+    <div class="token-grid">
+      <div class="reveal">
+        <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:1.25rem;">Token Distribution</h3>
+        <div class="distro-item"><div class="distro-dot" style="background:#22c55e"></div><span class="distro-label">Public Sale</span><div class="distro-bar-track"><div class="distro-bar" style="background:#22c55e;width:25%"></div></div><span class="distro-pct" style="color:#22c55e">25%</span></div>
+        <div class="distro-item"><div class="distro-dot" style="background:#f59e0b"></div><span class="distro-label">Staking Rewards</span><div class="distro-bar-track"><div class="distro-bar" style="background:#f59e0b;width:20%"></div></div><span class="distro-pct" style="color:#f59e0b">20%</span></div>
+        <div class="distro-item"><div class="distro-dot" style="background:#4ade80"></div><span class="distro-label">Ecosystem Growth</span><div class="distro-bar-track"><div class="distro-bar" style="background:#4ade80;width:20%"></div></div><span class="distro-pct" style="color:#4ade80">20%</span></div>
+        <div class="distro-item"><div class="distro-dot" style="background:#86efac"></div><span class="distro-label">Team & Advisors (vest 12–24mo)</span><div class="distro-bar-track"><div class="distro-bar" style="background:#86efac;width:15%"></div></div><span class="distro-pct" style="color:#86efac">15%</span></div>
+        <div class="distro-item"><div class="distro-dot" style="background:#fbbf24"></div><span class="distro-label">Liquidity Pool</span><div class="distro-bar-track"><div class="distro-bar" style="background:#fbbf24;width:10%"></div></div><span class="distro-pct" style="color:#fbbf24">10%</span></div>
+        <div class="distro-item"><div class="distro-dot" style="background:#4b7a5c"></div><span class="distro-label">Strategic Partnerships (locked)</span><div class="distro-bar-track"><div class="distro-bar" style="background:#4b7a5c;width:10%"></div></div><span class="distro-pct" style="color:#4b7a5c">10%</span></div>
+        <a href="https://l1xapp.com/pool/details/0x8f4932931AE141B3d8eB9630B35824053ca44945" target="_blank" class="btn-amber" style="margin-top:1.5rem">Buy AFT on Quantum DEX ↗</a>
+      </div>
+      <div class="reveal">
+        <div class="token-box"><h4>Token Mechanics</h4><p>Transaction fees are partially burned. Staking tiers encourage longer lockups, reducing circulating supply. NFTs and carbon credits provide additional token utility and demand sinks.</p></div>
+        <div class="token-box"><h4>Governance</h4><p>AFT holders participate in protocol governance — voting on new farm listings, platform upgrades, and treasury allocations. Stake $AFT to earn yield and participate in decision making.</p></div>
+        <div class="charts-grid" style="margin-top:1.5rem">
+          <div class="chart-card"><h3>Distribution</h3><canvas id="tokenChart"></canvas></div>
+          <div class="chart-card"><h3>Revenue ROI</h3><canvas id="revenueChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCENTIVES (fully preserved original logic) -->
+<section id="incentives" style="background:linear-gradient(180deg,#0d2214 0%,#060f09 100%);padding:5rem 2rem;position:relative;overflow:hidden;z-index:1">
+  <div style="text-align:center;margin-bottom:2.5rem">
+    <span style="display:inline-block;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#4ade80;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:12px">🏆 Incentives</span>
+    <h2 style="font-size:clamp(1.6rem,5vw,2.6rem);font-weight:800;color:#f0fdf4;font-family:'Syne',sans-serif;line-height:1.15;margin-bottom:10px">Complete Tasks.<br><span style="color:#22c55e">Earn $AFT Rewards.</span></h2>
+    <p style="font-size:.95rem;font-weight:300;color:#86efac;max-width:480px;margin:0 auto;line-height:1.65">Support the AgricFi ecosystem, complete community tasks, and earn $AFT token rewards for your contributions.</p>
+  </div>
+  <div id="inc-app" style="max-width:800px;margin:0 auto;background:rgba(6,15,9,.95);border:1px solid rgba(34,197,94,.2);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative">
+    <div id="inc-spin" style="display:none;position:absolute;inset:0;background:rgba(6,15,9,.9);align-items:center;justify-content:center;z-index:100;border-radius:20px;flex-direction:column;gap:14px">
+      <div style="width:42px;height:42px;border:3px solid rgba(34,197,94,.15);border-top-color:#22c55e;border-radius:50%;animation:incSpin .85s linear infinite"></div>
+      <div id="inc-spin-txt" style="font-size:13px;color:#86efac">Connecting...</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(13,34,20,.95);border-bottom:1px solid rgba(34,197,94,.12);gap:10px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#f0fdf4">
+        <img src="assets/AgricFi-logo.png" alt="AgricFi" style="width:24px;height:24px;border-radius:5px;object-fit:contain">Agric<span style="color:#22c55e">Fi</span>
+      </div>
+      <div id="inc-chip" style="display:none;align-items:center;gap:8px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.22);border-radius:99px;padding:5px 13px 5px 5px">
+        <div id="inc-av" style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#0d2214);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0"><span id="inc-ini">?</span></div>
+        <div><div id="inc-un" style="font-size:12px;font-weight:700;color:#f0fdf4">—</div><div id="inc-id" style="font-size:9px;color:#22c55e;font-family:'Courier New',monospace;font-weight:700">ID: FI-—</div></div>
       </div>
       <div style="position:relative">
-        <button onclick="incDD()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 13px;color:#fff;cursor:pointer;font-size:13px;min-height:38px">☰</button>
-        <div id="inc-dd" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:#0b2430;border:1px solid rgba(10,184,68,0.22);border-radius:12px;min-width:160px;z-index:200;box-shadow:0 12px 36px rgba(0,0,0,0.55);overflow:hidden">
-          <div onclick="incPanel('tasks');incDD()" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#a8cbbf;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04)">📋 Tasks</div>
-          <div onclick="incPanel('tiers');incDD()" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#a8cbbf;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04)">🏆 Incentive Tiers</div>
-          <div onclick="window.location.href='#ecosystem'" style="display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#a8cbbf;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04)">🌱 Invest</div>
-          <div id="inc-lo" onclick="incLogout()" style="display:none;align-items:center;gap:10px;padding:12px 16px;font-size:13px;color:#e05555;cursor:pointer">🚪 Sign Out</div>
+        <div id="inc-lo" style="display:none;align-items:center;gap:6px">
+          <button onclick="incDD()" style="background:transparent;border:1px solid rgba(34,197,94,.2);color:#86efac;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;font-family:'Syne',sans-serif;font-weight:600">Account ▾</button>
+        </div>
+        <div id="inc-dd" style="display:none;position:absolute;right:0;top:calc(100% + 8px);background:#0d2214;border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:8px;min-width:140px;z-index:50" class="inc-dd-wrap">
+          <button onclick="incLogout()" style="width:100%;background:transparent;border:none;color:#86efac;padding:8px 12px;border-radius:8px;font-size:12px;cursor:pointer;text-align:left;font-family:'Syne',sans-serif">Sign Out</button>
+        </div>
+        <div id="inc-gate" style="display:flex;gap:8px;flex-wrap:wrap">
+          <button id="inc-twb" onclick="incTW()" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.15);font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">𝕏 Connect with X</button>
+          <button id="inc-gfb" onclick="incGFB()" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;background:#fff;color:#222;border:none;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">G Connect Google</button>
         </div>
       </div>
     </div>
-
-    <!-- AUTH GATE -->
-    <div id="inc-gate" style="padding:44px 22px 40px;text-align:center">
-      <div style="font-size:2.8rem;margin-bottom:14px">🌾</div>
-      <div style="font-family:'Courier New',monospace;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:9px;text-transform:uppercase">Join AgricFi Community</div>
-      <div style="font-size:0.9rem;color:#7ca99a;max-width:340px;margin:0 auto 28px;line-height:1.65">Sign in to complete tasks, earn $AFT rewards, and support the future of agricultural finance.</div>
-      <div style="display:flex;flex-direction:column;gap:12px;max-width:290px;margin:0 auto">
-        <button onclick="incTW()" style="display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 20px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,0.14);background:#000;color:#fff;font-family:Arial,sans-serif;min-height:50px;width:100%">
-          𝕏 &nbsp;Continue with X (Twitter)
-        </button>
-        <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:#3a5a4e">
-          <span style="flex:1;height:1px;background:rgba(255,255,255,0.07)"></span>or<span style="flex:1;height:1px;background:rgba(255,255,255,0.07)"></span>
-        </div>
-        <!-- Google Sign-In rendered here -->
-        <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="incGCB" data-auto_prompt="false"></div>
-        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="filled_black" data-text="continue_with" data-shape="rectangular" data-width="290"></div>
-        <button id="inc-gfb" onclick="incGFB()" style="display:none;align-items:center;justify-content:center;gap:12px;padding:14px 20px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:1.5px solid rgba(0,0,0,0.1);background:#fff;color:#1a1a1a;font-family:Arial,sans-serif;min-height:50px;width:100%">
-          <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908C16.702 14.233 17.64 11.925 17.64 9.2z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
-          Continue with Google
-        </button>
-      </div>
-      <div style="font-size:10.5px;color:#3a5a4e;margin-top:16px;line-height:1.65">🔐 Read-only access only. We never post on your behalf.</div>
-    </div>
-
-    <!-- DASHBOARD -->
     <div id="inc-dash" style="display:none">
-
-      <!-- Points Banner -->
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:15px 18px;background:linear-gradient(135deg,rgba(10,184,68,0.1),rgba(3,44,72,0.5));border-bottom:1px solid rgba(10,184,68,0.12)">
-        <div style="display:flex;align-items:center;gap:13px">
-          <div id="inc-ring" style="width:52px;height:52px;border-radius:50%;background:conic-gradient(#0ab844 0%, rgba(10,184,68,0.1) 0%);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0">
-            <div style="position:absolute;width:40px;height:40px;border-radius:50%;background:#06121a"></div>
-            <div id="inc-rpct" style="position:relative;z-index:1;font-size:11px;font-weight:800;color:#0ab844;font-family:'Courier New',monospace">0%</div>
-          </div>
-          <div>
-            <div style="font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#7ca99a;margin-bottom:2px">Reward Points</div>
-            <div id="inc-pts" style="font-family:'Courier New',monospace;font-size:1.5rem;font-weight:700;color:#fff;line-height:1">0 <span style="font-size:.85rem;color:#0ab844;font-weight:400">pts</span></div>
-          </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid rgba(34,197,94,.1);flex-wrap:wrap">
+        <div id="inc-ring" style="width:52px;height:52px;border-radius:50%;background:conic-gradient(#22c55e 0%,rgba(34,197,94,.1) 0%);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <div id="inc-rpct" style="position:relative;z-index:1;font-size:11px;font-weight:800;color:#22c55e;font-family:'Courier New',monospace">0%</div>
+        </div>
+        <div>
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#4b7a5c;margin-bottom:2px">Reward Points</div>
+          <div id="inc-pts" style="font-family:'Courier New',monospace;font-size:1.5rem;font-weight:700;color:#f0fdf4;line-height:1">0 <span style="font-size:.85rem;color:#22c55e;font-weight:400">pts</span></div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px">
-            <div id="inc-dc" style="font-size:1rem;font-weight:700;color:#fff;font-family:'Courier New',monospace">0</div>
-            <div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#7ca99a;margin-top:2px">Done</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px">
-            <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Courier New',monospace">5</div>
-            <div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#7ca99a;margin-top:2px">Tasks</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px">
-            <div id="inc-rk" style="font-size:1rem;font-weight:700;color:#fff;font-family:'Courier New',monospace">#—</div>
-            <div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#7ca99a;margin-top:2px">Rank</div>
-          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px"><div id="inc-dc" style="font-size:1rem;font-weight:700;color:#f0fdf4;font-family:'Courier New',monospace">0</div><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#4b7a5c;margin-top:2px">Done</div></div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px"><div style="font-size:1rem;font-weight:700;color:#f0fdf4;font-family:'Courier New',monospace">5</div><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#4b7a5c;margin-top:2px">Tasks</div></div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:8px 12px;text-align:center;min-width:60px"><div id="inc-rk" style="font-size:1rem;font-weight:700;color:#f0fdf4;font-family:'Courier New',monospace">#—</div><div style="font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:#4b7a5c;margin-top:2px">Rank</div></div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:6px">
+          <button onclick="incPanel('tasks')" style="padding:6px 12px;border-radius:8px;background:#22c55e;color:#000;border:none;font-size:11px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">Tasks</button>
+          <button onclick="incPanel('tiers')" style="padding:6px 12px;border-radius:8px;background:transparent;color:#86efac;border:1px solid rgba(34,197,94,.2);font-size:11px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">Tiers</button>
         </div>
       </div>
-
-      <!-- Reward Banner (shows when all done) -->
-      <div id="inc-rb" style="display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:rgba(10,184,68,0.08);border-bottom:1px solid rgba(10,184,68,0.18);flex-wrap:wrap">
-        <div style="font-size:13px;color:#a8cbbf">🎉 <strong style="color:#0ab844">All tasks complete!</strong> You qualify for $AFT rewards. Contact the team to claim.</div>
-        <button onclick="incClaim()" style="background:#0ab844;color:#000;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:Arial,sans-serif">Claim Reward →</button>
+      <div id="inc-rb" style="display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:rgba(34,197,94,.08);border-bottom:1px solid rgba(34,197,94,.18);flex-wrap:wrap">
+        <div style="font-size:13px;color:#86efac">🎉 <strong style="color:#22c55e">All tasks complete!</strong> You qualify for $AFT rewards. Contact the team to claim.</div>
+        <button onclick="incClaim()" style="background:#22c55e;color:#000;border:none;border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Syne',sans-serif">Claim Reward →</button>
       </div>
-
-      <!-- Tasks Panel -->
       <div id="inc-tp" style="padding:18px">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px">Community Tasks</div>
-            <div style="font-size:11px;color:#7ca99a">Complete tasks to earn $AFT reward points</div>
-          </div>
+          <div><div style="font-size:14px;font-weight:700;color:#f0fdf4;margin-bottom:2px">Community Tasks</div><div style="font-size:11px;color:#4b7a5c">Complete tasks to earn $AFT reward points</div></div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="inc-chip-btn" onclick="incFilt(this,'all')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid #0ab844;background:#0ab844;color:#000;cursor:pointer;font-family:Arial,sans-serif">All</button>
-            <button class="inc-chip-btn" onclick="incFilt(this,'social')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#7ca99a;cursor:pointer;font-family:Arial,sans-serif">Social</button>
-            <button class="inc-chip-btn" onclick="incFilt(this,'content')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#7ca99a;cursor:pointer;font-family:Arial,sans-serif">Content</button>
+            <button class="inc-chip-btn" onclick="incFilt(this,'all')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid #22c55e;background:#22c55e;color:#000;cursor:pointer;font-family:'Syne',sans-serif">All</button>
+            <button class="inc-chip-btn" onclick="incFilt(this,'social')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:transparent;color:#4b7a5c;cursor:pointer;font-family:'Syne',sans-serif">Social</button>
+            <button class="inc-chip-btn" onclick="incFilt(this,'content')" style="padding:5px 13px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:transparent;color:#4b7a5c;cursor:pointer;font-family:'Syne',sans-serif">Content</button>
           </div>
         </div>
         <div id="inc-tb"></div>
       </div>
-
-      <!-- Tiers Panel -->
-      <div id="inc-trs" style="display:none;padding:22px 18px;border-top:1px solid rgba(255,255,255,0.06)">
-        <div style="font-family:'Courier New',monospace;font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:6px">🏆 $AFT Incentive Tiers</div>
-        <div style="font-size:11.5px;color:#7ca99a;text-align:center;margin-bottom:18px">Accumulate points to unlock higher $AFT reward allocations</div>
+      <div id="inc-trs" style="display:none;padding:22px 18px;border-top:1px solid rgba(255,255,255,.06)">
+        <div style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:#f0fdf4;text-align:center;margin-bottom:6px">🏆 $AFT Incentive Tiers</div>
+        <div style="font-size:11.5px;color:#4b7a5c;text-align:center;margin-bottom:18px">Accumulate points to unlock higher $AFT reward allocations</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
-          <div id="inc-t1" style="background:rgba(3,44,72,0.6);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:15px 10px;text-align:center">
-            <div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#0ab844">50 pts</div>
-            <div style="font-size:9.5px;color:#7ca99a;margin-top:3px">Bronze</div>
-            <div style="font-size:11px;color:#fff;font-weight:700;margin-top:6px">50 $AFT</div>
-          </div>
-          <div id="inc-t2" style="background:rgba(3,44,72,0.6);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:15px 10px;text-align:center">
-            <div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#0ab844">120 pts</div>
-            <div style="font-size:9.5px;color:#7ca99a;margin-top:3px">Silver</div>
-            <div style="font-size:11px;color:#fff;font-weight:700;margin-top:6px">150 $AFT</div>
-          </div>
-          <div id="inc-t3" style="background:rgba(3,44,72,0.6);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:15px 10px;text-align:center">
-            <div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#0ab844">250 pts</div>
-            <div style="font-size:9.5px;color:#7ca99a;margin-top:3px">Gold</div>
-            <div style="font-size:11px;color:#fff;font-weight:700;margin-top:6px">400 $AFT</div>
-          </div>
+          <div id="inc-t1" style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:15px 10px;text-align:center"><div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#22c55e">50 pts</div><div style="font-size:9.5px;color:#4b7a5c;margin-top:3px">Bronze</div><div style="font-size:11px;color:#f0fdf4;font-weight:700;margin-top:6px">50 $AFT</div></div>
+          <div id="inc-t2" style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:15px 10px;text-align:center"><div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#22c55e">120 pts</div><div style="font-size:9.5px;color:#4b7a5c;margin-top:3px">Silver</div><div style="font-size:11px;color:#f0fdf4;font-weight:700;margin-top:6px">150 $AFT</div></div>
+          <div id="inc-t3" style="background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:15px 10px;text-align:center"><div style="font-family:'Courier New',monospace;font-size:1rem;font-weight:700;color:#22c55e">250 pts</div><div style="font-size:9.5px;color:#4b7a5c;margin-top:3px">Gold</div><div style="font-size:11px;color:#f0fdf4;font-weight:700;margin-top:6px">400 $AFT</div></div>
         </div>
-        <button onclick="incPanel('tasks')" style="background:#0ab844;color:#000;border:none;border-radius:8px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;display:block;margin:0 auto;font-family:Arial,sans-serif">← Back to Tasks</button>
+        <button onclick="incPanel('tasks')" style="background:#22c55e;color:#000;border:none;border-radius:8px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;display:block;margin:0 auto;font-family:'Syne',sans-serif">← Back to Tasks</button>
       </div>
-
     </div>
-
-    <!-- Social Footer -->
-    <div style="display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 18px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap">
-      <a href="https://x.com/agric_fi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">𝕏 Twitter</a>
-      <a href="https://medium.com/@agricfi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">✍ Medium</a>
-      <a href="https://t.me/AgricFi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">✈ Telegram</a>
-      <a href="https://youtube.com" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#a8cbbf;font-size:11px;font-weight:700;text-decoration:none">▶ YouTube</a>
+    <div style="display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 18px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap">
+      <a href="https://x.com/agric_fi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:11px;font-weight:700;text-decoration:none">𝕏 Twitter</a>
+      <a href="https://medium.com/@agricfi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:11px;font-weight:700;text-decoration:none">✍ Medium</a>
+      <a href="https://t.me/AgricFi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:11px;font-weight:700;text-decoration:none">✈ Telegram</a>
     </div>
-
   </div>
 </section>
-<!-- ═══ END INCENTIVES SECTION ═══ -->
-    
-    <!-- --------------------------- Contact Section ---------------------- -->
 
-    <section id="contact">
-        <div class="contact contact_container">
-            <div class="contact-content_container">
-                <div class="contact_header">
-                    <h2>Contact Us with your Message</h2>
-                </div>
-                <div class="contact_text-content">
-                    <p>Have questions or want to learn more about AgricFi? Reach out to our team for more information.</p>
-                </div>
-                <div class="contact_form-container">
-                    <form action="" class="form_action">
-                        <div class="form_group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form_group">
-                            <input type="text" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form_group">
-                            <textarea id="message" name="message" placeholder="Your Message" required>Enter your message</textarea>
-                        </div>
-                    </form>
-                    <div class="btn btn_primary">
-                        <a href="mailto:helloagricfi@gmail.com">Submit Your Message</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- TEAM -->
+<section class="section-wrap alt">
+  <div class="container">
+    <span class="section-tag">People</span>
+    <h2 class="section-title">Meet Our Team & Supporters</h2>
+    <div class="team-grid">
+      <div class="team-card reveal"><div class="team-avatar"><img src="assets/Richard.png" alt="Richard Green"></div><div class="team-name">Richard Green</div><div class="team-role">Chief Executive Officer</div></div>
+      <div class="team-card reveal"><div class="team-avatar"><img src="assets/1000157935-Picsart-AiImageEnhancer.jpg" alt="Dr. Patrick Umoh"></div><div class="team-name">Dr. Patrick Umoh</div><div class="team-role">Supporter</div></div>
+      <div class="team-card reveal"><div class="team-avatar"><img src="assets/candidate3.jpg" alt="Kody"></div><div class="team-name">Kody</div><div class="team-role">Instructor</div></div>
+    </div>
+  </div>
+</section>
 
+<!-- BRANDS -->
+<div class="brands-section">
+  <div class="brands-header">Our Brand Supporters</div>
+  <div class="brands-grid">
+    <div class="brand-item"><img src="assets/L1.PNG" alt="L1X"></div>
+    <div class="brand-item"><img src="assets/AgricFi-logo.png" alt="AgricFi"></div>
+    <div class="brand-item"><img src="assets/quantum-dex-logo.png" alt="Quantum DEX"></div>
+    <div class="brand-item"><img src="assets/coinmarketcap-logo.png" alt="CoinMarketCap"></div>
+    <div class="brand-item"><img src="assets/coingecko-logo.png" alt="CoinGecko"></div>
+  </div>
+</div>
 
+<!-- CONTACT TEASER -->
+<section class="section-wrap">
+  <div class="container" style="text-align:center">
+    <span class="section-tag">Get in Touch</span>
+    <h2 class="section-title">Have Questions?</h2>
+    <p class="section-sub" style="margin:0 auto 2rem">Reach out to the AgricFi team for partnerships, investment queries, or general information.</p>
+    <a href="contact.html" class="btn-primary">Contact Us →</a>
+  </div>
+</section>
 
-    <!-- --------------------------- OUR TEAM -------------------------------- -->
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="assets/AgricFi-logo.png" alt="AgricFi">AgricFi</div>
+      <p class="footer-desc">Bridging agriculture and blockchain to create transparent, profitable, and sustainable agricultural finance.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ecosystem.html">Ecosystem</a></li>
+        <li><a href="tokenomics.html">Tokenomics</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="whitepaper.html">Whitepaper</a></li>
+        <li><a href="index.html#incentives">Incentives</a></li>
+        <li><a href="https://l1xapp.com/pool/details/0x8f4932931AE141B3d8eB9630B35824053ca44945" target="_blank">Buy AFT</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <ul>
+        <li><a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a></li>
+        <li><a href="https://x.com/agric_fi" target="_blank"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+        <li><a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i> Medium</a></li>
+        <li><a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i> Discord</a></li>
+        <li><a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 AgricFi. All rights reserved.</p>
+    <div class="footer-dex"><a href="https://l1xapp.com/pool/details/0x8f4932931AE141B3d8eB9630B35824053ca44945" target="_blank">Buy AFT on Quantum DEX ↗</a></div>
+  </div>
+</footer>
 
-    <section class="instructors">
-        <div class="container instructors__container">
-            <h2>Meet Our Supporters and Team </h2>
-            <p>This is our Most Valued supporters and Team</p>
-            <ul class="instructors__list">
-                <li class="instructor">
-                    <div class="instructor__image">
-                        <img src="assets/Richard.png" alt="">
-                    </div>
-                    <h4>Richard Green</h4>
-                    <p>C.E.O</p>
-                </li>
-                <li class="instructor">
-                    <div class="instructor__image">
-                        <img src="assets/1000157935-Picsart-AiImageEnhancer.jpg" alt="">
-                    </div>
-                    <h4>Dr. Patrick Umoh</h4>
-                    <p>SUPPORTER</p>
-                </li>
-                <li class="instructor">
-                    <div class="instructor__image">
-                        <img src="assets/candidate3.jpg" alt="">
-                    </div>
-                    <h4>Kody</h4>
-                    <p>Instructor</p>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-
-
-
-    <!--  ------------------------------------------------- SPONSOR BRANDS ---------------------------------------- -->
-
-    <section class="brands">
-        <div class="brand_header">
-            <h3>Our Brand Supporters</h3>
-        </div>
-        <div class="container brands__container">
-            <div class="brand__item">
-                <img src="assets/L1.PNG" alt="Brand Logo">
-            </div>
-            <div class="brand__item">
-                <img src="assets/AgricFi-logo.png" alt="Brand Logo">
-            </div>
-            <div class="brand__item">
-                <img src="assets/quantum-dex-logo.png" alt="">
-            </div>
-            <div class="brand__item">
-                <img src="assets/coinmarketcap-logo.png" alt="">
-            </div>
-            <div class="brand__item">
-                <img src="assets/coingecko-logo.png" alt="">
-            </div>
-        </div>
-    </section>
-
-
-    <!-- --------------------------- FOOTER SECTION ------------------------ -->
-    <section>
-        <div class="footer footer_container">
-            <h4>Reach AgricFi @</h4>
-            <div class="footer_content-container">
-                <div class="footer_quicklinks">
-                    <a href="Index.html">Home</a>
-                    <a href="#ecosystem">Ecosystem</a>
-                    <a href="">Whitepaper</a>
-                    <a href="#contanct">Contacts</a>
-                </div>
-                <div class="footer_icons">
-                    <div class="social_icons">
-                        <span class="icon"><a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i>Telegram</a></span>
-                        <span class="icon"><a href="https://x.com/agric_fi" target="_blank"><i class="fa-brands fa-x-twitter"></i>Twitter (X)</a></span>
-                        <span class="icon"><a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i>Medium</a></span>
-                        <span class="icon"><a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i>Discord</a></span>
-                        <span class="icon"><a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="quantum_button">
-                <a href="https://l1xapp.com/pool/details/0x8f4932931AE141B3d8eB9630B35824053ca44945" target="_blank" class=" btn btn_primary">
-                    Buy AFT on QUANTUM DEX</a>
-            </div>
-
-            <p>&COPY; 2026 AgricFi. All rights reserved.</p>
-        </div>
-    </section>
-
-
-    <script src="script.js"></script>
-
-    <script>
-    let menu = document.querySelector('#menu')
-var menuLinks = document.querySelector('.nav_menu')
-
-menu.addEventListener('click', function() {
-    menu.classList.toggle('is-active');
-    menuLinks.classList.toggle('active');
-})
-
-
-const connectButton = document.getElementById("connectButton");
-
-connectButton.addEventListener("click", async () => {
-    if (window.ethereum) {
-    try {
-        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-        connectButton.textContent = "Connected: " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4);
-    } catch (error) {
-        console.error(error);
-        alert("Wallet connection failed!");
-        }
-    } else {
-        alert("No Web3 wallet found. Please install MetaMask or a supported wallet.");
-      }
-});
-  </script>
-    
-<!-- Google Sign-In SDK -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-
-<style>@keyframes incSpin{to{transform:rotate(360deg)}}</style>
-
-<!-- AgricFi Incentives Script -->
 <div id="inc-toasts" style="position:fixed;bottom:20px;right:16px;display:flex;flex-direction:column;gap:8px;z-index:9999;pointer-events:none;max-width:300px"></div>
-
+<style>@keyframes incSpin{to{transform:rotate(360deg)}}</style>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="script.js"></script>
+<script>
+// Nav hamburger
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+// Wallet connect
+document.getElementById('connectButton').addEventListener('click',async function(){
+  if(window.ethereum){
+    try{
+      const accounts=await window.ethereum.request({method:'eth_requestAccounts'});
+      this.textContent='Connected: '+accounts[0].slice(0,6)+'...'+accounts[0].slice(-4);
+    }catch(e){alert('Wallet connection failed!');}
+  }else{alert('No Web3 wallet found. Please install MetaMask.');}
+});
+// Charts
+const tokenCtx=document.getElementById('tokenChart').getContext('2d');
+new Chart(tokenCtx,{type:'doughnut',data:{labels:['Public Sale 25%','Team 15%','Staking 20%','Liquidity 10%','Ecosystem 20%','Partnerships 10%'],datasets:[{data:[25,15,20,10,20,10],backgroundColor:['#22c55e','#f59e0b','#4ade80','#86efac','#fbbf24','#4b7a5c'],borderWidth:0}]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#86efac',font:{size:10}}}}}});
+const revCtx=document.getElementById('revenueChart').getContext('2d');
+new Chart(revCtx,{type:'bar',data:{labels:['Rev Share','Staking','NFT Apprec.','Carbon'],datasets:[{label:'Max ROI %',data:[50,40,100,20],backgroundColor:['#22c55e','#4ade80','#f59e0b','#86efac'],borderRadius:6}]},options:{responsive:true,scales:{y:{beginAtZero:true,ticks:{color:'#86efac'},grid:{color:'rgba(74,222,128,0.07)'}},x:{ticks:{color:'#86efac'},grid:{display:false}}},plugins:{legend:{display:false}}}});
+// Reveal on scroll
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
+reveals.forEach(el=>obs.observe(el));
+</script>
 <script>
 (function(){
 var TASKS=[
-  {id:'retweet',name:'Retweet AgricFi\'s Latest Post',icon:'🔁',pts:30,type:'social',url:'https://x.com/agric_fi',label:'Go to X →'},
-  {id:'follow',name:'Follow @agric_fi on X (Twitter)',icon:'👤',pts:25,type:'social',url:'https://x.com/intent/follow?screen_name=agric_fi',label:'Follow Now →'},
+  {id:'retweet',name:"Retweet AgricFi's Latest Post",icon:'🔁',pts:30,type:'social',url:'https://x.com/agric_fi',label:'Go to X →'},
+  {id:'follow',name:'Follow @agric_fi on X',icon:'👤',pts:25,type:'social',url:'https://x.com/intent/follow?screen_name=agric_fi',label:'Follow Now →'},
   {id:'tweet',name:'Write a Tweet About AgricFi',icon:'✍️',pts:40,type:'content',url:'https://x.com/intent/tweet?text=I%20just%20discovered%20%40agric_fi%20%E2%80%94%20tokenizing%20agriculture%20with%20DeFi!%20%23AgricFi%20%23AFT',label:'Tweet Now →'},
   {id:'farmphoto',name:'Visit a Farm, Take a Photo & Post',icon:'📷',pts:60,type:'content',url:'https://x.com/intent/tweet?text=%F0%9F%8C%BE%20Visiting%20a%20real%20farm%20with%20%40agric_fi!%20%23AgricFi%20%23AFT',label:'Post on X →'},
   {id:'video',name:'Create an Animation/Video About AgricFi',icon:'🎬',pts:95,type:'content',url:'https://x.com/agric_fi',label:'See Guidelines →'}
 ];
 var INC={user:null,tasks:{},pts:0,filt:'all'};
-
-function boot(){
-  handleOAuth();
-  var s=localStorage.getItem('af_u');
-  if(s){try{INC.user=JSON.parse(s);INC.tasks=JSON.parse(localStorage.getItem('af_t')||'{}');calcPts();showDash();}catch(e){localStorage.clear();}}
-  setTimeout(function(){if(!window.google){var b=document.getElementById('inc-gfb');if(b)b.style.display='flex';}},3000);
-  document.addEventListener('click',function(e){if(!e.target.closest('#inc-app .inc-dd-wrap')&&!e.target.closest('[onclick="incDD()"]')){var d=document.getElementById('inc-dd');if(d)d.style.display='none';}});
-}
-
-function incTW(){
-  if(!'YOUR_TWITTER_CLIENT_ID'.includes('YOUR')){doTwitterOAuth();return;}
-  demoLogin('twitter');
-}
-function incGFB(){
-  if(!'YOUR_GOOGLE_CLIENT_ID'.includes('YOUR')&&window.google){window.google.accounts.id.prompt();return;}
-  demoLogin('google');
-}
-window.incGCB=function(r){
-  try{
-    var p=JSON.parse(atob(r.credential.split('.')[1]));
-    setUser({id:'FI-'+p.sub.slice(-5).toUpperCase(),name:p.email.split('@')[0],display:p.name,provider:'google',av:p.picture||null,ini:(p.name||'?').split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase()});
-  }catch(e){toast('err','❌ Google error','Could not complete sign-in. Try again.');}
-};
-
-function demoLogin(prov){
-  showSpin(prov==='twitter'?'Connecting to X...':'Connecting to Google...');
-  setTimeout(function(){
-    if(prov==='twitter'){
-      var h=['@FarmerKola','@InvestorNgozi','@CryptoFarmNG','@AgriDave'];
-      var n=h[Math.floor(Math.random()*h.length)];
-      setUser({id:'FI-'+Math.random().toString(36).slice(2,7).toUpperCase(),name:n,display:n,provider:'twitter',av:null,ini:n.slice(1,3).toUpperCase()});
-    }else{
-      var names=['Alex Okonkwo','Chioma Adeyemi','Ibrahim Musa','Funke Bello'];
-      var nm=names[Math.floor(Math.random()*names.length)];
-      setUser({id:'FI-'+Math.random().toString(36).slice(2,7).toUpperCase(),name:nm,display:nm,provider:'google',av:null,ini:nm.split(' ').map(function(w){return w[0];}).join('').toUpperCase()});
-    }
-  },1600);
-}
-
-function doTwitterOAuth(){
-  var v=genV(),s=genS();
-  genC(v).then(function(c){
-    sessionStorage.setItem('tw_v',v);sessionStorage.setItem('tw_s',s);
-    var p=new URLSearchParams({response_type:'code',client_id:'YOUR_TWITTER_CLIENT_ID',redirect_uri:window.location.origin+window.location.pathname,scope:'tweet.read users.read follows.read offline.access',state:s,code_challenge:c,code_challenge_method:'S256'});
-    window.location.href='https://twitter.com/i/oauth2/authorize?'+p.toString();
-  });
-}
-function handleOAuth(){
-  var url=new URL(window.location.href);
-  var code=url.searchParams.get('code'),state=url.searchParams.get('state'),err=url.searchParams.get('error');
-  if(err){toast('err','❌ Cancelled','Twitter sign-in was cancelled.');cleanURL();return;}
-  if(!code||!state)return;
-  var sv=sessionStorage.getItem('tw_s'),cv=sessionStorage.getItem('tw_v');
-  if(state!==sv){toast('err','❌ Error','Please try again.');cleanURL();return;}
-  sessionStorage.removeItem('tw_s');sessionStorage.removeItem('tw_v');
-  showSpin('Completing sign-in...');
-  fetch('/api/twitter/token',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,code_verifier:cv,redirect_uri:window.location.origin+window.location.pathname})})
-  .then(function(r){return r.json();})
-  .then(function(d){setUser({id:'FI-'+d.user.id.slice(-5).toUpperCase(),name:'@'+d.user.username,display:d.user.name,provider:'twitter',av:d.user.profile_image_url||null,ini:(d.user.name||'?').slice(0,2).toUpperCase(),token:d.token});cleanURL();})
-  .catch(function(){hideSpin();demoLogin('twitter');cleanURL();});
-}
-
+function boot(){handleOAuth();var s=localStorage.getItem('af_u');if(s){try{INC.user=JSON.parse(s);INC.tasks=JSON.parse(localStorage.getItem('af_t')||'{}');calcPts();showDash();}catch(e){localStorage.clear();}}setTimeout(function(){if(!window.google){var b=document.getElementById('inc-gfb');if(b)b.style.display='flex';}},3000);document.addEventListener('click',function(e){if(!e.target.closest('#inc-app .inc-dd-wrap')&&!e.target.closest('[onclick="incDD()"]')){var d=document.getElementById('inc-dd');if(d)d.style.display='none';}});}
+function incTW(){if(!'YOUR_TWITTER_CLIENT_ID'.includes('YOUR')){doTwitterOAuth();return;}demoLogin('twitter');}
+function incGFB(){if(!'YOUR_GOOGLE_CLIENT_ID'.includes('YOUR')&&window.google){window.google.accounts.id.prompt();return;}demoLogin('google');}
+window.incGCB=function(r){try{var p=JSON.parse(atob(r.credential.split('.')[1]));setUser({id:'FI-'+p.sub.slice(-5).toUpperCase(),name:p.email.split('@')[0],display:p.name,provider:'google',av:p.picture||null,ini:(p.name||'?').split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase()});}catch(e){toast('err','❌ Google error','Could not complete sign-in.');}};
+function demoLogin(prov){showSpin(prov==='twitter'?'Connecting to X...':'Connecting to Google...');setTimeout(function(){if(prov==='twitter'){var h=['@FarmerKola','@InvestorNgozi','@CryptoFarmNG','@AgriDave'];var n=h[Math.floor(Math.random()*h.length)];setUser({id:'FI-'+Math.random().toString(36).slice(2,7).toUpperCase(),name:n,display:n,provider:'twitter',av:null,ini:n.slice(1,3).toUpperCase()});}else{var names=['Alex Okonkwo','Chioma Adeyemi','Ibrahim Musa','Funke Bello'];var nm=names[Math.floor(Math.random()*names.length)];setUser({id:'FI-'+Math.random().toString(36).slice(2,7).toUpperCase(),name:nm,display:nm,provider:'google',av:null,ini:nm.split(' ').map(function(w){return w[0];}).join('').toUpperCase()});}},1600);}
+function doTwitterOAuth(){var v=genV(),s=genS();genC(v).then(function(c){sessionStorage.setItem('tw_v',v);sessionStorage.setItem('tw_s',s);var p=new URLSearchParams({response_type:'code',client_id:'YOUR_TWITTER_CLIENT_ID',redirect_uri:window.location.origin+window.location.pathname,scope:'tweet.read users.read follows.read offline.access',state:s,code_challenge:c,code_challenge_method:'S256'});window.location.href='https://twitter.com/i/oauth2/authorize?'+p.toString();});}
+function handleOAuth(){var url=new URL(window.location.href);var code=url.searchParams.get('code'),state=url.searchParams.get('state'),err=url.searchParams.get('error');if(err){toast('err','❌ Cancelled','Twitter sign-in was cancelled.');cleanURL();return;}if(!code||!state)return;var sv=sessionStorage.getItem('tw_s'),cv=sessionStorage.getItem('tw_v');if(state!==sv){toast('err','❌ Error','Please try again.');cleanURL();return;}sessionStorage.removeItem('tw_s');sessionStorage.removeItem('tw_v');showSpin('Completing sign-in...');fetch('/api/twitter/token',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,code_verifier:cv,redirect_uri:window.location.origin+window.location.pathname})}).then(function(r){return r.json();}).then(function(d){setUser({id:'FI-'+d.user.id.slice(-5).toUpperCase(),name:'@'+d.user.username,display:d.user.name,provider:'twitter',av:d.user.profile_image_url||null,ini:(d.user.name||'?').slice(0,2).toUpperCase(),token:d.token});cleanURL();}).catch(function(){hideSpin();demoLogin('twitter');cleanURL();});}
 function setUser(u){INC.user=u;localStorage.setItem('af_u',JSON.stringify(u));hideSpin();showDash();toast('ok','✅ Signed in!','Welcome '+u.display+' · '+u.id);}
-
-function showDash(){
-  document.getElementById('inc-gate').style.display='none';
-  document.getElementById('inc-dash').style.display='block';
-  var c=document.getElementById('inc-chip');if(c)c.style.display='flex';
-  var lo=document.getElementById('inc-lo');if(lo)lo.style.display='flex';
-  document.getElementById('inc-un').textContent=INC.user.display||INC.user.name;
-  document.getElementById('inc-id').textContent='ID: '+INC.user.id;
-  document.getElementById('inc-ini').textContent=INC.user.ini||'?';
-  if(INC.user.av){document.getElementById('inc-av').innerHTML='<img src="'+INC.user.av+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';}
-  renderTasks();updatePts();
-}
-
-function renderTasks(){
-  var body=document.getElementById('inc-tb');if(!body)return;
-  var list=INC.filt==='all'?TASKS:TASKS.filter(function(t){return t.type===INC.filt;});
-  body.innerHTML=list.map(function(t){
-    var st=INC.tasks[t.id]||'idle',done=st==='completed',did=st==='performed'||done;
-    return '<div style="display:flex;align-items:center;gap:12px;padding:13px 15px;background:rgba(3,44,72,'+(done?'0.55':'0.45')+');border:1px solid rgba('+(done?'10,184,68,0.26':'255,255,255,0.06')+');border-radius:13px;margin-bottom:10px;flex-wrap:wrap;transition:all .2s" id="itask-'+t.id+'">'
-      +'<div style="width:40px;height:40px;border-radius:10px;background:rgba(10,184,68,'+(done?'0.2':'0.1')+');border:1px solid rgba(10,184,68,0.18);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">'+t.icon+'</div>'
-      +'<div style="flex:1;min-width:0">'
-        +'<div style="font-size:13px;font-weight:700;color:'+(done?'#7ca99a':'#e6f8f1')+';margin-bottom:4px">'+(done?'✓ ':'')+t.name+'</div>'
-        +'<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">'
-          +'<span style="font-size:10.5px;font-weight:700;color:#0ab844;background:rgba(10,184,68,0.1);padding:2px 9px;border-radius:99px;font-family:\'Courier New\',monospace">+'+t.pts+' pts</span>'
-          +'<span style="font-size:9.5px;color:#7ca99a;background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;border:1px solid rgba(255,255,255,0.07)">'+t.type+'</span>'
-          +(done?'<span style="font-size:9.5px;color:#0ab844;background:rgba(10,184,68,0.08);padding:2px 8px;border-radius:99px;border:1px solid rgba(10,184,68,0.18)">✓ Verified</span>':'')
-        +'</div>'
-      +'</div>'
-      +'<div style="display:flex;align-items:center;gap:6px;flex-shrink:0">'
-        +(done
-          ?'<div style="width:28px;height:28px;border-radius:50%;background:rgba(10,184,68,0.14);border:1.5px solid #0ab844;display:flex;align-items:center;justify-content:center;color:#0ab844;font-size:13px">✓</div>'
-          :'<button onclick="incDo(\''+t.id+'\')" style="padding:8px 14px;border-radius:8px;background:#0ab844;color:#000;border:none;font-size:11.5px;font-weight:700;cursor:pointer;font-family:Arial,sans-serif;white-space:nowrap;min-height:36px">'+(did?'✓ Done':t.label)+'</button>'
-           +'<button id="ivb-'+t.id+'" onclick="incVer(\''+t.id+'\')" style="padding:8px 12px;border-radius:8px;background:transparent;color:#0ab844;border:1.5px solid rgba(10,184,68,'+(did?'0.5':'0.2')+');font-size:11.5px;font-weight:700;cursor:pointer;font-family:Arial,sans-serif;white-space:nowrap;min-height:36px;opacity:'+(did?'1':'0.4')+'">✓ Verify</button>')
-      +'</div>'
-    +'</div>';
-  }).join('');
-}
-
-function incDo(id){
-  if(!INC.user){toast('err','⚠️ Sign in first','Connect with X or Google');return;}
-  var t=TASKS.find(function(x){return x.id===id;});if(!t)return;
-  window.open(t.url,'_blank','noopener');
-  INC.tasks[id]='performed';
-  localStorage.setItem('af_t',JSON.stringify(INC.tasks));
-  renderTasks();
-  toast('ok','👆 Opened!','Complete the action then click Verify');
-}
-function incVer(id){
-  if(!INC.user){toast('err','⚠️ Sign in first','Connect first');return;}
-  if(INC.tasks[id]!=='performed'){toast('err','⚠️ Not done yet','Click the action button first, then Verify');return;}
-  var btn=document.getElementById('ivb-'+id);
-  if(btn){btn.disabled=true;btn.textContent='⏳ Checking...';}
-  var t=TASKS.find(function(x){return x.id===id;});
-  setTimeout(function(){
-    INC.tasks[id]='completed';
-    localStorage.setItem('af_t',JSON.stringify(INC.tasks));
-    calcPts();renderTasks();updatePts();
-    toast('ok','🎉 +'+t.pts+' pts!','"'+t.name+'" verified!');
-    if(TASKS.every(function(x){return INC.tasks[x.id]==='completed';})){
-      setTimeout(function(){var b=document.getElementById('inc-rb');if(b)b.style.display='flex';},600);
-    }
-  },2000);
-}
-
+function showDash(){document.getElementById('inc-gate').style.display='none';document.getElementById('inc-dash').style.display='block';var c=document.getElementById('inc-chip');if(c)c.style.display='flex';var lo=document.getElementById('inc-lo');if(lo)lo.style.display='flex';document.getElementById('inc-un').textContent=INC.user.display||INC.user.name;document.getElementById('inc-id').textContent='ID: '+INC.user.id;document.getElementById('inc-ini').textContent=INC.user.ini||'?';if(INC.user.av){document.getElementById('inc-av').innerHTML='<img src="'+INC.user.av+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';}renderTasks();updatePts();}
+function renderTasks(){var body=document.getElementById('inc-tb');if(!body)return;var list=INC.filt==='all'?TASKS:TASKS.filter(function(t){return t.type===INC.filt;});body.innerHTML=list.map(function(t){var st=INC.tasks[t.id]||'idle',done=st==='completed',did=st==='performed'||done;return'<div style="display:flex;align-items:center;gap:12px;padding:13px 15px;background:rgba(13,34,20,'+(done?'0.55':'0.45')+');border:1px solid rgba('+(done?'34,197,94,0.26':'255,255,255,0.06')+');border-radius:13px;margin-bottom:10px;flex-wrap:wrap" id="itask-'+t.id+'">'+'<div style="width:40px;height:40px;border-radius:10px;background:rgba(34,197,94,'+(done?'0.2':'0.1')+');border:1px solid rgba(34,197,94,0.18);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">'+t.icon+'</div>'+'<div style="flex:1;min-width:0">'+'<div style="font-size:13px;font-weight:700;color:'+(done?'#4b7a5c':'#f0fdf4')+';margin-bottom:4px">'+(done?'✓ ':'')+t.name+'</div>'+'<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">'+'<span style="font-size:10.5px;font-weight:700;color:#22c55e;background:rgba(34,197,94,0.1);padding:2px 9px;border-radius:99px;font-family:\'Courier New\',monospace">+'+t.pts+' pts</span>'+'<span style="font-size:9.5px;color:#4b7a5c;background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;border:1px solid rgba(255,255,255,0.07)">'+t.type+'</span>'+(done?'<span style="font-size:9.5px;color:#22c55e;background:rgba(34,197,94,0.08);padding:2px 8px;border-radius:99px;border:1px solid rgba(34,197,94,0.18)">✓ Verified</span>':'')+'</div>'+'</div>'+'<div style="display:flex;align-items:center;gap:6px;flex-shrink:0">'+(done?'<div style="width:28px;height:28px;border-radius:50%;background:rgba(34,197,94,0.14);border:1.5px solid #22c55e;display:flex;align-items:center;justify-content:center;color:#22c55e;font-size:13px">✓</div>':'<button onclick="incDo(\''+t.id+'\')" style="padding:8px 14px;border-radius:8px;background:#22c55e;color:#000;border:none;font-size:11.5px;font-weight:700;cursor:pointer;font-family:\'Syne\',sans-serif;white-space:nowrap;min-height:36px">'+(did?'✓ Done':t.label)+'</button>'+'<button id="ivb-'+t.id+'" onclick="incVer(\''+t.id+'\')" style="padding:8px 12px;border-radius:8px;background:transparent;color:#22c55e;border:1.5px solid rgba(34,197,94,'+(did?'0.5':'0.2')+');font-size:11.5px;font-weight:700;cursor:pointer;font-family:\'Syne\',sans-serif;white-space:nowrap;min-height:36px;opacity:'+(did?'1':'0.4')+'">✓ Verify</button>')+'</div>'+'</div>';}).join('');}
+function incDo(id){if(!INC.user){toast('err','⚠️ Sign in first','Connect with X or Google');return;}var t=TASKS.find(function(x){return x.id===id;});if(!t)return;window.open(t.url,'_blank','noopener');INC.tasks[id]='performed';localStorage.setItem('af_t',JSON.stringify(INC.tasks));renderTasks();toast('ok','👆 Opened!','Complete the action then click Verify');}
+function incVer(id){if(!INC.user){toast('err','⚠️ Sign in first','Connect first');return;}if(INC.tasks[id]!=='performed'){toast('err','⚠️ Not done yet','Click the action button first');return;}var btn=document.getElementById('ivb-'+id);if(btn){btn.disabled=true;btn.textContent='⏳ Checking...';}var t=TASKS.find(function(x){return x.id===id;});setTimeout(function(){INC.tasks[id]='completed';localStorage.setItem('af_t',JSON.stringify(INC.tasks));calcPts();renderTasks();updatePts();toast('ok','🎉 +'+t.pts+' pts!','"'+t.name+'" verified!');if(TASKS.every(function(x){return INC.tasks[x.id]==='completed';})){setTimeout(function(){var b=document.getElementById('inc-rb');if(b)b.style.display='flex';},600);}},2000);}
 function calcPts(){INC.pts=TASKS.reduce(function(s,t){return s+(INC.tasks[t.id]==='completed'?t.pts:0);},0);}
-function updatePts(){
-  var max=250,pct=Math.round((INC.pts/max)*100),done=TASKS.filter(function(t){return INC.tasks[t.id]==='completed';}).length;
-  document.getElementById('inc-pts').innerHTML=INC.pts+' <span style="font-size:.85rem;color:#0ab844;font-weight:400">pts</span>';
-  document.getElementById('inc-rpct').textContent=pct+'%';
-  document.getElementById('inc-dc').textContent=done;
-  document.getElementById('inc-rk').textContent='#'+(Math.max(1,300-done*40));
-  var ring=document.getElementById('inc-ring');
-  if(ring)ring.style.background='conic-gradient(#0ab844 '+pct+'%, rgba(10,184,68,0.1) 0%)';
-  ['inc-t1','inc-t2','inc-t3'].forEach(function(id){var el=document.getElementById(id);if(el){el.style.border='1px solid rgba(255,255,255,0.07)';el.style.background='rgba(3,44,72,0.6)';}});
-  var active=INC.pts>=250?'inc-t3':INC.pts>=120?'inc-t2':INC.pts>=50?'inc-t1':null;
-  if(active){var el=document.getElementById(active);if(el){el.style.border='1px solid #0ab844';el.style.background='rgba(10,184,68,0.08)';}}
-}
-
+function updatePts(){var max=250,pct=Math.round((INC.pts/max)*100),done=TASKS.filter(function(t){return INC.tasks[t.id]==='completed';}).length;document.getElementById('inc-pts').innerHTML=INC.pts+' <span style="font-size:.85rem;color:#22c55e;font-weight:400">pts</span>';document.getElementById('inc-rpct').textContent=pct+'%';document.getElementById('inc-dc').textContent=done;document.getElementById('inc-rk').textContent='#'+(Math.max(1,300-done*40));var ring=document.getElementById('inc-ring');if(ring)ring.style.background='conic-gradient(#22c55e '+pct+'%,rgba(34,197,94,0.1) 0%)';['inc-t1','inc-t2','inc-t3'].forEach(function(id){var el=document.getElementById(id);if(el){el.style.border='1px solid rgba(255,255,255,0.07)';el.style.background='rgba(13,34,20,0.6)';}});var active=INC.pts>=250?'inc-t3':INC.pts>=120?'inc-t2':INC.pts>=50?'inc-t1':null;if(active){var el=document.getElementById(active);if(el){el.style.border='1px solid #22c55e';el.style.background='rgba(34,197,94,0.08)';}}}
 function incClaim(){toast('ok','📬 Received!','The AgricFi team will contact you with your $AFT reward details.');var b=document.querySelector('#inc-rb button');if(b){b.textContent='Submitted ✓';b.disabled=true;}}
-window.incPanel=function(p){
-  var tp=document.getElementById('inc-tp'),tr=document.getElementById('inc-trs');
-  if(tp)tp.style.display=p==='tasks'?'block':'none';
-  if(tr)tr.style.display=p==='tiers'?'block':'none';
-};
+window.incPanel=function(p){var tp=document.getElementById('inc-tp'),tr=document.getElementById('inc-trs');if(tp)tp.style.display=p==='tasks'?'block':'none';if(tr)tr.style.display=p==='tiers'?'block':'none';};
 window.incDD=function(){var d=document.getElementById('inc-dd');if(d)d.style.display=d.style.display==='block'?'none':'block';};
-window.incFilt=function(el,f){
-  INC.filt=f;
-  document.querySelectorAll('.inc-chip-btn').forEach(function(b){b.style.background='transparent';b.style.color='#7ca99a';b.style.borderColor='rgba(255,255,255,0.1)';});
-  el.style.background='#0ab844';el.style.color='#000';el.style.borderColor='#0ab844';
-  renderTasks();
-};
-window.incLogout=function(){
-  INC={user:null,tasks:{},pts:0,filt:'all'};
-  localStorage.removeItem('af_u');localStorage.removeItem('af_t');
-  document.getElementById('inc-dash').style.display='none';
-  document.getElementById('inc-gate').style.display='block';
-  var c=document.getElementById('inc-chip');if(c)c.style.display='none';
-  var rb=document.getElementById('inc-rb');if(rb)rb.style.display='none';
-  var lo=document.getElementById('inc-lo');if(lo)lo.style.display='none';
-  document.getElementById('inc-dd').style.display='none';
-  toast('ok','👋 Signed out','Come back and earn more $AFT!');
-};
+window.incFilt=function(el,f){INC.filt=f;document.querySelectorAll('.inc-chip-btn').forEach(function(b){b.style.background='transparent';b.style.color='#4b7a5c';b.style.borderColor='rgba(255,255,255,0.1)';});el.style.background='#22c55e';el.style.color='#000';el.style.borderColor='#22c55e';renderTasks();};
+window.incLogout=function(){INC={user:null,tasks:{},pts:0,filt:'all'};localStorage.removeItem('af_u');localStorage.removeItem('af_t');document.getElementById('inc-dash').style.display='none';document.getElementById('inc-gate').style.display='flex';var c=document.getElementById('inc-chip');if(c)c.style.display='none';var rb=document.getElementById('inc-rb');if(rb)rb.style.display='none';var lo=document.getElementById('inc-lo');if(lo)lo.style.display='none';document.getElementById('inc-dd').style.display='none';toast('ok','👋 Signed out','Come back and earn more $AFT!');};
 window.incTW=incTW;window.incGFB=incGFB;
-
 function showSpin(m){var o=document.getElementById('inc-spin'),t=document.getElementById('inc-spin-txt');if(t)t.textContent=m||'Loading...';if(o)o.style.display='flex';}
 function hideSpin(){var o=document.getElementById('inc-spin');if(o)o.style.display='none';}
-function toast(type,title,msg){
-  var w=document.getElementById('inc-toasts');if(!w)return;
-  var el=document.createElement('div');
-  el.style.cssText='display:flex;align-items:flex-start;gap:10px;background:#0b2430;border:1px solid rgba('+(type==='err'?'224,85,85':'10,184,68')+',0.35);border-radius:11px;padding:12px 15px;font-size:12.5px;color:#e6f8f1;box-shadow:0 8px 30px rgba(0,0,0,0.55);pointer-events:auto;transition:all .3s;transform:translateX(110%);opacity:0';
-  el.innerHTML='<div style="font-size:17px;flex-shrink:0;margin-top:1px">'+(type==='err'?'❌':'✅')+'</div><div><strong style="display:block;font-weight:700;color:#fff;margin-bottom:2px">'+title+'</strong>'+msg+'</div>';
-  w.appendChild(el);
-  requestAnimationFrame(function(){requestAnimationFrame(function(){el.style.transform='translateX(0)';el.style.opacity='1';});});
-  setTimeout(function(){el.style.transform='translateX(110%)';el.style.opacity='0';setTimeout(function(){el.remove();},350);},4000);
-}
+function toast(type,title,msg){var w=document.getElementById('inc-toasts');if(!w)return;var el=document.createElement('div');el.style.cssText='display:flex;align-items:flex-start;gap:10px;background:#0d2214;border:1px solid rgba('+(type==='err'?'224,85,85':'34,197,94')+',0.35);border-radius:11px;padding:12px 15px;font-size:12.5px;color:#f0fdf4;box-shadow:0 8px 30px rgba(0,0,0,.55);pointer-events:auto;transition:all .3s;transform:translateX(110%);opacity:0';el.innerHTML='<div style="font-size:17px;flex-shrink:0;margin-top:1px">'+(type==='err'?'❌':'✅')+'</div><div><strong style="display:block;font-weight:700;color:#fff;margin-bottom:2px">'+title+'</strong>'+msg+'</div>';w.appendChild(el);requestAnimationFrame(function(){requestAnimationFrame(function(){el.style.transform='translateX(0)';el.style.opacity='1';});});setTimeout(function(){el.style.transform='translateX(110%)';el.style.opacity='0';setTimeout(function(){el.remove();},350);},4000);}
 function genV(){var a=new Uint8Array(96);crypto.getRandomValues(a);return btoa(String.fromCharCode.apply(null,a)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'').slice(0,128);}
 async function genC(v){var e=new TextEncoder().encode(v),d=await crypto.subtle.digest('SHA-256',e);return btoa(String.fromCharCode.apply(null,new Uint8Array(d))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');}
 function genS(){var a=new Uint8Array(16);crypto.getRandomValues(a);return Array.from(a,function(b){return b.toString(16).padStart(2,'0');}).join('');}
 function cleanURL(){window.history.replaceState({},document.title,window.location.origin+window.location.pathname);}
-
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot);}else{boot();}
 })();
-</script> 
-    
+</script>
 </body>
 </html>

@@ -1,86 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ecosystem - AgricFi</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Ecosystem — AgricFi</title>
+  <link rel="icon" href="assets/AgricFi-logo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>AgricFi</h1>
-        <p class="tag">Bridging Agriculture and Blockchain</p>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="ecosystem.html">Ecosystem</a>
-        <a href="whitepaper.html">Whitepaper</a>
-        <a href="tokenomics.html">Tokenomics</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><img src="assets/AgricFi-logo.png" alt="AgricFi">AgricFi</a><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ecosystem.html" class="active">Ecosystem</a></li><li><a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Whitepaper</a></li><li><a href="tokenomics.html">Tokenomics</a></li><li><a href="contact.html">Contact</a></li></ul><div style="display:flex;align-items:center;gap:.75rem;flex-shrink:0;"><button class="btn-connect">Connect Wallet</button><div class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div></div></div></nav>
+
+<div class="page-hero">
+  <span class="section-tag">Ecosystem</span>
+  <h1>An Ecosystem Designed for Growth</h1>
+  <p>AgricFi combines DeFi, tokenization, and real-world farm verification to create a market for agriculture-backed digital assets.</p>
+</div>
+
+<section class="section-wrap">
+  <div class="container">
+    <div class="eco-grid">
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(34,197,94,.1)">💰</div><h3>DeFi Funding Hub</h3><p>The financial backbone of AgricFi. Bridges the funding gap between smallholder farmers and global investors through an open, decentralized gateway for agricultural financing.</p><ul class="eco-features"><li>On-chain Verification & Escrow</li><li>Tokenized Farm Assets</li><li>Dynamic APYs based on farm performance</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(74,222,128,.1)">🌿</div><h3>Sustainability Ledger</h3><p>AgricFi's proof-of-impact layer. Captures and records all farm activities that contribute to environmental sustainability with full on-chain transparency for investors and regulators.</p><ul class="eco-features"><li>On-chain Impact Verification</li><li>Carbon Credit Recording</li><li>Investor & Regulator Transparency</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(245,158,11,.1)">🪙</div><h3>$AGFI Token Utility</h3><p>The $AGFI token powers all activities within the ecosystem — the transactional, governance, and incentive engine. Stake $AFT to earn yield and participate in decision making.</p><ul class="eco-features"><li>Staking for Yield & Governance</li><li>Marketplace Fee Settlement</li><li>Fixed Supply with Controlled Emissions</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(34,197,94,.1)">📊</div><h3>Yield Dashboard</h3><p>The investor's control center — a real-time performance monitor aggregating on-chain data, IoT metrics, and market analytics into one intuitive interface.</p><ul class="eco-features"><li>Real-time IoT & On-chain Data</li><li>Portfolio Performance Tracking</li><li>Market Analytics & Projections</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(139,92,246,.1)">🖼️</div><h3>Farm NFTs</h3><p>Transform real farmland and crop batches into verified digital assets. Each NFT represents a fraction of a real-world farm, making agricultural ownership accessible to anyone globally.</p><ul class="eco-features"><li>Verified Asset Minting with Geolocation</li><li>Fractional Co-ownership Model</li><li>Dynamic IoT & Satellite Data Integration</li></ul></div>
+      <div class="eco-card reveal"><div class="eco-icon" style="background:rgba(245,158,11,.1)">🏪</div><h3>Marketplace</h3><p>AgricFi's digital trading hub — buy, sell, and auction farm NFTs, produce tokens, and sustainability credits within a secure, decentralized on-chain marketplace.</p><ul class="eco-features"><li>NFT & Produce Token Trading</li><li>MetaMask & Trust Wallet Support</li><li>Real-time Market Analytics</li></ul></div>
     </div>
-  </header>
-
-  <main class="container">
-    <section class="ecosystem-hero">
-      <h2>AgricFi Ecosystem Overview</h2>
-      <p>AgricFi combines DeFi, tokenization, and real-world farm verification to create a market for agriculture-backed digital assets.</p>
-    </section>
-
-    <section class="ecosystem-components">
-      <div class="grid-3">
-        <div class="card">
-          <h4>Farm NFTs</h4>
-          <p>Verified farmland and crop batches minted as NFTs for fractional ownership.</p>
-        </div>
-        <div class="card">
-          <h4>DeFi Pools</h4>
-          <p>Liquidity & yield pools for staking AFT and participating in revenue-sharing.</p>
-        </div>
-        <div class="card">
-          <h4>Marketplace</h4>
-          <p>Buy, sell, and trade farm NFTs or produce tokens in a decentralized marketplace.</p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h4>IoT Verification</h4>
-          <p>Sensor and satellite feeds verify milestones, recorded immutably on-chain.</p>
-        </div>
-        <div class="card">
-          <h4>Carbon Credits</h4>
-          <p>Sustainable farm practices earn verifiable carbon credits that add revenue streams.</p>
-        </div>
-        <div class="card">
-          <h4>Governance</h4>
-          <p>AFT holders vote on platform decisions via DAO mechanisms.</p>
-        </div>
-      </div>
-
-      <div class="ecosystem-chart">
-        <h3>Ecosystem Flow (Static Overview)</h3>
-        <div class="chart-placeholder">
-          <img src="assets/diagram.jpg" alt="Ecosystem Diagram (placeholder)" style="max-width:100%;" />
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 AgricFi - Built for farmers. Trusted by investors.</p>
+    <div class="eco-diagram reveal" style="margin-top:3rem">
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;text-align:center;color:var(--muted)">Ecosystem Flow Diagram</h3>
+      <img src="assets/diagram.jpg" alt="AgricFi Ecosystem Diagram">
     </div>
-    <div class="social_media">
-      <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-      <a href="https://x.com/YourTwitterLink" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
-      <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
-      <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    <div class="eco-btns">
+      <a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank" class="btn-primary">Read Full Whitepaper →</a>
+      <a href="contact.html" class="btn-secondary">Join Waitlist</a>
     </div>
-  </footer>
-</body>
-</html>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">© 2026 AgricFi — Built for farmers. Trusted by investors.</div>
+  <div class="social_media" style="margin-top:1rem">
+    <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://x.com/agric_fi" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
+    <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
+    <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+  </div>
+</footer>
+<script>document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1}).observe(el));</script>
+</body></html>

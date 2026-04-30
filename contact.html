@@ -1,67 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact - AgricFi</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Contact — AgricFi</title>
+  <link rel="icon" href="assets/AgricFi-logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>AgricFi</h1>
-        <p class="tag">Get in touch</p>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><img src="assets/AgricFi-logo.png" alt="AgricFi">AgricFi</a><ul class="nav-links" id="navLinks"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="ecosystem.html">Ecosystem</a></li><li><a href="https://docs.google.com/document/d/1R0Q1ln7vIYJuEMs8EWc9p7lKFdGOHvRuISeCP33uVi8/edit?usp=drivesdk" target="_blank">Whitepaper</a></li><li><a href="tokenomics.html">Tokenomics</a></li><li><a href="contact.html" class="active">Contact</a></li></ul><div style="display:flex;align-items:center;gap:.75rem;flex-shrink:0;"><button class="btn-connect">Connect Wallet</button><div class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div></div></div></nav>
+
+<div class="page-hero">
+  <span class="section-tag">Get in Touch</span>
+  <h1>Contact AgricFi</h1>
+  <p>For partnerships, investor queries, and general information — we'd love to hear from you.</p>
+</div>
+
+<section class="section-wrap">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="section-tag">Reach Us</span>
+        <h2 class="section-title" style="font-size:1.8rem">Our Channels</h2>
+        <p class="contact-info" style="margin-bottom:1.5rem">Have questions or want to learn more about AgricFi? Reach out to the team — we're available across all major platforms.</p>
+        <div class="social-links">
+          <a href="https://t.me/AgricFi" target="_blank" class="social-link"><span class="social-link-icon"><i class="fa-brands fa-telegram"></i></span>Telegram — @AgricFi</a>
+          <a href="https://x.com/agric_fi" target="_blank" class="social-link"><span class="social-link-icon"><i class="fa-brands fa-x-twitter"></i></span>Twitter — @agric_fi</a>
+          <a href="https://medium.com/@agricfi" target="_blank" class="social-link"><span class="social-link-icon"><i class="fa-brands fa-medium"></i></span>Medium — @agricfi</a>
+          <a href="https://discord.gg/DG9QVxb8TU" target="_blank" class="social-link"><span class="social-link-icon"><i class="fa-brands fa-discord"></i></span>Discord Community</a>
+          <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank" class="social-link"><span class="social-link-icon"><i class="fa-brands fa-facebook"></i></span>Facebook Page</a>
+          <a href="mailto:helloagricfi@gmail.com" class="social-link"><span class="social-link-icon">✉</span>helloagricfi@gmail.com</a>
+        </div>
       </div>
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="ecosystem.html">Ecosystem</a>
-        <a href="whitepaper.html">Whitepaper</a>
-        <a href="tokenomics.html">Tokenomics</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container contact-page">
-    <section>
-      <h2>Contact & Partnerships</h2>
-      <p>For partnerships, incubator queries, and investor conversations, email us at <a href="mailto:helloagricfi@gmail.com">helloagricfi@gmail.com</a></p>
-
-      <form id="contactForm">
-        <label>Name</label>
-        <input type="text" id="name" required />
-        <label>Email</label>
-        <input type="email" id="email" required />
+      <div class="contact-form-el reveal">
+        <span class="section-tag">Send a Message</span>
+        <h2 class="section-title" style="font-size:1.8rem;margin-bottom:1.5rem">Write to Us</h2>
+        <label>Your Name</label>
+        <input type="text" id="cname" placeholder="e.g. Amaka Johnson">
+        <label>Email Address</label>
+        <input type="email" id="cemail" placeholder="you@example.com">
         <label>Message</label>
-        <textarea id="message" rows="5" required></textarea>
-        <button class="btn primary" type="submit">Send Message</button>
-      </form>
-      <p id="formMsg" class="muted"></p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 AgricFi - Built for farmers. Trusted by investors.</p>
+        <textarea id="cmessage" placeholder="Tell us about your project, investment interest, or question..."></textarea>
+        <button class="btn-primary" onclick="submitForm()" style="width:100%;justify-content:center">Send Message →</button>
+        <p id="formMsg" style="margin-top:.75rem;font-size:.875rem;color:var(--green);display:none">✅ Thanks! Message received. We'll be in touch soon.</p>
+      </div>
     </div>
-    <div class="social_media">
-      <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-      <a href="https://x.com/YourTwitterLink" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
-      <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
-      <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      document.getElementById('formMsg').textContent = 'Thanks '+(name||'')+'. Message received. Please use helloagricfi@gmail.com for formal contact.';
-      document.getElementById('contactForm').reset();
-    });
-  </script>
-</body>
-</html>
+<footer class="site-footer">
+  <div class="container">© 2026 AgricFi — Built for farmers. Trusted by investors.</div>
+  <div class="social_media" style="margin-top:1rem">
+    <a href="https://t.me/AgricFi" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://x.com/agric_fi" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://medium.com/@agricfi" target="_blank"><i class="fa-brands fa-medium"></i></a>
+    <a href="https://discord.gg/DG9QVxb8TU" target="_blank"><i class="fa-brands fa-discord"></i></a>
+    <a href="https://facebook.com/profile.php?id=61580356123160" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
+document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1}).observe(el));
+function submitForm(){var n=document.getElementById('cname').value.trim();var msg=document.getElementById('formMsg');msg.style.display='block';document.getElementById('cname').value='';document.getElementById('cemail').value='';document.getElementById('cmessage').value='';}
+</script>
+</body></html>
