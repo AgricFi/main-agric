@@ -9,64 +9,150 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
     .inc-spinner { width:40px;height:40px;border:3px solid rgba(34,197,94,.15);border-top-color:#22c55e;border-radius:50%;animation:spin .8s linear infinite; }
-    .task-card { display:flex;align-items:center;gap:14px;padding:14px 16px;background:rgba(13,34,20,.5);border:1px solid rgba(255,255,255,.07);border-radius:14px;margin-bottom:10px;flex-wrap:wrap;transition:border-color .2s; }
-    .task-card.done { background:rgba(13,34,20,.7);border-color:rgba(34,197,94,.25); }
+
+    /* ── TASK CARD (fixed layout) ── */
+    .task-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      grid-template-rows: auto auto;
+      gap: 0 14px;
+      padding: 16px;
+      background: rgba(13,34,20,.5);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      transition: border-color .2s;
+      animation: fadeUp .3s ease;
+    }
+    .task-card.done { background:rgba(13,34,20,.7); border-color:rgba(34,197,94,.25); }
     .task-card:hover { border-color:rgba(34,197,94,.2); }
-    .task-icon { width:44px;height:44px;border-radius:10px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.18);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0; }
+
+    .task-icon {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: rgba(34,197,94,.1);
+      border: 1px solid rgba(34,197,94,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      align-self: start;
+    }
     .task-icon.done { background:rgba(34,197,94,.18); }
-    .task-info { flex:1;min-width:0; }
-    .task-name { font-size:.9rem;font-weight:700;color:#f0fdf4;margin-bottom:5px; }
-    .task-name.done { color:#4b7a5c;text-decoration:line-through; }
-    .task-meta { display:flex;align-items:center;gap:6px;flex-wrap:wrap; }
-    .task-pts { font-size:.75rem;font-weight:700;color:#22c55e;background:rgba(34,197,94,.1);padding:2px 9px;border-radius:99px; }
-    .task-type { font-size:.7rem;color:#4b7a5c;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);padding:2px 8px;border-radius:99px; }
-    .task-verified { font-size:.7rem;color:#22c55e;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);padding:2px 8px;border-radius:99px; }
-    .task-actions { display:flex;align-items:center;gap:8px;flex-shrink:0; }
-    .btn-task { padding:8px 14px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;border:none;transition:all .2s;white-space:nowrap; }
-    .btn-do { background:#22c55e;color:#000; }
+
+    .task-top {
+      grid-column: 2; grid-row: 1;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .task-name {
+      font-size: .9rem; font-weight: 700; color: #f0fdf4; line-height: 1.4;
+    }
+    .task-name.done { color:#4b7a5c; text-decoration:line-through; }
+    .task-meta { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .task-pts { font-size:.72rem;font-weight:700;color:#22c55e;background:rgba(34,197,94,.1);padding:3px 10px;border-radius:99px; }
+    .task-type { font-size:.68rem;color:#4b7a5c;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);padding:3px 9px;border-radius:99px; }
+    .task-verified-badge { font-size:.68rem;color:#22c55e;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);padding:3px 9px;border-radius:99px; }
+
+    .task-actions {
+      grid-column: 2; grid-row: 2;
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 10px; flex-wrap: wrap;
+    }
+    .btn-task {
+      padding: 9px 16px; border-radius: 8px;
+      font-family:'Syne',sans-serif; font-weight:700; font-size:.8rem;
+      cursor:pointer; border:none; transition:all .2s; white-space:nowrap;
+    }
+    .btn-do { background:#22c55e; color:#000; }
     .btn-do:hover { background:#4ade80; }
-    .btn-do:disabled { opacity:.5;cursor:default; }
-    .btn-verify { background:transparent;color:#22c55e;border:1.5px solid rgba(34,197,94,.3);padding:8px 12px; }
+    .btn-do:disabled { opacity:.5; cursor:default; }
+    .btn-verify {
+      background:transparent; color:#22c55e;
+      border:1.5px solid rgba(34,197,94,.35);
+      padding:9px 16px;
+    }
+    .btn-verify.ready { border-color:#22c55e; }
     .btn-verify:hover:not(:disabled) { background:rgba(34,197,94,.1); }
-    .btn-verify:disabled { opacity:.3;cursor:default; }
-    .btn-done-mark { width:32px;height:32px;border-radius:50%;background:rgba(34,197,94,.12);border:1.5px solid #22c55e;display:flex;align-items:center;justify-content:center;color:#22c55e;font-size:.85rem; }
-    .filter-btn { padding:6px 14px;border-radius:99px;font-size:.78rem;font-weight:700;border:1px solid rgba(255,255,255,.1);background:transparent;color:#4b7a5c;cursor:pointer;transition:all .2s;font-family:'Syne',sans-serif; }
+    .btn-verify:disabled { opacity:.28; cursor:default; }
+    .btn-done-mark {
+      width:34px;height:34px;border-radius:50%;
+      background:rgba(34,197,94,.12);border:1.5px solid #22c55e;
+      display:flex;align-items:center;justify-content:center;
+      color:#22c55e;font-size:.9rem;
+    }
+
+    /* ── FILTER BUTTONS ── */
+    .filter-btn {
+      padding:6px 14px;border-radius:99px;font-size:.78rem;font-weight:700;
+      border:1px solid rgba(255,255,255,.1);background:transparent;color:#4b7a5c;
+      cursor:pointer;transition:all .2s;font-family:'Syne',sans-serif;
+    }
     .filter-btn.active { background:#22c55e;color:#000;border-color:#22c55e; }
-    .tier-card-inc { background:rgba(13,34,20,.6);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.5rem 1rem;text-align:center;transition:all .2s; }
+
+    /* ── TIER CARDS ── */
+    .tier-card-inc {
+      background:rgba(13,34,20,.6);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:14px;padding:1.5rem 1rem;text-align:center;transition:all .3s;
+    }
     .tier-card-inc.unlocked { border-color:#22c55e;background:rgba(34,197,94,.07); }
-    .tier-card-inc.featured-tier { border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.05); }
+    .tier-card-inc.featured-tier { border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.04); }
+    .tier-card-inc.unlocked.featured-tier { border-color:#f59e0b;background:rgba(245,158,11,.1); }
+    .tier-reward-lock {
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      border-radius:8px;padding:8px 12px;margin-top:.75rem;
+      font-size:.75rem;color:#4b7a5c;font-style:italic;
+    }
+    .tier-reward-lock.unlocked-reward { border-color:rgba(34,197,94,.3);color:#22c55e;background:rgba(34,197,94,.06); }
+
+    /* ── TOAST ── */
     .toast-wrap { position:fixed;bottom:20px;right:16px;display:flex;flex-direction:column;gap:8px;z-index:9999;pointer-events:none;max-width:300px; }
     .toast { display:flex;align-items:flex-start;gap:10px;background:#0d2214;border-radius:11px;padding:12px 15px;font-size:.8rem;color:#f0fdf4;box-shadow:0 8px 30px rgba(0,0,0,.55);pointer-events:auto;transition:all .3s;transform:translateX(110%);opacity:0; }
     .toast.show { transform:translateX(0);opacity:1; }
-    .ring-wrap { position:relative;width:60px;height:60px;flex-shrink:0; }
+
+    /* ── RING ── */
+    .ring-wrap { position:relative;width:64px;height:64px;flex-shrink:0; }
     .ring-wrap svg { transform:rotate(-90deg); }
-    .ring-text { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#22c55e;font-family:'Courier New',monospace; }
+    .ring-text { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:#22c55e;font-family:'Courier New',monospace; }
+
+    /* ── STAT BOX ── */
     .stat-box { background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:10px 14px;text-align:center;min-width:58px; }
     .stat-val { font-size:1.1rem;font-weight:700;color:#f0fdf4;font-family:'Courier New',monospace; }
     .stat-lbl { font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;color:#4b7a5c;margin-top:2px; }
-    .login-card { background:rgba(13,34,20,.8);border:1px solid rgba(34,197,94,.15);border-radius:20px;padding:2.5rem;max-width:480px;margin:3rem auto;text-align:center; }
+
+    /* ── LOGIN CARD ── */
+    .login-card { background:rgba(13,34,20,.8);border:1px solid rgba(34,197,94,.15);border-radius:20px;padding:2.5rem;max-width:480px;margin:2rem auto;text-align:center; }
     .login-card h2 { font-size:1.5rem;font-weight:800;margin-bottom:.5rem; }
     .login-card p { font-size:.9rem;color:var(--muted);margin-bottom:2rem;font-weight:300;line-height:1.65; }
     .btn-tw { display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:.9rem;border-radius:10px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.15);font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;margin-bottom:.75rem;transition:all .2s; }
     .btn-tw:hover { background:#111; }
     .btn-gf { display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:.9rem;border-radius:10px;background:#fff;color:#222;border:none;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s; }
     .btn-gf:hover { background:#f0f0f0; }
-    .panel-tabs { display:flex;gap:.5rem;margin-bottom:1.5rem; }
+    .btn-tw:disabled,.btn-gf:disabled { opacity:.5;cursor:default; }
+
+    /* ── DASH ── */
+    .dashboard-wrap { background:rgba(6,15,9,.95);border:1px solid rgba(34,197,94,.15);border-radius:20px;overflow:hidden;max-width:840px;margin:0 auto; }
+    .dash-header { background:rgba(13,34,20,.95);border-bottom:1px solid rgba(34,197,94,.1);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap; }
+    .user-chip { display:flex;align-items:center;gap:10px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.18);border-radius:99px;padding:5px 14px 5px 5px; }
+    .user-av { width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#0d2214);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;overflow:hidden; }
+    .user-av img { width:100%;height:100%;object-fit:cover;border-radius:50%; }
+    .user-name { font-size:.82rem;font-weight:700;color:#f0fdf4;line-height:1.2; }
+    .user-id { font-size:.65rem;color:#22c55e;font-family:'Courier New',monospace; }
+    .dash-body { padding:20px; }
+    .dash-stats { display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;flex-wrap:wrap; }
+    .panel-tabs { display:flex;gap:.5rem;margin-bottom:1.25rem; }
     .panel-tab { padding:7px 16px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;border:1px solid rgba(34,197,94,.2);background:transparent;color:#86efac;transition:all .2s; }
     .panel-tab.active { background:#22c55e;color:#000;border-color:#22c55e; }
     .claim-banner { display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:12px;margin-bottom:1.25rem;flex-wrap:wrap; }
     .claim-banner p { font-size:.875rem;color:#86efac;margin:0; }
     .btn-claim { background:#22c55e;color:#000;border:none;border-radius:8px;padding:9px 20px;font-size:.8rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Syne',sans-serif; }
-    .dashboard-wrap { background:rgba(6,15,9,.95);border:1px solid rgba(34,197,94,.15);border-radius:20px;overflow:hidden;max-width:820px;margin:0 auto; }
-    .dash-header { background:rgba(13,34,20,.95);border-bottom:1px solid rgba(34,197,94,.1);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap; }
-    .user-chip { display:flex;align-items:center;gap:10px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.18);border-radius:99px;padding:5px 14px 5px 5px; }
-    .user-av { width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#0d2214);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;overflow:hidden; }
-    .user-av img { width:100%;height:100%;object-fit:cover;border-radius:50%; }
-    .user-name { font-size:.8rem;font-weight:700;color:#f0fdf4; }
-    .user-id { font-size:.68rem;color:#22c55e;font-family:'Courier New',monospace; }
-    .dash-body { padding:20px; }
-    .dash-stats { display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;flex-wrap:wrap; }
+
+    /* Firebase error notice */
+    .fb-notice { background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:12px 16px;font-size:.78rem;color:#fbbf24;margin-bottom:1.5rem;line-height:1.55; }
   </style>
 </head>
 <body>
@@ -93,44 +179,49 @@
   </div>
 </nav>
 
-<!-- PAGE HERO -->
+<!-- HERO -->
 <div class="page-hero">
   <span class="section-tag">🏆 Incentives</span>
   <h1>Complete Tasks.<br><span style="color:var(--green)">Earn $AFT Rewards.</span></h1>
-  <p>Support the AgricFi ecosystem, complete community tasks, and earn $AFT token rewards for your contributions.</p>
+  <p>Support the AgricFi ecosystem, complete community tasks, and earn $AFT token rewards. Sign in to track your progress.</p>
 </div>
 
-<!-- MAIN -->
 <section class="section-wrap">
   <div class="container">
 
-    <!-- LOADING OVERLAY -->
+    <!-- LOADING -->
     <div id="incLoading" style="display:none;text-align:center;padding:3rem 0">
       <div class="inc-spinner" style="margin:0 auto 1rem"></div>
       <p id="incLoadingTxt" style="color:var(--muted);font-size:.9rem">Connecting...</p>
     </div>
 
-    <!-- LOGIN SCREEN -->
+    <!-- LOGIN -->
     <div id="incLogin" class="login-card">
       <div style="font-size:2.5rem;margin-bottom:1rem">🌾</div>
       <h2>Sign In to Earn $AFT</h2>
-      <p>Connect with your X (Twitter) or Google account to start completing tasks and earning AgricFi token rewards.</p>
-      <button class="btn-tw" onclick="incLoginTW()">
-        <span style="font-size:1rem">𝕏</span> Continue with X (Twitter)
-      </button>
-      <button class="btn-gf" onclick="incLoginGoogle()">
+      <p>Connect with your Google or X (Twitter) account to start completing tasks and earning AgricFi token rewards. Your progress is saved to your account.</p>
+
+      <div id="fbNotice" class="fb-notice" style="display:none">
+        ⚠️ Firebase is not yet configured. Running in <strong>demo mode</strong> — progress saves locally only. Add your Firebase config in <code>incentives.html</code> to enable real accounts.
+      </div>
+
+      <button class="btn-gf" id="btnGoogle" onclick="signInGoogle()">
         <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"/></svg>
         Continue with Google
       </button>
-      <p style="font-size:.75rem;color:var(--dim);margin-top:1rem">Your data is stored locally in your browser. No personal data is sent to any server.</p>
+      <button class="btn-tw" id="btnTwitter" onclick="signInTwitter()" style="margin-top:.75rem">
+        <span style="font-size:1rem">𝕏</span> Continue with X (Twitter)
+      </button>
+      <p style="font-size:.72rem;color:var(--dim);margin-top:1.25rem;line-height:1.6">
+        By signing in you agree to AgricFi's community guidelines. Your email and task progress are stored securely.
+      </p>
     </div>
 
     <!-- DASHBOARD -->
     <div id="incDashboard" style="display:none">
-
       <div class="dashboard-wrap">
 
-        <!-- Dash Header -->
+        <!-- Header -->
         <div class="dash-header">
           <div style="display:flex;align-items:center;gap:10px">
             <img src="assets/AgricFi-logo.png" style="width:22px;height:22px;border-radius:5px;object-fit:contain" alt="">
@@ -148,43 +239,45 @@
 
         <div class="dash-body">
 
-          <!-- Stats Row -->
+          <!-- Stats -->
           <div class="dash-stats">
             <div class="ring-wrap">
-              <svg width="60" height="60" viewBox="0 0 60 60">
-                <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(74,222,128,0.1)" stroke-width="7"/>
-                <circle id="incRingCircle" cx="30" cy="30" r="24" fill="none" stroke="#22c55e" stroke-width="7"
-                  stroke-dasharray="0 151" stroke-linecap="round"/>
+              <svg width="64" height="64" viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(74,222,128,0.1)" stroke-width="7"/>
+                <circle id="incRingCircle" cx="32" cy="32" r="26" fill="none" stroke="#22c55e" stroke-width="7"
+                  stroke-dasharray="0 163" stroke-linecap="round"/>
               </svg>
               <div class="ring-text" id="incRingPct">0%</div>
             </div>
             <div>
-              <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:#4b7a5c;margin-bottom:3px">Total Points</div>
-              <div id="incPoints" style="font-family:'Courier New',monospace;font-size:2rem;font-weight:700;color:#f0fdf4;line-height:1">0 <span style="font-size:.9rem;color:#22c55e;font-weight:400">pts</span></div>
+              <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:#4b7a5c;margin-bottom:3px">Total Points</div>
+              <div id="incPoints" style="font-family:'Courier New',monospace;font-size:2rem;font-weight:700;color:#f0fdf4;line-height:1">
+                0 <span style="font-size:.85rem;color:#22c55e;font-weight:400">pts</span>
+              </div>
             </div>
             <div class="stat-box"><div class="stat-val" id="incDoneCount">0</div><div class="stat-lbl">Done</div></div>
             <div class="stat-box"><div class="stat-val">5</div><div class="stat-lbl">Tasks</div></div>
-            <div class="stat-box"><div class="stat-val" id="incRank">#—</div><div class="stat-lbl">Rank</div></div>
+            <div class="stat-box"><div class="stat-val" id="incTierLabel">—</div><div class="stat-lbl">Tier</div></div>
           </div>
 
-          <!-- Panel Tabs -->
+          <!-- Tabs -->
           <div class="panel-tabs">
             <button class="panel-tab active" id="tabTasks" onclick="switchPanel('tasks')">Tasks</button>
-            <button class="panel-tab" id="tabTiers" onclick="switchPanel('tiers')">Tiers & Rewards</button>
+            <button class="panel-tab" id="tabTiers" onclick="switchPanel('tiers')">Tiers</button>
           </div>
 
-          <!-- Claim Banner (shown when all done) -->
+          <!-- Claim banner -->
           <div class="claim-banner" id="incClaimBanner" style="display:none">
-            <p>🎉 <strong style="color:#22c55e">All tasks complete!</strong> You qualify for $AFT rewards. Contact the team to claim.</p>
-            <button class="btn-claim" onclick="incClaim()">Claim Reward →</button>
+            <p>🎉 <strong style="color:#22c55e">All tasks complete!</strong> You've reached the top tier. Click to claim your $AFT reward.</p>
+            <button class="btn-claim" id="btnClaim" onclick="incClaim()">Claim Reward →</button>
           </div>
 
           <!-- TASKS PANEL -->
           <div id="panelTasks">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.75rem">
               <div>
-                <div style="font-size:.95rem;font-weight:700;color:#f0fdf4">Community Tasks</div>
-                <div style="font-size:.75rem;color:#4b7a5c;margin-top:2px">Complete tasks to earn $AFT reward points</div>
+                <div style="font-size:.92rem;font-weight:700;color:#f0fdf4">Community Tasks</div>
+                <div style="font-size:.73rem;color:#4b7a5c;margin-top:2px">Complete tasks to earn $AFT reward points</div>
               </div>
               <div style="display:flex;gap:6px;flex-wrap:wrap">
                 <button class="filter-btn active" onclick="setFilter(this,'all')">All</button>
@@ -197,47 +290,59 @@
 
           <!-- TIERS PANEL -->
           <div id="panelTiers" style="display:none">
-            <p style="font-size:.875rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300">Accumulate points to unlock higher $AFT reward allocations. Reach Gold tier for maximum rewards.</p>
+            <p style="font-size:.875rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300;line-height:1.7">
+              Complete tasks to climb through tiers. Each tier unlocks an exclusive $AFT reward — the amount is revealed by the AgricFi team upon claim.
+            </p>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem">
+
               <div class="tier-card-inc" id="tierBronze">
-                <div style="font-size:1.75rem;margin-bottom:.5rem">🥉</div>
-                <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.2rem">Bronze</div>
-                <div style="font-size:.75rem;color:#4b7a5c;margin-bottom:.75rem">50 points</div>
-                <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#22c55e">50</div>
-                <div style="font-size:.75rem;color:#4b7a5c">$AFT Reward</div>
+                <div style="font-size:2rem;margin-bottom:.6rem">🥉</div>
+                <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.25rem">Bronze</div>
+                <div style="font-size:.75rem;color:#4b7a5c;margin-bottom:.75rem">Entry tier</div>
+                <div class="tier-reward-lock" id="bronzeLock">
+                  🔒 <span>Reward hidden</span>
+                </div>
               </div>
+
               <div class="tier-card-inc featured-tier" id="tierSilver">
-                <div style="font-size:1.75rem;margin-bottom:.5rem">🥈</div>
-                <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.2rem">Silver</div>
-                <div style="font-size:.75rem;color:#4b7a5c;margin-bottom:.75rem">120 points</div>
-                <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#f59e0b">150</div>
-                <div style="font-size:.75rem;color:#4b7a5c">$AFT Reward</div>
+                <div style="font-size:2rem;margin-bottom:.6rem">🥈</div>
+                <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.25rem">Silver</div>
+                <div style="font-size:.75rem;color:#4b7a5c;margin-bottom:.75rem">Mid tier</div>
+                <div class="tier-reward-lock" id="silverLock">
+                  🔒 <span>Reward hidden</span>
+                </div>
               </div>
+
               <div class="tier-card-inc" id="tierGold">
-                <div style="font-size:1.75rem;margin-bottom:.5rem">🥇</div>
-                <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.2rem">Gold</div>
-                <div style="font-size:.75rem;color:#4b7a5c;margin-bottom:.75rem">250 points</div>
-                <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#22c55e">400</div>
-                <div style="font-size:.75rem;color:#4b7a5c">$AFT Reward</div>
+                <div style="font-size:2rem;margin-bottom:.6rem">🥇</div>
+                <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.25rem">Gold</div>
+                <div style="font-size:.75rem;color:#4b7a5c;margin-bottom:.75rem">Top tier</div>
+                <div class="tier-reward-lock" id="goldLock">
+                  🔒 <span>Reward hidden</span>
+                </div>
               </div>
+
             </div>
-            <div style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15);border-radius:12px;padding:1rem 1.25rem">
-              <p style="font-size:.82rem;color:#86efac;line-height:1.65;font-weight:300;margin:0">📌 <strong style="color:#f0fdf4">How to claim:</strong> Complete all tasks to reach Gold tier, then click the "Claim Reward" button. The AgricFi team will contact you with your $AFT reward details via your registered email or X account.</p>
+
+            <div style="background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);border-radius:12px;padding:1rem 1.25rem">
+              <p style="font-size:.82rem;color:#86efac;line-height:1.7;margin:0;font-weight:300">
+                📌 <strong style="color:#f0fdf4">How rewards work:</strong> Complete tasks to earn points and progress through tiers. Once you unlock a tier, click <strong>Claim Reward</strong> and the AgricFi team will reach out with your $AFT reward details via your registered account.
+              </p>
             </div>
           </div>
 
         </div>
 
-        <!-- Footer links -->
+        <!-- Footer social bar -->
         <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap">
-          <a href="https://x.com/agric_fi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">𝕏 Twitter</a>
-          <a href="https://medium.com/@agricfi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">✍ Medium</a>
-          <a href="https://t.me/AgricFi" target="_blank" style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">✈ Telegram</a>
-          <a href="https://discord.gg/DG9QVxb8TU" target="_blank" style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none"># Discord</a>
+          <a href="https://x.com/agric_fi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">𝕏 Twitter</a>
+          <a href="https://medium.com/@agricfi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">✍ Medium</a>
+          <a href="https://t.me/AgricFi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">✈ Telegram</a>
+          <a href="https://discord.gg/DG9QVxb8TU" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none"># Discord</a>
         </div>
       </div>
-
     </div>
+
   </div>
 </section>
 
@@ -254,219 +359,334 @@
 
 <div class="toast-wrap" id="toastWrap"></div>
 
+<!-- ══════════════════════════════════════════════
+     FIREBASE — paste your config below
+     Get it from: Firebase Console → Project Settings → Your Apps
+     ══════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp }   from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, TwitterAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, updateDoc }
+  from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+// ── PASTE YOUR FIREBASE CONFIG HERE ──────────────────────────
+const FIREBASE_CONFIG = {
+  apiKey:            "PASTE_YOUR_API_KEY",
+  authDomain:        "PASTE_YOUR_AUTH_DOMAIN",
+  projectId:         "PASTE_YOUR_PROJECT_ID",
+  storageBucket:     "PASTE_YOUR_STORAGE_BUCKET",
+  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
+  appId:             "PASTE_YOUR_APP_ID"
+};
+// ─────────────────────────────────────────────────────────────
+
+const IS_CONFIGURED = !FIREBASE_CONFIG.apiKey.includes('PASTE');
+
+let app, auth, db, googleProvider, twitterProvider;
+
+if (IS_CONFIGURED) {
+  app             = initializeApp(FIREBASE_CONFIG);
+  auth            = getAuth(app);
+  db              = getFirestore(app);
+  googleProvider  = new GoogleAuthProvider();
+  twitterProvider = new TwitterAuthProvider();
+
+  onAuthStateChanged(auth, async (fbUser) => {
+    if (fbUser) {
+      const snap = await getDoc(doc(db, 'agricfi_users', fbUser.uid));
+      const saved = snap.exists() ? snap.data() : {};
+      window.INC.tasks = saved.tasks || {};
+      window.INC.pts   = 0;
+      window.INC.user  = {
+        uid:     fbUser.uid,
+        display: fbUser.displayName || fbUser.email || 'User',
+        email:   fbUser.email || '',
+        photo:   fbUser.photoURL || null,
+        ini:     (fbUser.displayName || 'U').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(),
+        id:      'FI-' + fbUser.uid.slice(-5).toUpperCase()
+      };
+      calcPts();
+      showDashboard();
+    }
+  });
+} else {
+  document.getElementById('fbNotice').style.display = 'block';
+}
+
+// ── EXPOSE FIREBASE AUTH TO GLOBAL SCOPE ──
+window.signInGoogle = async function() {
+  if (!IS_CONFIGURED) { demoLogin('google'); return; }
+  try {
+    setLoading('Connecting with Google...');
+    const result = await signInWithPopup(auth, googleProvider);
+    await saveUserToFirestore(result.user);
+  } catch(e) {
+    hideLoading();
+    toast('❌','Sign-in failed', e.message || 'Please try again.');
+  }
+};
+
+window.signInTwitter = async function() {
+  if (!IS_CONFIGURED) { demoLogin('twitter'); return; }
+  try {
+    setLoading('Connecting with X...');
+    const result = await signInWithPopup(auth, twitterProvider);
+    await saveUserToFirestore(result.user);
+  } catch(e) {
+    hideLoading();
+    toast('❌','Sign-in failed', e.message || 'Please try again.');
+  }
+};
+
+window.incLogout = async function() {
+  if (IS_CONFIGURED && auth.currentUser) await signOut(auth);
+  window.INC = { user: null, tasks: {}, pts: 0, filter: 'all' };
+  localStorage.removeItem('af_user');
+  localStorage.removeItem('af_tasks');
+  document.getElementById('incDashboard').style.display = 'none';
+  document.getElementById('incLogin').style.display     = 'block';
+  toast('👋','Signed out','See you soon!');
+};
+
+window.incDo = async function(id) {
+  const t = TASKS.find(x => x.id === id);
+  if (!t) return;
+  window.open(t.url, '_blank', 'noopener');
+  window.INC.tasks[id] = 'performed';
+  await persistTasks();
+  renderTasks();
+  toast('👆','Action opened!','Complete it then click Verify');
+};
+
+window.incVerify = async function(id) {
+  if (window.INC.tasks[id] !== 'performed') {
+    toast('⚠️','Not done yet','Click the task button first'); return;
+  }
+  const btn = document.getElementById('btn-vr-' + id);
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Checking...'; }
+  const t = TASKS.find(x => x.id === id);
+  setTimeout(async () => {
+    window.INC.tasks[id] = 'completed';
+    await persistTasks();
+    calcPts();
+    renderTasks();
+    updateStats();
+    toast('🎉', '+' + t.pts + ' pts!', '"' + t.name + '" verified!');
+    const allDone = TASKS.every(x => window.INC.tasks[x.id] === 'completed');
+    if (allDone) setTimeout(() => {
+      document.getElementById('incClaimBanner').style.display = 'flex';
+    }, 600);
+  }, 2000);
+};
+
+window.incClaim = async function() {
+  const u = window.INC.user;
+  if (!u) return;
+  // Log claim attempt to Firestore
+  if (IS_CONFIGURED && db) {
+    await updateDoc(doc(db, 'agricfi_users', u.uid || 'demo'), { claimRequested: true, claimDate: new Date().toISOString() }).catch(()=>{});
+  }
+  toast('📬','Claim submitted!','The AgricFi team will contact you with your reward details.');
+  const btn = document.getElementById('btnClaim');
+  if (btn) { btn.textContent = 'Submitted ✓'; btn.disabled = true; btn.style.opacity = '.6'; }
+};
+
+async function saveUserToFirestore(fbUser) {
+  if (!db) return;
+  const ref  = doc(db, 'agricfi_users', fbUser.uid);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) {
+    await setDoc(ref, {
+      displayName: fbUser.displayName || '',
+      email:       fbUser.email || '',
+      photoURL:    fbUser.photoURL || '',
+      joinedAt:    new Date().toISOString(),
+      tasks:       {},
+      points:      0
+    });
+  }
+}
+
+async function persistTasks() {
+  const u = window.INC.user;
+  if (!u) return;
+  localStorage.setItem('af_tasks', JSON.stringify(window.INC.tasks));
+  if (IS_CONFIGURED && db && u.uid) {
+    await updateDoc(doc(db, 'agricfi_users', u.uid), {
+      tasks:  window.INC.tasks,
+      points: window.INC.pts
+    }).catch(() => {});
+  }
+}
+
+function demoLogin(provider) {
+  setLoading(provider === 'google' ? 'Connecting with Google...' : 'Connecting with X...');
+  const names = provider === 'google'
+    ? ['Alex Okonkwo','Chioma Adeyemi','Ibrahim Musa','Funke Bello']
+    : ['@FarmerKola','@InvestorNgozi','@CryptoFarmNG','@AgriDave'];
+  const name = names[Math.floor(Math.random() * names.length)];
+  setTimeout(() => {
+    const saved = localStorage.getItem('af_tasks');
+    window.INC.tasks = saved ? JSON.parse(saved) : {};
+    window.INC.user  = {
+      uid: 'demo-' + Math.random().toString(36).slice(2,8),
+      display: name, ini: name.replace('@','').slice(0,2).toUpperCase(),
+      id: 'FI-' + Math.random().toString(36).slice(2,7).toUpperCase(), demo: true
+    };
+    calcPts();
+    hideLoading();
+    showDashboard();
+    toast('✅','Signed in (demo)','Add Firebase config for real accounts.');
+  }, 1400);
+}
+</script>
+
 <script src="script.js"></script>
 <script>
 // ── TASKS DATA ──
 var TASKS = [
-  { id:'follow',   icon:'👤', name:'Follow @agric_fi on X',                    pts:25, type:'social',  url:'https://x.com/intent/follow?screen_name=agric_fi',                                                                              label:'Follow on X →' },
-  { id:'retweet',  icon:'🔁', name:"Retweet AgricFi's Latest Post",             pts:30, type:'social',  url:'https://x.com/agric_fi',                                                                                                        label:'Go to X →' },
-  { id:'tweet',    icon:'✍️', name:'Write a Tweet About AgricFi',               pts:40, type:'content', url:'https://x.com/intent/tweet?text=I%20just%20discovered%20%40agric_fi%20%E2%80%94%20tokenizing%20agriculture%20with%20DeFi!%20%23AgricFi%20%23AFT%20agricfi.xyz', label:'Tweet Now →' },
-  { id:'farmphoto',icon:'📷', name:'Visit a Farm, Take a Photo & Post on X',    pts:60, type:'content', url:'https://x.com/intent/tweet?text=%F0%9F%8C%BE%20Visiting%20a%20real%20farm%20with%20%40agric_fi!%20%23AgricFi%20%23AFT',        label:'Post on X →' },
-  { id:'video',    icon:'🎬', name:'Create an Animation/Video About AgricFi',   pts:95, type:'content', url:'https://x.com/agric_fi',                                                                                                        label:'See Guidelines →' }
+  { id:'follow',    icon:'👤', name:'Follow @agric_fi on X',                  pts:25, type:'social',  url:'https://x.com/intent/follow?screen_name=agric_fi',                                                                                                               label:'Follow on X →' },
+  { id:'retweet',   icon:'🔁', name:"Retweet AgricFi's Latest Post",           pts:30, type:'social',  url:'https://x.com/agric_fi',                                                                                                                                         label:'Go to X →' },
+  { id:'tweet',     icon:'✍️', name:'Write a Tweet About AgricFi',             pts:40, type:'content', url:'https://x.com/intent/tweet?text=I%20just%20discovered%20%40agric_fi%20%E2%80%94%20tokenizing%20real%20agriculture%20with%20DeFi!%20%23AgricFi%20%23AFT%20agricfi.xyz', label:'Tweet Now →' },
+  { id:'farmphoto', icon:'📷', name:'Visit a Farm, Take a Photo & Post on X',  pts:60, type:'content', url:'https://x.com/intent/tweet?text=%F0%9F%8C%BE+Visiting+a+real+farm+with+%40agric_fi!+%23AgricFi+%23AFT',                                                          label:'Post on X →' },
+  { id:'video',     icon:'🎬', name:'Create a Video or Animation About AgricFi',pts:95,type:'content', url:'https://x.com/agric_fi',                                                                                                                                         label:'See Guidelines →' }
 ];
 
-// ── STATE ──
-var INC = { user: null, tasks: {}, pts: 0, filter: 'all' };
+// ── GLOBAL STATE ──
+window.INC = { user: null, tasks: {}, pts: 0, filter: 'all' };
 
-// ── BOOT ──
-(function boot() {
-  var saved = localStorage.getItem('af_user');
-  if (saved) {
-    try {
-      INC.user  = JSON.parse(saved);
-      INC.tasks = JSON.parse(localStorage.getItem('af_tasks') || '{}');
-      calcPts();
-      showDashboard();
-    } catch(e) { localStorage.clear(); }
-  }
-})();
-
-// ── LOGIN ──
-window.incLoginTW = function() {
-  showLoading('Connecting to X (Twitter)...');
-  setTimeout(function() {
-    var names = ['@FarmerKola','@InvestorNgozi','@CryptoFarmNG','@AgriDave','@BlockFarmer'];
-    var name  = names[Math.floor(Math.random() * names.length)];
-    setUser({ id: 'FI-' + randId(), name: name, display: name, provider: 'twitter', ini: name.slice(1,3).toUpperCase() });
-  }, 1500);
-};
-
-window.incLoginGoogle = function() {
-  showLoading('Connecting with Google...');
-  setTimeout(function() {
-    var names = ['Alex Okonkwo','Chioma Adeyemi','Ibrahim Musa','Funke Bello','Tunde Adesanya'];
-    var name  = names[Math.floor(Math.random() * names.length)];
-    setUser({ id: 'FI-' + randId(), name: name, display: name, provider: 'google', ini: name.split(' ').map(function(w){return w[0];}).join('').toUpperCase() });
-  }, 1500);
-};
-
-function setUser(u) {
-  INC.user = u;
-  localStorage.setItem('af_user', JSON.stringify(u));
-  hideLoading();
-  showDashboard();
-  toast('✅', 'Signed in!', 'Welcome ' + u.display + ' · ' + u.id);
+// ── RENDER TASKS ──
+function renderTasks() {
+  var list = window.INC.filter === 'all' ? TASKS : TASKS.filter(function(t){ return t.type === window.INC.filter; });
+  document.getElementById('incTaskList').innerHTML = list.map(function(t) {
+    var state = window.INC.tasks[t.id] || 'idle';
+    var done  = state === 'completed';
+    var did   = state === 'performed' || done;
+    return (
+      '<div class="task-card ' + (done ? 'done' : '') + '">' +
+        '<div class="task-icon ' + (done ? 'done' : '') + '">' + t.icon + '</div>' +
+        '<div class="task-top">' +
+          '<div class="task-name ' + (done ? 'done' : '') + '">' + (done ? '✓ ' : '') + t.name + '</div>' +
+          '<div class="task-meta">' +
+            '<span class="task-pts">+' + t.pts + ' pts</span>' +
+            '<span class="task-type">' + t.type + '</span>' +
+            (done ? '<span class="task-verified-badge">✓ Verified</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div class="task-actions">' +
+          (done
+            ? '<div class="btn-done-mark">✓</div><span style="font-size:.78rem;color:#4b7a5c;">Task completed</span>'
+            : '<button class="btn-task btn-do" onclick="incDo(\'' + t.id + '\')">' + (did ? '✓ Opened' : t.label) + '</button>' +
+              '<button class="btn-task btn-verify ' + (did ? 'ready' : '') + '" id="btn-vr-' + t.id + '" onclick="incVerify(\'' + t.id + '\')" ' + (!did ? 'disabled' : '') + '>Verify</button>'
+          ) +
+        '</div>' +
+      '</div>'
+    );
+  }).join('');
 }
 
-window.incLogout = function() {
-  INC = { user: null, tasks: {}, pts: 0, filter: 'all' };
-  localStorage.removeItem('af_user');
-  localStorage.removeItem('af_tasks');
-  document.getElementById('incDashboard').style.display = 'none';
-  document.getElementById('incLogin').style.display = 'block';
-  toast('👋', 'Signed out', 'Come back and earn more $AFT!');
-};
+// ── STATS & TIERS ──
+// Internal tier thresholds — not exposed on UI
+var TIER_THRESHOLDS = { bronze: 50, silver: 120, gold: 250 };
+
+function calcPts() {
+  window.INC.pts = TASKS.reduce(function(s, t){
+    return s + (window.INC.tasks[t.id] === 'completed' ? t.pts : 0);
+  }, 0);
+}
+
+function currentTier() {
+  if (window.INC.pts >= TIER_THRESHOLDS.gold)   return 'gold';
+  if (window.INC.pts >= TIER_THRESHOLDS.silver)  return 'silver';
+  if (window.INC.pts >= TIER_THRESHOLDS.bronze)  return 'bronze';
+  return null;
+}
+
+function updateStats() {
+  var maxPts  = 250;
+  var pct     = Math.min(100, Math.round((window.INC.pts / maxPts) * 100));
+  var done    = TASKS.filter(function(t){ return window.INC.tasks[t.id] === 'completed'; }).length;
+  var circ    = 2 * Math.PI * 26;
+  var tier    = currentTier();
+
+  document.getElementById('incPoints').innerHTML = window.INC.pts + ' <span style="font-size:.85rem;color:#22c55e;font-weight:400">pts</span>';
+  document.getElementById('incRingPct').textContent  = pct + '%';
+  document.getElementById('incDoneCount').textContent = done;
+  document.getElementById('incTierLabel').textContent = tier ? tier.charAt(0).toUpperCase() + tier.slice(1) : '—';
+
+  var ring = document.getElementById('incRingCircle');
+  if (ring) ring.setAttribute('stroke-dasharray', (pct/100*circ) + ' ' + (circ - pct/100*circ));
+
+  // Tier card highlights — no reward amounts shown
+  ['tierBronze','tierSilver','tierGold'].forEach(function(id){ document.getElementById(id).classList.remove('unlocked'); });
+  ['bronzeLock','silverLock','goldLock'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('unlocked-reward');
+  });
+
+  if (tier === 'gold' || tier === 'silver' || tier === 'bronze') {
+    var tiers = { bronze:'tierBronze', silver:'tierSilver', gold:'tierGold' };
+    var locks = { bronze:'bronzeLock', silver:'silverLock', gold:'goldLock' };
+    document.getElementById(tiers[tier]).classList.add('unlocked');
+    var lock = document.getElementById(locks[tier]);
+    if (lock) { lock.classList.add('unlocked-reward'); lock.innerHTML = '✅ <span>Tier unlocked — claim below</span>'; }
+  }
+}
 
 // ── SHOW DASHBOARD ──
 function showDashboard() {
-  document.getElementById('incLogin').style.display = 'none';
+  document.getElementById('incLogin').style.display     = 'none';
+  document.getElementById('incLoading').style.display   = 'none';
   document.getElementById('incDashboard').style.display = 'block';
-  document.getElementById('incUsername').textContent = INC.user.display;
-  document.getElementById('incUserId').textContent   = 'ID: ' + INC.user.id;
-  document.getElementById('incInitials').textContent = INC.user.ini || '?';
+
+  var u = window.INC.user;
+  document.getElementById('incUsername').textContent = u.display || '—';
+  document.getElementById('incUserId').textContent   = u.id || '—';
+  document.getElementById('incInitials').textContent = u.ini || '?';
+  if (u.photo) {
+    document.getElementById('incAvatar').innerHTML = '<img src="' + u.photo + '" alt="">';
+  }
   updateStats();
   renderTasks();
 }
 
-// ── RENDER TASKS ──
-function renderTasks() {
-  var list = INC.filter === 'all' ? TASKS : TASKS.filter(function(t){ return t.type === INC.filter; });
-  var html = list.map(function(t) {
-    var state = INC.tasks[t.id] || 'idle';
-    var done  = state === 'completed';
-    var did   = state === 'performed' || done;
-    return '<div class="task-card ' + (done ? 'done' : '') + '" id="tcard-' + t.id + '">' +
-      '<div class="task-icon ' + (done ? 'done' : '') + '">' + t.icon + '</div>' +
-      '<div class="task-info">' +
-        '<div class="task-name ' + (done ? 'done' : '') + '">' + (done ? '✓ ' : '') + t.name + '</div>' +
-        '<div class="task-meta">' +
-          '<span class="task-pts">+' + t.pts + ' pts</span>' +
-          '<span class="task-type">' + t.type + '</span>' +
-          (done ? '<span class="task-verified">✓ Verified</span>' : '') +
-        '</div>' +
-      '</div>' +
-      '<div class="task-actions">' +
-        (done
-          ? '<div class="btn-done-mark">✓</div>'
-          : '<button class="btn-task btn-do" id="btn-do-' + t.id + '" onclick="incDo(\'' + t.id + '\')">' + (did ? '✓ Opened' : t.label) + '</button>' +
-            '<button class="btn-task btn-verify" id="btn-vr-' + t.id + '" onclick="incVerify(\'' + t.id + '\')" ' + (did ? '' : 'disabled') + '>' +
-            (did ? '✓ Verify' : 'Verify') + '</button>'
-        ) +
-      '</div>' +
-    '</div>';
-  }).join('');
-  document.getElementById('incTaskList').innerHTML = html || '<p style="color:var(--dim);text-align:center;padding:2rem 0">No tasks in this category.</p>';
-}
-
-// ── DO TASK ──
-window.incDo = function(id) {
-  if (!INC.user) { toast('⚠️','Sign in first','Connect your account to start'); return; }
-  var t = TASKS.find(function(x){ return x.id === id; });
-  if (!t) return;
-  window.open(t.url, '_blank', 'noopener');
-  INC.tasks[id] = 'performed';
-  localStorage.setItem('af_tasks', JSON.stringify(INC.tasks));
-  renderTasks();
-  toast('👆', 'Action opened!', 'Complete it then click Verify');
-};
-
-// ── VERIFY TASK ──
-window.incVerify = function(id) {
-  if (!INC.user) { toast('⚠️','Sign in first','Connect your account first'); return; }
-  if (INC.tasks[id] !== 'performed') { toast('⚠️','Not done yet','Click the task button first, then verify'); return; }
-  if (INC.tasks[id] === 'completed') { toast('ℹ️','Already verified','This task is done!'); return; }
-
-  var btn = document.getElementById('btn-vr-' + id);
-  if (btn) { btn.disabled = true; btn.textContent = '⏳ Checking...'; }
-
-  var t = TASKS.find(function(x){ return x.id === id; });
-  setTimeout(function() {
-    INC.tasks[id] = 'completed';
-    localStorage.setItem('af_tasks', JSON.stringify(INC.tasks));
-    calcPts();
-    renderTasks();
-    updateStats();
-    toast('🎉', '+' + t.pts + ' pts earned!', '"' + t.name + '" verified!');
-    if (TASKS.every(function(x){ return INC.tasks[x.id] === 'completed'; })) {
-      setTimeout(function(){ document.getElementById('incClaimBanner').style.display = 'flex'; }, 500);
-    }
-  }, 2000);
-};
-
-// ── CLAIM ──
-window.incClaim = function() {
-  toast('📬','Reward submitted!','The AgricFi team will contact you with your $AFT reward details.');
-  var btn = document.querySelector('#incClaimBanner .btn-claim');
-  if (btn) { btn.textContent = 'Submitted ✓'; btn.disabled = true; }
+// ── PANEL SWITCH ──
+window.switchPanel = function(p) {
+  document.getElementById('panelTasks').style.display = p === 'tasks' ? 'block' : 'none';
+  document.getElementById('panelTiers').style.display = p === 'tiers' ? 'block' : 'none';
+  document.getElementById('tabTasks').classList.toggle('active', p === 'tasks');
+  document.getElementById('tabTiers').classList.toggle('active', p === 'tiers');
 };
 
 // ── FILTER ──
 window.setFilter = function(el, f) {
-  INC.filter = f;
+  window.INC.filter = f;
   document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
   el.classList.add('active');
   renderTasks();
 };
 
-// ── PANEL SWITCH ──
-window.switchPanel = function(p) {
-  document.getElementById('panelTasks').style.display  = p === 'tasks'  ? 'block' : 'none';
-  document.getElementById('panelTiers').style.display  = p === 'tiers'  ? 'block' : 'none';
-  document.getElementById('tabTasks').classList.toggle('active', p === 'tasks');
-  document.getElementById('tabTiers').classList.toggle('active', p === 'tiers');
-};
-
-// ── STATS ──
-function calcPts() {
-  INC.pts = TASKS.reduce(function(s, t){ return s + (INC.tasks[t.id] === 'completed' ? t.pts : 0); }, 0);
-}
-
-function updateStats() {
-  var max  = 250;
-  var pct  = Math.min(100, Math.round((INC.pts / max) * 100));
-  var done = TASKS.filter(function(t){ return INC.tasks[t.id] === 'completed'; }).length;
-  var circ = 2 * Math.PI * 24; // r=24
-
-  document.getElementById('incPoints').innerHTML   = INC.pts + ' <span style="font-size:.9rem;color:#22c55e;font-weight:400">pts</span>';
-  document.getElementById('incRingPct').textContent = pct + '%';
-  document.getElementById('incDoneCount').textContent = done;
-  document.getElementById('incRank').textContent    = '#' + Math.max(1, 300 - done * 45);
-
-  var circle = document.getElementById('incRingCircle');
-  if (circle) {
-    var filled = (pct / 100) * circ;
-    circle.setAttribute('stroke-dasharray', filled + ' ' + (circ - filled));
-  }
-
-  // Tier highlights
-  ['tierBronze','tierSilver','tierGold'].forEach(function(id){ document.getElementById(id).classList.remove('unlocked'); });
-  if (INC.pts >= 250)      document.getElementById('tierGold').classList.add('unlocked');
-  else if (INC.pts >= 120) document.getElementById('tierSilver').classList.add('unlocked');
-  else if (INC.pts >= 50)  document.getElementById('tierBronze').classList.add('unlocked');
-}
-
-// ── HELPERS ──
-function showLoading(msg) {
+// ── LOADING HELPERS ──
+function setLoading(msg) {
   document.getElementById('incLogin').style.display    = 'none';
   document.getElementById('incLoading').style.display  = 'block';
-  document.getElementById('incLoadingTxt').textContent = msg || 'Loading...';
+  document.getElementById('incLoadingTxt').textContent = msg;
 }
-function hideLoading() {
-  document.getElementById('incLoading').style.display = 'none';
-}
-function randId() {
-  return Math.random().toString(36).slice(2,7).toUpperCase();
-}
+function hideLoading() { document.getElementById('incLoading').style.display = 'none'; }
+
+// ── TOAST ──
 function toast(icon, title, msg) {
   var wrap = document.getElementById('toastWrap');
   var el   = document.createElement('div');
   el.className = 'toast';
-  el.style.borderColor = icon.includes('⚠') ? 'rgba(224,85,85,.35)' : 'rgba(34,197,94,.35)';
-  el.innerHTML = '<div style="font-size:1.1rem;flex-shrink:0">' + icon + '</div><div><strong style="display:block;font-weight:700;color:#fff;margin-bottom:2px">' + title + '</strong><span style="color:#86efac">' + msg + '</span></div>';
+  el.style.borderColor = (icon.includes('❌') || icon.includes('⚠')) ? 'rgba(224,85,85,.35)' : 'rgba(34,197,94,.35)';
+  el.innerHTML = '<div style="font-size:1.1rem;flex-shrink:0;margin-top:1px">' + icon + '</div><div><strong style="display:block;font-weight:700;color:#fff;margin-bottom:2px">' + title + '</strong><span style="color:#86efac;font-size:.78rem">' + msg + '</span></div>';
   wrap.appendChild(el);
   requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add('show'); }); });
   setTimeout(function(){ el.classList.remove('show'); setTimeout(function(){ el.remove(); }, 350); }, 4500);
 }
+window.toast = toast;
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 // ================================================================
-// AgricFi — Firebase Integration (app.js)
+// AgricFi - Firebase Integration (app.js)
 // Replace placeholder values below with your actual Firebase config
 // ================================================================
 
