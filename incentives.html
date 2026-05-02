@@ -365,31 +365,36 @@
      ══════════════════════════════════════════════ -->
 <script type="module">
 import { initializeApp }   from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import { getAnalytics }     from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
 import { getAuth, GoogleAuthProvider, TwitterAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, updateDoc }
+import { getFirestore, doc, setDoc, getDoc, updateDoc, serverTimestamp }
   from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 // ── PASTE YOUR FIREBASE CONFIG HERE ──────────────────────────
 const FIREBASE_CONFIG = {
-  apiKey:            "PASTE_YOUR_API_KEY",
-  authDomain:        "PASTE_YOUR_AUTH_DOMAIN",
-  projectId:         "PASTE_YOUR_PROJECT_ID",
-  storageBucket:     "PASTE_YOUR_STORAGE_BUCKET",
-  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
-  appId:             "PASTE_YOUR_APP_ID"
+  apiKey:            "AIzaSyDk8oydY5d8qMlUUK_Qd3qPOvvDGT6Qcuo",
+  authDomain:        "agricfi-incentive.firebaseapp.com",
+  projectId:         "agricfi-incentive",
+  storageBucket:     "agricfi-incentive.firebasestorage.app",
+  messagingSenderId: "445656059216",
+  appId:             "1:445656059216:web:913e37713299b6e0f13055",
+  measurementId:     "G-R9LWL82620"
 };
 // ─────────────────────────────────────────────────────────────
 
-const IS_CONFIGURED = !FIREBASE_CONFIG.apiKey.includes('PASTE');
+const IS_CONFIGURED = true; // Firebase config is live
 
 let app, auth, db, googleProvider, twitterProvider;
 
 if (IS_CONFIGURED) {
   app             = initializeApp(FIREBASE_CONFIG);
+  getAnalytics(app); // enable analytics
   auth            = getAuth(app);
   db              = getFirestore(app);
   googleProvider  = new GoogleAuthProvider();
+  googleProvider.addScope('profile');
+  googleProvider.addScope('email');
   twitterProvider = new TwitterAuthProvider();
 
   onAuthStateChanged(auth, async (fbUser) => {
@@ -485,7 +490,7 @@ window.incClaim = async function() {
   if (!u) return;
   // Log claim attempt to Firestore
   if (IS_CONFIGURED && db) {
-    await updateDoc(doc(db, 'agricfi_users', u.uid || 'demo'), { claimRequested: true, claimDate: new Date().toISOString() }).catch(()=>{});
+    await updateDoc(doc(db, 'agricfi_users', u.uid), { claimRequested: true, claimDate: serverTimestamp(), pointsAtClaim: window.INC.pts }).catch(()=>{});
   }
   toast('📬','Claim submitted!','The AgricFi team will contact you with your reward details.');
   const btn = document.getElementById('btnClaim');
@@ -497,14 +502,20 @@ async function saveUserToFirestore(fbUser) {
   const ref  = doc(db, 'agricfi_users', fbUser.uid);
   const snap = await getDoc(ref);
   if (!snap.exists()) {
+    // First time — create full profile
     await setDoc(ref, {
-      displayName: fbUser.displayName || '',
-      email:       fbUser.email || '',
-      photoURL:    fbUser.photoURL || '',
-      joinedAt:    new Date().toISOString(),
-      tasks:       {},
-      points:      0
+      displayName:  fbUser.displayName || '',
+      email:        fbUser.email || '',
+      photoURL:     fbUser.photoURL || '',
+      provider:     fbUser.providerData[0]?.providerId || 'unknown',
+      joinedAt:     serverTimestamp(),
+      tasks:        {},
+      points:       0,
+      claimRequested: false
     });
+  } else {
+    // Returning user — update last seen
+    await updateDoc(ref, { lastSeen: serverTimestamp() }).catch(() => {});
   }
 }
 
