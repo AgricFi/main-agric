@@ -125,7 +125,7 @@
     .stat-lbl { font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;color:#4b7a5c;margin-top:2px; }
 
     /* ── LOGIN CARD ── */
-    .login-card { background:rgba(13,34,20,.8);border:1px solid rgba(34,197,94,.15);border-radius:20px;padding:2.5rem;max-width:480px;margin:2rem auto;text-align:center; }
+    .login-card { max-width:480px;margin:2rem auto;text-align:center;padding:1rem 0; }
     .login-card h2 { font-size:1.5rem;font-weight:800;margin-bottom:.5rem; }
     .login-card p { font-size:.9rem;color:var(--muted);margin-bottom:2rem;font-weight:300;line-height:1.65; }
     .btn-tw { display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:.9rem;border-radius:10px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.15);font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;margin-bottom:.75rem;transition:all .2s; }
@@ -135,14 +135,14 @@
     .btn-tw:disabled,.btn-gf:disabled { opacity:.5;cursor:default; }
 
     /* ── DASH ── */
-    .dashboard-wrap { background:rgba(6,15,9,.95);border:1px solid rgba(34,197,94,.15);border-radius:20px;overflow:hidden;max-width:840px;margin:0 auto; }
-    .dash-header { background:rgba(13,34,20,.95);border-bottom:1px solid rgba(34,197,94,.1);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap; }
+    .dashboard-unwrap { max-width:840px;margin:0 auto; }
+    .dash-header { border-bottom:1px solid rgba(34,197,94,.1);padding:0 0 14px 0;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:transparent; }
     .user-chip { display:flex;align-items:center;gap:10px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.18);border-radius:99px;padding:5px 14px 5px 5px; }
     .user-av { width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#0d2214);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;overflow:hidden; }
     .user-av img { width:100%;height:100%;object-fit:cover;border-radius:50%; }
     .user-name { font-size:.82rem;font-weight:700;color:#f0fdf4;line-height:1.2; }
     .user-id { font-size:.65rem;color:#22c55e;font-family:'Courier New',monospace; }
-    .dash-body { padding:20px; }
+    .dash-body { padding:20px 0; }
     .dash-stats { display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;flex-wrap:wrap; }
     .panel-tabs { display:flex;gap:.5rem;margin-bottom:1.25rem; }
     .panel-tab { padding:7px 16px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;border:1px solid rgba(34,197,94,.2);background:transparent;color:#86efac;transition:all .2s; }
@@ -219,7 +219,7 @@
 
     <!-- DASHBOARD -->
     <div id="incDashboard" style="display:none">
-      <div class="dashboard-wrap">
+      <div class="dashboard-unwrap" style="max-width:840px;margin:0 auto;">
 
         <!-- Header -->
         <div class="dash-header">
@@ -334,7 +334,7 @@
         </div>
 
         <!-- Footer social bar -->
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap">
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:20px 0 0 0;border-top:1px solid rgba(34,197,94,.08);flex-wrap:wrap;margin-top:8px">
           <a href="https://x.com/agric_fi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">𝕏 Twitter</a>
           <a href="https://medium.com/@agricfi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">✍ Medium</a>
           <a href="https://t.me/AgricFi" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#86efac;font-size:.75rem;font-weight:700;text-decoration:none">✈ Telegram</a>
